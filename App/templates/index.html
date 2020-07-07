@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>dbDSM</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" />
+		<link rel="stylesheet" href="/newdbDSM/css/home.css" />
+	</head>
+
+	<body>
+		<div class="layui-container" style="min-width:1140px;">
+			<div class="layui-row" id="header">
+				<!--头-->
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner" style="background: url(/newdbDSM/images/Picture8.png);background-size:cover;">
+				</div>
+				<!--这里是banner-->
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
+					<!--这里是导航栏-->
+					<ul class="layui-nav" id="navbar">
+						<li class="layui-nav-item layui-this">
+							<a href="/newdbDSM/">Home</a>
+						</li>
+						<li class="layui-nav-item ">
+							<a href="/newdbDSM/search">Search</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/download">Download</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/about">About</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/submit">Submit</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/contact">Contact us</a>
+						</li>
+					</ul>
+				</div>
+				<!--导航栏到这-->
+			</div>
+			<!--头到这-->
+
+			<div class="layui-row" id="bodyer">
+				<div class="layui-row" id="bodyer1">
+					<!--主体部分-->
+					<div class="layui-row layui-col-space10">
+					    <div class="layui-col-md8">
+						    <div class="layui-collapse">
+								<div class="layui-colla-item">
+								    <h2 class="layui-colla-title"><strong>Overview</strong></h2>
+								    <hr class="layui-bg-black">
+								    <div class="layui-colla-content layui-show" style="color:black;text-align: justify;">
+								    	<br>
+								        Synonymous mutation is a form of single nucleotide mutation which replaces one base to another in the coding sequence that does not alter amino acids in the translated protein due to the degeneracy genetic code. Because of synonymous mutation does not change the protein primary structure, it has been considered nonfunctional for a long time. So it sometimes called 'silent mutation'. But recent studies suggesting that such synonymous mutations play an important role in human phenotype by affecting transcript splicing, mRNA stability, RNA secondary structure, the biding site of transcription factor binding and microRNA, codon optimality and protein expression and so on.
+			                    	    
+			                    	    <br><br>dbDSM (Database of Deleterious Synonymous Mutation) is an integrated database that collect multiple sources relate to deleterious synonymous mutations (DSMs). Here, we present the updated dbDSMv2.0 database, which provides detail information about DSM with phenotypes, including position information, disease, gene and functional score etc. We also add the source of tmVar to dbDSMv2.0 which is a text mining approach for extracting a wide range of sequence variants in both protein and gene levels (e.g. substitution, deletion, etc) in biomedical literature. We intend to collect accurate information used for bio-research and make it accessible to all users freely.
+			                			<br><br>
+			                			<strong>Citation:</strong>
+			                			<!--  
+			                			<fieldset class="layui-elem-field layui-field-title site-title">
+			                			<legend><strong>How to cite</strong></legend></fieldset> <br>
+			                			<strong>If you have found the dbDSM database useful, please cite:</strong>-->
+			                			<br><br>
+			                			Pengbo Wen, Peng Xiao, and Junfeng Xia*, dbDSM: a manually curated database for deleterious synonymous mutations. Bioinformatics, 2016, 32(12): 1914-1916.
+			                		</div>
+								</div>
+							</div>
+							<!-- 
+							<div class="layui-collapse">
+								<div class="layui-colla-item">
+								    <h2 class="layui-colla-title"><strong>Comparison of the dbDSMv1 and dbDSMv2</strong></h2>
+								    <hr class="layui-bg-black">
+								    <div class="layui-colla-content layui-show">
+										<div class="infomain">
+											<div style="display:block;">
+											<div class="layui-carousel" id="test1" lay-filter="test1">
+												  <div carousel-item="">
+												    <div><img src="imgs/dbDSMv1_dbDSMv2.png"></div>
+												    <div>								
+														<iframe name="sta1" frameborder="0" scrolling="no" style="width:100%;height:450px"  src="imgs/dbDSMv1_sunburst.html"></iframe>
+													</div>
+												    <div>								
+														<iframe name="sta1" frameborder="0" scrolling="no" style="width:100%;height:450px"  src="imgs/dbDSMv2_sunburst.html"></iframe>
+													</div>
+												  </div>
+												</div> 
+
+											</div>
+										</div>
+								    </div>
+								</div>
+							</div>
+							 -->
+						</div>
+					    <div class="layui-col-md4">
+					      <div class="layui-collapse">
+								<div class="layui-colla-item">
+								    <h2 class="layui-colla-title"><strong>Flowchart</strong></h2>
+								    <hr class="layui-bg-black">
+								    <div class="layui-colla-content layui-show">
+								    	<a href="/newdbDSM/images/flowchart.png" target="_blank">
+								    		<img src="/newdbDSM/images/flowchart.png" />
+								    	</a>
+								    </div>
+								</div>
+							</div>
+							<div class="layui-collapse">
+								<div class="layui-colla-item">
+								    <h2 class="layui-colla-title"><strong>Document</strong></h2>
+								    
+								    <div class="layui-colla-content">
+										<a href='about.jsp#1.Brief introduction' >1. Brief introduction<br></a>
+										<a href='about.jsp#2.The sources of the data' >2. The sources of the data<br></a>
+										<a href='about.jsp#3.The sum of the data' >3. The sum of the data <br></a>
+										<a href='about.jsp#4.The DSMs classification' >4. The DSMs classification <br></a>
+										<a href='about.jsp#5.Strength of evidence for variant assessment' >5. Strength of evidence for variant assessment<br></a>
+										<a href='about.jsp#6.The annotation tools used in dbDSMv2.0' >6. The annotation tools used in dbDSMv2.0<br></a>
+										<a href='about.jsp#7.The overview of the searching process' >7. The overview of the searching process<br></a>
+										<a href='about.jsp#8.Statistics dbDSMScore' >8. Statistics dbDSMScore<br></a>
+									</div>
+								</div>
+							</div>
+							<!-- 
+							<div class="layui-collapse">
+								<div class="layui-colla-item">
+									<h2 class="layui-colla-title"><strong>Update News</strong></h2>
+								    <hr class="layui-bg-black">
+								    <div class="layui-colla-content layui-show" style="color:black;">
+								    		07/06/2019: The Database of Deleterious Synonymous Mutation Version 2 (dbDSM v2) is updating.<br>
+											08/31/2018: Data from tmVar added and ClinVar,GWAS Catalog updated.<br>		
+									</div>
+									<div class="layui-card-footer" style="text-align: end;">						
+										<button class="layui-btn layui-btn-primary layui-btn-sm" onclick="window.location.href='about.jsp#Update'" style="color:black;">Update</button>
+									</div>
+								</div>
+							
+							</div>
+							 -->
+					    </div>
+					</div>
+
+				</div>
+				
+				</div>
+				
+			</div>
+			<!--主体到这-->
+			
+			<div class="layui-container" id="footer">
+				<hr class="layui-bg-black">
+			<div class="layui-row">
+				
+				<div class="layui-row">
+				    <div class="layui-col-md4" align='left'>
+				      	<div style="display:inline-block;width:200px;"><script type="text/javascript" src="//rf.revolvermaps.com/0/0/7.js?i=0nqmwz0cey3&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script></div>
+				    </div>
+				    <div class="layui-col-md4"  align='center' style="margin-top:20px">
+				     	 Links:
+						<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/PrDSM/" target="_blank">PrDSM</a>
+						<div style="display:inline;">|</div>
+						<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/IDSV/" target="_blank">IDSV</a>
+
+						<div class="copyright">
+							Copyright©
+							<a class="ow" href="http://en.ahu.edu.cn/" target="_blank">AnHui University</a> ©All Rights Reserved.
+						</div>
+				    </div>
+				    <div class="layui-col-md4" align='right' style="margin-top:10px">
+				     	 <div>
+							<script type="text/javascript" src="//rf.revolvermaps.com/0/0/0.js?i=52m8mqpvyan&amp;d=3&amp;p=0&amp;b=0&amp;w=218&amp;g=2&amp;f=arial&amp;fs=12&amp;r=0&amp;c0=362b05&amp;c1=375363&amp;c2=000000&amp;ic0=0&amp;ic1=0" async="async"></script>
+						</div>
+				    </div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</body>
+	<script src="/newdbDSM/layui/layui.js "></script>
+	
+	<script>
+		layui.use('element', function() {
+			var element = layui.element;
+		});
+	</script> 
+	<script>
+		layui.use(['carousel', 'form'], function(){
+		  var carousel = layui.carousel
+		  ,form = layui.form;
+		  
+		  //常规轮播
+		  carousel.render({
+		    elem: '#test1'
+		    ,arrow: 'always'
+		    ,width: '700px'
+		    ,height: '440px'
+		  });
+		  var $ = layui.$, active = {
+			    set: function(othis){
+			      var THIS = 'layui-bg-normal'
+			      ,key = othis.data('key')
+			      ,options = {};
+			      
+			      othis.css('background-color', '#5FB878').siblings().removeAttr('style'); 
+			      options[key] = othis.data('value');
+			      ins3.reload(options);
+			    }
+			  };
+			  
+			  //监听开关
+			  form.on('switch(autoplay)', function(){
+			    ins3.reload({
+			      autoplay: this.checked
+			    });
+			  });
+			  
+			  $('.demoSet').on('keyup', function(){
+			    var value = this.value
+			    ,options = {};
+			    if(!/^\d+$/.test(value)) return;
+			    
+			    options[this.name] = value;
+			    ins3.reload(options);
+			  });
+			  
+			  //其它示例
+			  $('.demoTest .layui-btn').on('click', function(){
+			    var othis = $(this), type = othis.data('type');
+			    active[type] ? active[type].call(this, othis) : '';
+			  });
+			});
+    </script>
+	<script>
+		function searchchange() {
+			if(document.getElementById("searchChangeFlg").value == "1") {
+
+				document.getElementById("td1").style.display = "block";
+				document.getElementById("searchchange").innerHTML = "<";
+				document.getElementById("searchChangeFlg").value = "0";
+			} else {
+
+				document.getElementById("td1").style.display = "none";
+				document.getElementById("searchchange").innerHTML =">";
+				document.getElementById("searchChangeFlg").value = "1";
+			}
+			return false;
+		}
+	</script>
+	<script type="text/javascript">
+		(function(){
+			 var o = document.getElementById("testmore");
+			   Subt(o);     
+		})();    
+		function Subt(obj){
+			 var s = obj.innerHTML;
+			 var p = document.createElement("span");
+			 var n = document.createElement("a");
+			 p.innerHTML = s.substring(0,200);
+			 n.innerHTML = s.length > 200 ? "...see more" : "";
+			 n.href = "###";
+			 n.onclick = function(){
+				if (n.innerHTML == "...see more"){
+					 n.innerHTML = "  close"; 
+					 p.innerHTML = s;
+				}else{
+					 n.innerHTML = "...see more";
+					 p.innerHTML = s.substring(0,200);
+			    }
+		    } 
+			obj.innerHTML = "";
+			obj.appendChild(p);
+			obj.appendChild(n);
+	   }     
+ </script>
+</html>

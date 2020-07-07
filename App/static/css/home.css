@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+body {
+	 background-color:#eee;  
+	 font-family: 'Open Sans', sans-serif;
+	 font-color:black;
+	}
+#banner {
+	height: 250px;
+	background-size: cover;
+}
+#navbar {
+	background-color: #393D49;
+}
+
+#navbar .layui-nav-item {
+	line-height: 40px;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+#bodyer {
+
+/* margin-bottom:60px; */
+zoom: 1;
+    overflow: -webkit-paged-x;
+}
+
+.link,
+.copyright,
+.use {
+	color:grey;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.ow {
+	color: rgb(0, 0, 0);
+	text-decoration: underline;
+}

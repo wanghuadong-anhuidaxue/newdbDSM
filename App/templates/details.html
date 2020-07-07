@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>dbDSM</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no” />
+		<link rel="stylesheet" href="/newdbDSM/layui/layui.js">
+		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css">
+		<script src="/newdbDSM/js/jquery-1.12.4.js"></script>
+		<script src="/newdbDSM/js/jquery.dataTables.min.js"></script>
+		<script src="/newdbDSM/js/dataTables.buttons.min.js"></script>
+		<script src="/newdbDSM/js/jszip.min.js"></script>
+		<script src="/newdbDSM/js/buttons.html5.min.js"></script>
+		<script type="text/javascript" language="javascript" src="/newdbDSM/js/dataTables.bootstrap.js"></script>
+		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" />
+		<link rel="stylesheet" href="/newdbDSM/css/home.css" />
+	</head>
+
+	<body>
+		<div class="layui-container" style="min-width:1140px;">
+			<div class="layui-row" id="header">
+				<!--头-->
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner" style="background: url(/newdbDSM/images/Picture8.png);background-size:cover;">
+				</div>
+				<!--这里是banner-->
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
+					<!--这里是导航栏-->
+					<ul class="layui-nav" lay-filter="" id="navbar">
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/">Home</a>
+						</li>
+						<li class="layui-nav-item layui-this">
+							<a href="/newdbDSM/search">Search</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/download">Download</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/about">About</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/submit">Submit</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/contact">Contact us</a>
+						</li>
+					</ul>
+				</div>
+				<!--导航栏到这-->
+			</div>
+			<!--头到这-->
+		<div class="layui-row" id="bodyer" style="margin:50px;">
+			<!--主体部分-->
+			<div class="layui-row" id="bodyer1" align="center">
+				<!-- <table id="Details" class="layui-table">  -->
+
+				<table id="details" class="layui-table table-striped" lay-filter="demoEvent" lay-even lay-skin="line" style="margin:auto">
+					<colgroup>
+						<col width="150" />
+						<col />
+
+					</colgroup>
+					<thread>
+					</thread>
+					<tbody>
+						<tr class="DBDSMID">
+							<td>dbDSMAccNum</td>
+							<td class="DBDSMID" colspan="11">{{ dbDSMData.DBDSMID }}</td>
+						</tr>
+						<tr class="Disease">
+							<td>Disease</td>
+							<td class="Disease" colspan="11">{{ dbDSMData.Disease }}</td>
+						</tr>
+						<tr class="DOID">
+							<td>DOID</td>
+							<td class="DOID" colspan="11">{{ dbDSMData.DOID }}</td>
+						</tr>
+						<tr class="Gene">
+							<td>Gene</td>
+							<td class="Gene" colspan="11">{{ dbDSMData.Gene }}</td>
+						</tr>
+
+						<tr class="GeneID">
+							<td>GeneID</td>
+							<td class="GeneID" colspan="11"><a style="color:#5FB878; " href="https://www.ncbi.nlm.nih.gov/gene/{{ dbDSMData.GeneID }}" target="view_window">{{ dbDSMData.GeneID }}</a></td>
+						</tr>
+
+						<tr class="MIM">
+							<td>MIM</td>
+							<td class="MIM" colspan="11">{{ dbDSMData.MIM }}</td>
+						</tr>
+						<tr class="Map_Location">
+							<td>Map_Location</td>
+							<td class="Map_Location" colspan="11">{{ dbDSMData.Map_Location }}</td>
+						</tr>
+						<tr class="VariantType">
+							<td>VariantType</td>
+							<td class="VariantType" colspan="11">{{ dbDSMData.VariantType }}</td>
+						</tr>
+						<tr class="Protein">
+							<td>Protein</td>
+							<td class="Protein" colspan="11">{{ dbDSMData.Protein }}</td>
+						</tr>
+						<tr class="cDNA">
+							<td>c.DNA</td>
+							<td class="cDNA" colspan="11">{{ dbDSMData.cDNA }}</td>
+						</tr>
+
+						<tr class="SNPID">
+							<td>SNPID</td>
+							<td class="SNPID" colspan="11">{{ dbDSMData.SNPID }}</td>
+						</tr>
+						<tr class="CodonChange">
+							<td>CodonChange</td>
+							<td class="CodonChange" colspan="11">{{ dbDSMData.CodonChange }}</td>
+						</tr>
+
+						<tr class="RefseqTranscript">
+							<td>RefseqTranscript</td>
+							<td class="RefseqTranscript" colspan="11">{{ dbDSMData.RefseqTranscript }}</td>
+						</tr>
+
+						<tr class="P_Value">
+							<td>P_value</td>
+							<td class="P_Value" colspan="11">{{ dbDSMData.P_Value }}</td>
+						</tr>
+						<tr class="Strand">
+							<td>Strand</td>
+							<td class="Strand" colspan="11">{{ dbDSMData.Strand }}</td>
+						</tr>
+
+						<tr class="GRCh38_Position">
+							<td>GRCh38_Position</td>
+							<td class="GRCh38_Position" colspan="11">{{ dbDSMData.GRCh38_Position }}</td>
+						</tr>
+
+						<tr class="GRCh37_Position">
+							<td>GRCh37_Position</td>
+							<td class="GRCh37_Position" colspan="11">{{ dbDSMData.GRCh37_Position }}</td>
+						</tr>
+
+						<tr class="Ref">
+							<td>Ref</td>
+							<td class="Ref" colspan="11">{{ dbDSMData.Ref }}</td>
+						</tr>
+
+						<tr class="Alt">
+							<td>Alt</td>
+							<td class="Alt" colspan="11">{{ dbDSMData.Alt }}</td>
+						</tr>
+						<tr class="PMID">
+							<td>
+ 								<strong class="layui-icon" id="searchchange2" onclick="return searchchange2()" style="background-color:#5fb878; color:white; text-align:center">+</strong>		
+								<input type="hidden" name="searchChangeFlg2" id="searchChangeFlg2" value="1" />
+								PMID
+							</td>
+							<td class="PMID" colspan="11">{{ dbDSMData.PMID }}</td>
+						</tr>
+						<tr>
+						    <td></td>
+							<td id="td2" style="display:none;">
+								<table class="layui-table" lay-even lay-skin="line" style="margin:auto">
+									<tr>
+										<th class="Year">Year</th>
+										<th class="Ethnicity">Ethnicity</th>
+										<th class="Classification">Classification</th>
+										<th class="StrengthOfEvidence">StrengthOfEvidence</th>
+										<th class="KeySentence">KeySentence</th>
+									</tr>
+									<tr>
+										<th class="Year">{{ dbDSMData.Year }}</th>
+										<th class="Ethnicity">{{ dbDSMData.Ethnicity }}</th>
+										<th class="Classification">{{ dbDSMData.Classification }}</th>
+										<th class="StrengthOfEvidence">{{ dbDSMData.StrengthOfEvidence }}</th>
+										<th class="KeySentence">{{ dbDSMData.KeySentence }}</th>
+									</tr>
+								</table>
+							</td>
+						</tr>	
+
+						<tr class="PhyloP100way">
+							<td>phyloP100way</td>
+							<td class="PhyloP100way" colspan="11">{{ dbDSMData.PhyloP100way }}</td>
+						</tr>
+
+						<tr class="PhastCons100way">
+							<td>phastCons100way</td>
+							<td class="PhastCons100way" colspan="11">{{ dbDSMData.PhastCons100way }}</td>
+						</tr>
+
+						<tr class="GerpS">
+							<td>GerpS</td>
+							<td class="GerpS" colspan="11">{{ dbDSMData.GerpS }}</td>
+						</tr>
+						
+						<tr class="DBDSMScore">
+							<td>
+								<strong class="layui-icon" id="searchchange" onclick="return searchchange()" style="background-color:#5fb878; color:white; text-align:center">+</strong>
+								<input type="hidden" name="searchChangeFlg" id="searchChangeFlg" value="1" /> dbDSMScore
+							</td>
+							<td class="DBDSMScore" colspan="11">{{ dbDSMData.DBDSMScore }}</td>
+						</tr>
+						<tr>
+						    <td></td>
+							<td id="td1" style="display:none;">
+								<table class="layui-table" lay-even lay-skin="line" style="margin:auto">
+									<tr>
+										<th class="Silva">Silva</th>
+										<th class="DDIG">DDIG</th>
+										<th class="FATHMM_MKL">FATHMM_MKL</th>
+										<th class="CADD">CADD</th>
+										<th class="Trap">Trap</th>
+									</tr>
+									<tr>
+										<th class="Silva">{{ dbDSMData.Silva }}</th>
+										<th class="DDIG">{{ dbDSMData.DDIG }}</th>
+										<th class="FATHMM_MKL">{{ dbDSMData.FATHMM_MKL }}</th>
+										<th class="CADD">{{ dbDSMData.CADD }}</th>
+										<th class="Trap">{{ dbDSMData.Trap }}</th>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr class="Source">
+							<td>Source</td>
+							<td class="Source" colspan="11">{{ dbDSMData.Source }}</td>
+						</tr>
+						
+					</tbody>
+
+					<tfoot>
+					</tfoot>
+
+				</table>
+
+			</div>
+		</div>
+		<div class="layui-row" id="footer" align='center'>
+				<hr class="layui-bg-black">
+				<div class="link">
+					Links:
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/PrDSM/" target="_blank">PrDSM</a>
+					<div style="display:inline;">|</div>
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/IDSV/" target="_blank">IDSV</a>
+					<!-- <div style="display:inline;">|</div>
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/Melanoma/index.jsp" target="_blank">Melanoma</a> -->
+				</div>
+				<div class="copyright">
+					Copyright©
+					<a class="ow" href="http://en.ahu.edu.cn/" target="_blank">AnHui University</a> ©All Rights Reserved.
+				</div>
+				<div class="use">
+					<!-- Website content is for educational and research purposes only and is not intended to be used for medical advice, diagnosis or treatment. -->
+				</div>
+			</div>
+	</body>
+
+	<script src="/newdbDSM/layui/layui.all.js"></script>
+
+	<script>
+		function searchchange() {
+			if(document.getElementById("searchChangeFlg").value == "1") {
+
+				document.getElementById("td1").style.display = "block";
+				document.getElementById("searchchange").innerHTML = "－";
+				document.getElementById("searchChangeFlg").value = "0";
+			} else {
+
+				document.getElementById("td1").style.display = "none";
+				document.getElementById("searchchange").innerHTML ="+";
+				document.getElementById("searchChangeFlg").value = "1";
+			}
+			return false;
+		}
+
+		function searchchange2() {
+			if(document.getElementById("searchChangeFlg2").value == "1") {
+
+				document.getElementById("td2").style.display = "block";
+				document.getElementById("searchchange2").innerHTML = "－";
+				document.getElementById("searchChangeFlg2").value = "0";
+			} else {
+
+				document.getElementById("td2").style.display = "none";
+				document.getElementById("searchchange2").innerHTML ="+";
+				document.getElementById("searchChangeFlg2").value = "1";
+			}
+
+			return false;
+		}
+		layui.use('element', function() {
+			var element = layui.element;
+		});
+		layui.use('table', function() {
+			var table = layui.table;
+
+		});
+			
+ </script>
+
+</html>

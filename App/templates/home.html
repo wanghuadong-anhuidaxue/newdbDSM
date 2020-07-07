@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>dbDSM</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" />
+		<link rel="stylesheet" href="/newdbDSM/css/home.css" />
+	</head>
+    <body>
+        <form action="Results" id="submitForm" name="submitForm" method="post" target="_blank">
+
+
+
+
+                {% for message1 in form.email.errors %}
+                <small class="error">{{ message1 }}</small>
+                {% endfor %}
+            {{ form.mutation }}
+            {{ form.more }}
+            {{ form.submit }}
+            {{ form.reset }}
+
+        </form>
+
+    </body>
+
+
+

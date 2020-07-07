@@ -1,0 +1,177 @@
+<!DOCTYPE html >
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no” />
+		<title>dbDSM</title>
+		<link rel="stylesheet" href="/newdbDSM/css/global.css" />
+		<link rel="stylesheet" href="/newdbDSM/css/all.css" />
+		<link rel="stylesheet" href="/newdbDSM/layui/layui.js">
+		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="/newdbDSM/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" />
+		<link rel="stylesheet" href="/newdbDSM/css/home.css" />
+				
+		<script src="/newdbDSM/js/jquery-1.12.4.js"></script>
+		<script src="/newdbDSM/js/jquery.dataTables.min.js"></script>
+		<script src="/newdbDSM/js/dataTables.buttons.min.js"></script>
+		<script src="/newdbDSM/js/jszip.min.js"></script>
+		<script src="/newdbDSM/js/buttons.html5.min.js"></script>
+		<script type="text/javascript" language="javascript" src="/newdbDSM/js/dataTables.bootstrap.js"></script>
+		
+		<style>
+			.bbtn {
+				float: left;
+				margin-left: 5px;
+			}
+			
+			.pagination {
+				float: right;
+				margin: 0 5px;
+			}
+			
+			#example {
+				margin-bottom: 2px;
+			}
+			
+			.dataTables_info {
+				float: right;
+				height: 35px;
+				text-align: center;
+				margin: 0 5px;
+			}
+			
+			.dataTables_length {
+				float: left;
+				height: 35px;
+				margin: 0 5px;
+			}
+		</style>
+
+		
+	</head>
+
+	<body>
+		<div class="layui-container" style="min-width:1140px;">
+			<div class="layui-row" id="header">
+				<!--头-->
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner" style="background: url(/newdbDSM/images/Picture8.png);background-size:cover;">
+				</div>
+				<!--这里是banner-->
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
+					<!--这里是导航栏-->
+					<ul class="layui-nav" lay-filter="" id="navbar">
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/">Home</a>
+						</li>
+						<li class="layui-nav-item layui-this">
+							<a href="/newdbDSM/search">Search</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/download">Download</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/about">About</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/submit">Submit</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/contact">Contact us</a>
+						</li>
+					</ul>
+				</div>
+				<!--导航栏到这-->
+			</div>
+			<!--头到这-->
+			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+				<legend><i><b>Search Result:</b></i>&nbsp;
+					<strong>{{ searchBy }} like:</strong> {{ userinput }}
+				</legend>
+			</fieldset>
+
+			<table id="example" class="table table-striped table-bordered" align="center" lay-filter="demoEvent" style="margin:0 0 0 0;">
+				<thead>
+					<tr role="row">
+						<th>Disease</th>
+						<th>Gene</th>
+						<th>SNPID</th>
+						<th>GRCh38_Position</th>
+						<th>c.DNA</th>
+						<th>Protein</th>
+						<th>dbDSMscore</th>
+						<th>dbDSM_AccNum</th>
+					</tr>
+				</thead>
+				{% for dbDSMScore in pagination.items %}
+					<tr>
+						<td><a style="color:#5FB878; " href="researchDisease?Disease={{ dbDSMScore.Disease }}">{{ dbDSMScore.Disease }}</a></td>
+						<td><a style="color:#5FB878; " href="researchGene?reGene={{ dbDSMScore.Gene }}">{{ dbDSMScore.Gene }}</a></td>
+						<td>{{ dbDSMScore.SNPID }}</td>
+						<td>{{ dbDSMScore.GRCh38_Position }}</td>
+						<td>{{ dbDSMScore.cDNA }}</td>
+						<td>{{ dbDSMScore.Protein }}</td>
+						<td>{{ dbDSMScore.DBDSMScore }}</td>
+						<td><a style="color:#5FB878; " href="detailScore?dbid={{ dbDSMScore.dbid }}">{{ dbDSMScore.DBDSMID }}</a></td>
+					</tr>
+            	{% endfor %}
+			</table>
+			<div class="">
+				<ul class="pagination">
+					{% if pagination.has_prev %}
+						<li class=""><a class="page-link" href="searchTable?page={{ pagination.prev_num }}&per_page=10&searchBy={{ searchBy }}&userinput={{ userinput }}">&laquo;</a></li>
+						{% else %}
+						<li class=""><a class="page-link" href="#">&laquo;</a></li>
+					{% endif %}
+
+					{% for page in pagination.iter_pages() %}
+						{% if page %}
+							{% if page != pagination.page %}
+								<li class="">
+									<a href="searchTable?page={{ page }}&per_page=10&searchBy={{ searchBy }}&userinput={{ userinput }}">{{ page }}</a>
+								</li>
+							{% else %}
+								<li class="active">
+									<a href="#">{{ page }}</a>
+								</li>
+							{% endif %}
+						{% else %}
+							<li class=""><a href="#">…</a></li>
+						{% endif %}
+					{% endfor %}
+
+					{% if pagination.has_next %}
+						<li class="active"><a class="page-link" href="searchTable?page={{ pagination.next_num }}&per_page=10&searchBy={{ searchBy }}&userinput={{ userinput }}">&raquo;</a></li>
+						{% else %}
+						<li class="disabled"><a class="page-link" href="#">&raquo;</a></li>
+					{% endif %}
+				</ul>
+			</div>
+			<div class="layui-row" id="footer" align='center'>
+				<hr class="layui-bg-black">
+				<div class="link">
+					Links:
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/PrDSM/" target="_blank">PrDSM</a>
+					<div style="display:inline;">|</div>
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/IDSV/" target="_blank">IDSV</a>
+					<!-- <div style="display:inline;">|</div>
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/Melanoma/index.jsp" target="_blank">Melanoma</a> -->
+				</div>
+				<div class="copyright">
+					Copyright©
+					<a class="ow" href="http://en.ahu.edu.cn/" target="_blank">AnHui University</a> ©All Rights Reserved.
+				</div>
+				<div class="use">
+					<!-- Website content is for educational and research purposes only and is not intended to be used for medical advice, diagnosis or treatment. -->
+				</div>
+			</div>
+	</body>
+
+	<script src="/newdbDSM/layui/layui.all.js"></script>
+	<script>
+
+	</script>
+
+
+</html>

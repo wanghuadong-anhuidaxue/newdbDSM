@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>dbDSM</title>
+		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css">
+		<link rel="stylesheet" href="/newdbDSM/css/home.css" />
+	</head>
+
+	<body>
+		<div class="layui-container" style="min-width:1140px;">
+			<div class="layui-row" id="header">
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner"style="background: url(/newdbDSM/images/Picture8.png);background-size:cover;"></div>
+
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
+					<!--这里是导航栏-->
+					<ul class="layui-nav" id="navbar">
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/">Home</a>
+						</li>
+						<li class="layui-nav-item ">
+							<a href="/newdbDSM/search">Search</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/download">Download</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/about">About</a>
+						</li>
+						<li class="layui-nav-item layui-this">
+							<a href="/newdbDSM/submit">Submit</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/contact">Contact us</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="layui-row" id="bodyer">
+				<div class="layui-col-xs10 layui-col-sm10 layui-col-md10 layui-col-lg10 layui-col-sm-offset1 layui-col-md-offset1 layui-col-lg-offset1" id="overview" style="margin-bottom:20px;margin-top:20px;">
+						<fieldset class="layui-elem-field layui-field-titleT">
+							<legend><i>Welcome to submit new entries to the database</i></legend>
+						</fieldset>
+						<div class="layui-col-xs10 layui-col-sm10 layui-col-md10 layui-col-lg10 layui-col-sm-offset1 layui-col-md-offset1 layui-col-lg-offset1" id="overview">
+							<form class="layui-form layui-form-pane" id='subForm' action="/newdbDSM/submit" method="post">
+
+								<div class="layui-form-item">
+									<label class="layui-form-label">Title</label>
+									<div class="layui-input-block">
+										{{ form.title }}
+									</div>
+								</div>
+
+								<div class="layui-form-item">
+									<label class="layui-form-label">Joumal</label>
+									<div class="layui-input-block">
+										{{ form.joumal }}
+									</div>
+								</div>
+
+								<div class="layui-form-item">
+									<label class="layui-form-label">Gene</label>
+									<div class="layui-input-block">
+										{{ form.gene }}
+									</div>
+								</div>
+
+								<div class="layui-form-item">
+									<label class="layui-form-label">E-mail(*)</label>
+									<div class="layui-input-block">
+										{{ form.email }}
+									</div>
+								</div>
+								
+								<div class="layui-form-item">
+									<label class="layui-form-label">Mutation</label>
+									<div class="layui-input-block">
+										{{ form.mutation }}
+									</div>
+								</div>
+
+								<div class="layui-form-item layui-form-text">
+									<label class="layui-form-label">More introduction (limited to 500 words)</label>
+									<div class="layui-input-block">
+										{{ form.more }}
+									</div>
+								</div>
+								<p style="color: #ef4848;">* indicates required field</p>
+
+								<div class="layui-form-item" style="margin:30px 0 0 100px;">
+									<div class="layui-input-block">
+										{{ form.csrf_token }}
+										{{ form.submit }}
+										{{ form.reset }}
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			
+		</div>
+		<div class="layui-row" id="footer">
+				<div class="link">
+					Links:
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/dbCPG/index.jsp" target="_blank">dbCPG</a>
+					<div style="display:inline;">|</div>
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/dbDSM/index.jsp" target="_blank">dbDSM</a>
+					<!-- <div style="display:inline;">|</div>
+				<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/Melanoma/index.jsp" target="_blank">Melanoma</a> -->
+				</div>
+				<div class="copyright">
+					Copyright©
+					<a class="ow" href="http://gjc.ahu.edu.cn/en/" target="_blank">AnHui University</a> ©All Rights Reserved.
+				</div>
+				<div class="use">
+					<!-- Website content is for educational and research purposes only and is not intended to be used for medical advice, diagnosis or treatment. -->
+				</div>
+			</div>
+		<script src="/newdbDSM/layui/layui.all.js"></script>
+		<script>
+			layui.use('element', function() {
+				var element = layui.element;
+			});
+			
+			
+			form = layui.form;
+			form.verify({
+				  limitLength: [
+				    /^[\w\W]{0,500}$/
+				    ,'More than 500 words'
+				  ] 
+				});
+			status="{{ status }}";
+			if(status==1)
+				layer.msg('Thank you for your submission!');
+			    // document.getElementById("reset")
+			else if(status==2)
+				layer.msg('The submission failed!');
+                // document.getElementById("reset")
+			
+			$('#subForm')[0].reset();
+			
+			
+		
+		</script>
+	</body>
+
+</html>

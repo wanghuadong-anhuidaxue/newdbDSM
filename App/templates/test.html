@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" />
+</head>
+<body>
+
+<div>
+    <button id="select" name="select">ok</button>
+    <p id="content name="content"></p>
+</div>
+
+
+<script src="/newdbDSM/layui/layui.all.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script type="text/javascript" src="/newdbDSM/js/jquery-1.9.1.min.js"></script>
+<script>
+    $.ajax({
+            type: "get",
+            url: "/advancedSearch",
+            data: $('#select').serialize(),
+            success: function (msg) {
+                json_ = jQuery.parseJSON(msg);
+                alert('hello');
+                $("#content").html(data);
+            },
+            error: function () {
+                $("#content").html("获取数据失败！");
+            }
+        }
+    )
+</script>
+
+</body>
+</html>

@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>dbDSM</title>
+		<meta name="renderer" content="webkit">
+		<link rel="stylesheet" href="/newdbDSM/layui/layui.js" media="all">
+		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" media="all">
+		<style>
+			div{
+			font-color:black;
+			color:black;
+			}
+			td{
+			font-color:black;
+			color:black;
+			}
+			blockquote{
+			font-color:black;
+			color:black;
+			}
+			th{
+			font-color:black;
+			color:black;
+			}
+			strong{
+			font-color:black;
+			color:black;
+			}
+			cite{
+			font-color:black;
+			color:black;
+			}
+		</style>
+		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" />
+		<link rel="stylesheet" href="/newdbDSM/css/global.css" />
+		<link rel="stylesheet" href="/newdbDSM/css/home.css" />
+	</head>
+
+	<body>
+		<div class="layui-container" style="min-width:1140px;">
+			<div class="layui-row" id="header">
+				<!--头-->
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner"style="background: url(/newdbDSM/images/Picture8.png);background-size:cover;">
+				</div> 
+				<!--这里是banner-->
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
+					<!--这里是导航栏-->
+					<ul class="layui-nav" id="navbar">
+							<li class="layui-nav-item">
+								<a href="/newdbDSM/">Home</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="/newdbDSM/search">Search</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="/newdbDSM/download">Download</a>
+							</li>
+							<li class="layui-nav-item layui-this">
+								<a href="/newdbDSM/about">About</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="/newdbDSM/submit">Submit</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="/newdbDSM/contact">Contact us</a>
+							</li>
+					</ul>
+				</div>
+				<!--导航栏到这-->
+			</div>
+			<!--头到这-->
+			<div class="layui-row" id="bodyer">
+				<div class="layui-main site-inline" id="site-tree">
+					<div class="site-tree" style="background-color:#eee;">
+						<fieldset class="layui-elem-field layui-field-title">
+							<legend><i><strong>About</strong></i></legend>
+						</fieldset>
+						<ul class="layui-tree">
+						
+							<li>
+								<h2 style="border-left-color: #5FB878;" onclick="javascript:location.href='#Document';">Document</h2>
+							</li>
+							<!-- 
+							<li class="site-tree-noicon">
+								<a href="#1.Brief introduction">
+									<cite>1.Brief introduction</cite>
+									<em></em>
+								</a>
+							</li>
+							<li class="site-tree-noicon">
+								<a href="#2.The sources of the data">
+									<cite>2.The sources of the data</cite>
+									<em></em>
+								</a>
+							</li>
+							<li class="site-tree-noicon">
+								<a href="#3.The sum of the data">
+									<cite>3.The sum of the data</cite>
+									<em></em>
+								</a>
+							</li>
+							<li class="site-tree-noicon">
+								<a href="#4.The DSMs classification">
+									<cite>4.The DSMs classification</cite>
+									<em></em>
+								</a>
+							</li>
+							<li class="site-tree-noicon">
+								<a href="#5.Strength of evidence for variant assessment">
+									<cite>5.Strength of evidence for variant assessment</cite>
+									<em></em>
+								</a>
+							</li>
+							<li class="site-tree-noicon">
+								<a href="#6. The annotation tools used in dbDSMv2.0">
+									<cite>6. The annotation tools used in dbDSMv2.0</cite>
+									<em></em>
+								</a>
+							</li>
+							<li class="site-tree-noicon">
+								<a href="#7.The overview of the searching process">
+									<cite>7.The overview of the searching process</cite>
+									<em></em>
+								</a>
+							</li>
+							<li class="site-tree-noicon">
+								<a href="#8.Statistics dbDSMScore">
+									<cite>8.Statistics dbDSMScore</cite>
+									<em></em>
+								</a>
+							</li>
+							 -->
+							<li>
+								<h2 style="border-left-color: #5FB878;" onclick="javascript:location.href='#Data Release';">Data Release</h2>
+							</li>
+							<li>
+								<h2 style="border-left-color: #5FB878;" onclick="javascript:location.href='#Update';">Update</h2>
+							</li>
+
+							<li>
+								<h2 style="border-left-color: #5FB878;" onclick="javascript:location.href='#Statistics';">Statistics</h2>
+							</li>
+						</ul>
+					</div>					
+					<div class="site-content">
+						<blockquote class="layui-elem-quote"  id="Document" style="font-size: 20px;border-left-color: #5FB878;">
+							Document
+						</blockquote>
+						<strong id="1.Brief introduction">
+							<br>1.Brief introduction<br><br>
+						</strong>
+						<div style="word-break:keep-all">
+							Synonymous substitution (which is often called silent mutation before) is a kind of point mutation occurs in genes' coding region. 
+							Because the codons' degeneracy, it does not alter the Amino acid residue. As a result, for a long time, it's considered no bio function, treated as "silent".
+							<br><br>But recent research shows "Silent Mutation Make Some Noise", and makes people focus on the area. 
+							Efforts have been made, one possible mechanism has been proposed, and synonymous mutations specifically change the splicing motifs and cause abnormal splicing.
+							<br><br>However, there is no database focusing on the dangerous of synonymous mutations yet. 
+							Therefore, we have collected diseases related mutation to construct a Database of Deleterious Synonymous mutation (dbDSM) that would help in understanding the 
+							relationship between diseases and the synonymous mutations. Here we present the updated dbDSMv2.0 database, which newly added the tmVar data and updated ClinVar, GWAS Catalog data. 
+							In the new version of the database, we added new annotation features, including transcripts, conservatism, 
+							etc and we used the voting method to integrate the scores of the five scoring tools (SilVA, DDIG-SN, FATHMM-MKL, CADD, and TraP) which is named dbDSMScore to further assess 
+							the deleterious of the variants. Notably, variants from the original literature are marked in red.
+						</div>
+						<strong id="2.The sources of the data">
+							<br>2.The sources of the data<br><br>
+						</strong>
+						<div>
+						  <table class="layui-table" style="background-color:#F2F2F2;width:500px;">
+						    <colgroup>
+						      <col width="200">
+						      <col width="150">
+						      <col width="150">
+						    </colgroup>
+						    <thead>
+						      <tr style="background-color:#b5b4b2;">
+						      	<th>Data source</th>
+						        <th>dbDSMv1.0</th>
+						        <th>dbDSMv2.0</th>
+						      </tr> 
+						    </thead>
+						    <tbody>
+						      <tr>
+						        <td>1.Manually curated</td>
+						        <td>Yes</td>
+						        <td>Yes</td>
+						      </tr>
+						      <tr>
+						        <td>2.GRASP</td>
+						        <td>Yes</td>
+						        <td>Yes</td>
+						      </tr>
+						      <tr>
+						        <td>3.ClinVar</td>
+						        <td>Yes</td>
+						        <td>Yes</td>
+						      </tr>
+						      <tr>
+						        <td>4.PolymiRTS</td>
+						        <td>Yes</td>
+						        <td>Yes</td>
+						      </tr>
+						      <tr>
+						        <td>5.GWAS catalog</td>
+						        <td>Yes</td>
+						        <td>Yes</td>
+						      </tr>
+						      <tr>
+						        <td>6.GWASdb</td>
+						        <td>Yes</td>
+						        <td>Yes</td>
+						      </tr>
+						      <tr>
+						        <td>7.tmVar</td>
+						        <td>No</td>
+						        <td>Yes</td>
+						      </tr>
+						    </tbody>
+						  </table>
+						</div>
+						<strong id="3.The sum of the data">
+							<br>3.The sum of the data<br><br>
+						</strong>
+						<div>
+						  <table class="layui-table" style="background-color:#F2F2F2;width:750px;">
+						    <colgroup>
+						      <col width="150">
+						      <col width="300">
+						      <col width="300">
+						    </colgroup>
+						    <thead>
+						      <tr style="background-color:#b5b4b2;">
+						      	<th>SNPs</th>
+						        <th>Number of records in dbDSMv1.0</th>
+						        <th>Number of records in dbDSMv2.0</th>
+						      </tr> 
+						    </thead>
+						    <tbody>
+						      <tr>
+						        <td>With ref ID</td>
+						        <td>1219</td>
+						        <td>2116</td>
+						      </tr>
+						      <tr>
+						        <td>Without ref ID</td>
+						        <td>116</td>
+						        <td>631</td>
+						      </tr>
+						      <tr>
+						        <td>Total</td>
+						        <td>1335</td>
+						        <td>2747</td>
+						      </tr>
+						    </tbody>
+						  </table>
+						</div>
+						<strong id="4.The DSMs classification">
+							<br>4.The DSMs classification<br><br>
+						</strong>
+						<img src="/newdbDSM/images/classification2.png" height="500px" width="auto">
+						<div>
+							To the best of our knowledge, there is no consensus classification of molecular mechanisms by which synonymous mutations contribute to disease phenotype. 
+							Therefore, after reviewing the literature (Bali and Bebok, 2015; Gotea et al, 2015; Hunt et al, 2014; Sauna and Kimchi-Sarfaty, 2011), 
+							we used a classification system in the database as follows:<br>
+						</div>
+						<div>
+						  <table class="layui-table" style="background-color:#F2F2F2;width:750px;">
+						    <colgroup>
+						      <col width="150">
+						      <col width="400">
+						    </colgroup>
+						    <thead>
+						      <tr style="background-color:#b5b4b2;">
+						      	<th><strong>Classification</strong></th>
+						        <th><strong>Description</strong></th>
+						      </tr> 
+						    </thead>
+						    <tbody>
+						      <tr>
+						        <td>Splicing regulation</td>
+						        <td>Synonymous mutations may disrupt critical elements necessary for splicing, which could result in multiple outcomes, such as exon truncation, exon skipping, and intron inclusion.</td>
+						      </tr>
+						      <tr>
+						        <td>mRNA structure</td>
+						        <td>Synonymous mutations can alter mRNA structure, which in turn can change transcript stability and translation dynamics.</td>
+						      </tr>
+						      <tr>
+						        <td>microRNA binding</td>
+						        <td>Synonymous mutations can change the nucleotide sequence recognized by microRNAs, which can alter gene expression levels. </td>
+						      </tr>
+						      <tr>
+						        <td>Transcription factor regulation</td>
+						        <td>Synonymous mutations can add or subtract exonic transcription factor binding sites, leading to altered gene expression levels. </td>
+						      </tr>
+						      <tr>
+						        <td>Protein synthesis</td>
+						        <td>Protein translation and folding can also be influenced by synonymous mutations through codon usage (rare versus frequent codons), tRNA availability, mRNA shape, and ribosome structure.</td>
+						      </tr>
+						      <tr>
+						        <td>n/a</td>
+						        <td>If the mechanism is not available, the classification information is indicated as n/a.</td>
+						      </tr>
+						    </tbody>
+						  </table>
+						</div>
+		
+						<div>
+							<br>References：<br><br>
+							Bali, V., & Bebok, Z. (2015). Decoding mechanisms by which silent codon changes influence protein biogenesis and function. 
+							The International Journal of Biochemistry & Cell Biology, 64, 58-74.<br><br>
+							Gotea, V., Gartner, J. J., Qutob, N., Elnitski, L., & Samuels, Y. (2015). The functional relevance of somatic synonymous mutations in melanoma and other cancers. 
+							Pigment Cell & Melanoma Research, 28(6), 673-684.<br><br>
+							Hunt, R. C., Simhadri, V. L., Iandoli, M., Sauna, Z. E., & Kimchi-Sarfaty, C. (2014). Exposing synonymous mutations. Trends in Genetics, 30(7), 308-321.<br><br>
+							Sauna, Z. E., & Kimchi-Sarfaty, C. (2011). Understanding the contribution of synonymous mutations to human disease. Nature Reviews Genetics, 12(10), 683-691.<br>
+						</div>
+						<strong id="5.Strength of evidence for variant assessment">
+							<br>5.Strength of evidence for variant assessment<br><br>
+						</strong>
+						<div>
+						  <table class="layui-table" style="background-color:#F2F2F2;width:750px;">
+						  	<colgroup>
+						      <col width="350">
+						      <col width="150">
+						    </colgroup>
+					 	   	<thead>
+						      	<tr style="background-color:#b5b4b2;">
+					  	    		<th><strong>Evidence leading to a pathogenic assertion</strong></th>
+					  	        	<th><strong>Strength of evidence</strong></th>
+					  	    	</tr> 
+					 	   	</thead>
+					   	 	<tbody>
+					     		<tr>
+					        		<td>Significant segregation in affected family members (LOD >2)</td>
+					        		<td>3</td>
+					      		</tr>
+						     	<tr>
+						        	<td>Confirmed de novo inheritance in relevant disease-associated gene</td>
+						        	<td>3</td>
+						      	</tr>
+						      	<tr>
+						        	<td>In vivo data from mammalian model organisms suggest an impact on function</td>
+						        	<td>2 </td>
+						      	</tr>
+						      	<tr>
+							        <td>Case-control studies significantly associate the variant to disease</td>
+							        <td>2 </td>
+							    </tr>
+							    <tr>
+							        <td>Nucleotide and amino acid strongly conserved in distantly related species</td>
+							        <td>2</td>
+							    </tr>
+							    <tr>
+							        <td>In vitro data from recombinant DNA constructs or proteins suggest an impact on function</td>
+							        <td>1</td>
+							    </tr>
+							    <tr>
+						        	<td>Variant is present in trans with an established pathogenic variant in recessive disease</td>
+						        	<td>1 </td>
+						      	</tr>
+						      	<tr>
+							        <td>Variant is rare or absent in large population studies</td>
+							        <td>1</td>
+							    </tr>
+							    <tr>
+							        <td>Computational tools predict an impact on function and/or splicing</td>
+							        <td>1</td>
+							    </tr>
+						    </tbody>
+						  </table>
+						</div>
+						<div>
+							<br>References：<br><br>
+							Duzkale, H., Shen, J., McLaughlin, H., Alfares, A., Kelly, M. A., Pugh, T. J., ... & Lebo, M. S. (2013). A systematic approach to assessing the clinical significance of genetic variants. Clinical genetics, 84(5), 453-463.<br>
+						</div>
+						<strong id="6.The annotation tools used in dbDSMv2.0">
+							<br>6. The annotation tools used in dbDSMv2.0<br><br>
+						</strong>
+						<div>
+							  <table class="layui-table" style="background-color:#F2F2F2;width:900px;">
+							  	<colgroup>
+							      <col width="150">
+							      <col width="200">
+							      <col width="250">
+							      <col width="150">
+							      <col width="150">
+							    </colgroup>
+						 	   	<thead>
+							      	<tr style="background-color:#b5b4b2;">
+						  	    		<th><strong>Tool</strong></th>
+						  	        	<th><strong>Genomic build</strong></th>
+						  	        	<th><strong>Source</strong></th>
+						  	        	<th><strong>Threshold</strong></th>
+						  	        	<th><strong>Ref</strong></th>
+						  	    	</tr> 
+						 	   	</thead>
+						   	 	<tbody>
+						     		<tr>
+						        		<td>SilVA</td>
+						        		<td>GRCh37/hg19</td>
+						        		<td><a href="http://compbio.cs.toronto.edu/silva" target='_blank' style="color:#5FB878;">http://compbio.cs.toronto.edu/silva</a></td>
+						        		<td>>0.278</td>
+						        		<td>[1]</td>
+						        		
+						      		</tr>
+							     	<tr>
+							        	<td>DDIG-SN</td>
+						        		<td>GRCh37/hg19</td>
+						        		<td><a href="http://sparks-lab.org/ddig" target='_blank' style="color:#5FB878;">http://sparks-lab.org/ddig</a></td>
+						        		<td>>0.5</td>
+						        		<td>[2]</td>
+							      	</tr>
+							      	<tr>
+							        	<td>FATHMM-MKL</td>
+						        		<td>GRCh37/hg19</td>
+						        		<td><a href="http://fathmm.biocompute.org.uk" target='_blank' style="color:#5FB878;">http://fathmm.biocompute.org.uk</a></td>
+						        		<td>>0.5</td>
+						        		<td>[3]</td>
+							      	</tr>
+							      	<tr>
+								        <td>TraP</td>
+						        		<td>GRCh37/hg19</td>
+						        		<td><a href="http://trap-score.org/Search?version=v2" target='_blank' style="color:#5FB878;">http://trap-score.org/Search?version=v2</a></td>
+						        		<td>≧0.459</td>
+						        		<td>[4]</td>
+								    </tr>
+								    <tr>
+								        <td>CADD</td>
+						        		<td>GRCh37/hg19</td>
+						        		<td><a href="https://myvariant.info" target='_blank' style="color:#5FB878;">https://myvariant.info</a></td>
+						        		<td>10-20</td>
+						        		<td>[5]</td>
+								    </tr>
+								    <tr>
+								        <td>GERP++</td>
+						        		<td>GRCh37/hg19</td>
+						        		<td><a href="https://myvariant.info" target='_blank' style="color:#5FB878;">https://myvariant.info</a></td>
+						        		<td>>0</td>
+						        		<td>[5]</td>
+								    </tr>
+								    <tr>
+							        	<td>Phylop100way</td>
+						        		<td>GRCh38/37</td>
+						        		<td><a href="http://genome.ucsc.edu/cgi-bin/hgTables" target='_blank' style="color:#5FB878;">http://genome.ucsc.edu/cgi-bin/hgTables</a></td>
+						        		<td>>0</td>
+						        		<td>[6]</td>
+							      	</tr>
+							      	<tr>
+								        <td>PhastCons100way</td>
+						        		<td>GRCh38/37</td>
+						        		<td><a href="http://genome.ucsc.edu/cgi-bin/hgTables" target='_blank' style="color:#5FB878;">http://genome.ucsc.edu/cgi-bin/hgTables</a></td>
+						        		<td>>0.5</td>
+						        		<td>[6]</td>
+								    </tr>
+								    <tr>
+								        <td>TransVar</td>
+						        		<td>GRCh38/37</td>
+						        		<td><a href="http://bioinformatics.mdanderson.org/transvarweb/" target='_blank' style="color:#5FB878;">http://bioinformatics.mdanderson.org/transvarweb/</a></td>
+						        		<td>-</td>
+						        		<td>[7]</td>
+								    </tr>
+								    <tr>
+								        <td>VEP</td>
+						        		<td>GRCh38/37</td>
+						        		<td><a href="http://www.ensembl.org/Tools/VEP" target='_blank' style="color:#5FB878;">http://www.ensembl.org/Tools/VEP</a></td>
+						        		<td>-</td>
+						        		<td>[8]</td>
+								    </tr>
+							    </tbody>
+							  </table>
+						</div>
+						<div>
+							<br>References：<br><br>
+							[1] Buske, O. J., Manickaraj, A., Mital, S., Ray, P. N., & Brudno, M. (2013). Identification of deleterious synonymous variants in human genomes. Bioinformatics, 29(15), 1843-1850.<br><br>
+							[2] Livingstone, M., Folkman, L., Yang, Y., Zhang, P., Mort, M., Cooper, D. N., ... & Zhou, Y. (2017). Investigating DNA‐, RNA‐, and protein‐based features as a means to discriminate pathogenic synonymous variants. Human mutation, 38(10), 1336-1347.<br><br>
+							[3] Shihab, H. A., Rogers, M. F., Gough, J., Mort, M., Cooper, D. N., Day, I. N., ... & Campbell, C. (2015). An integrative approach to predicting the functional effects of non-coding and coding sequence variation. Bioinformatics, 31(10), 1536-1543.<br><br>
+							[4] Gelfman, S., Wang, Q., McSweeney, K. M., Ren, Z., La Carpia, F., Halvorsen, M., ... & Petrovski, S. (2017). Annotating pathogenic non-coding variants in genic regions. Nature communications, 8(1), 236.<br><br>
+							[5] Xin, J., Mark, A., Afrasiabi, C., Tsueng, G., Juchler, M., Gopal, N., ... & Torkamani, A. (2016). High-performance web services for querying gene and variant annotation. Genome biology, 17(1), 91.<br><br>
+							[6] http://genome.ucsc.edu/cgi-bin/hgTables<br><br>
+							[7] Zhou, W., Chen, T., Chong, Z., Rohrdanz, M. A., Melott, J. M., Wakefield, C., ... & Chen, K. (2015). TransVar: a multilevel variant annotator for precision genomics. Nature methods, 12(11), 1002.<br><br>
+							[8] McLaren, W., Gil, L., Hunt, S. E., Riat, H. S., Ritchie, G. R., Thormann, A., ... & Cunningham, F. (2016). The ensembl variant effect predictor. Genome biology, 17(1), 122.
+							<br>
+						</div>
+						<strong id="7.The overview of the searching process">
+							<br>7.The overview of the searching process<br><br>
+						</strong>
+						<div>
+							The browse process including “Search” and “Advanced search”. <br><br>
+							1)Search<br><br>
+							You can input one keyword to search the dbDSM. The search fields include disease name, gene name, GRCh38 genome position, 
+							deleterious synonymous mutation (c.DNA, protein, rsid).<br><br>
+						</div>
+						<img src="/newdbDSM/images/search1.png" height="150px" width="auto">
+						<div>
+							<br>2) Advanced search<br><br>
+							You can select one or more of the four options listed in the browse area (Gene, Disease, dbDSMScore, Chromosome).<br><br>
+						</div>
+						<img src="/newdbDSM/images/advancedsearch.png" height="250px" width="auto">
+						<strong id="8.Statistics dbDSMScore">
+							<br><br>8.Statistics dbDSMScore<br><br>
+						</strong>
+						<img src="/newdbDSM/images/dbDSMScore2.png" height="300px" width="auto">
+						<hr class="layui-bg-black">
+						<blockquote class="layui-elem-quote" id="Data Release" style="font-size: 20px;border-left-color: #5FB878;">
+							Data Release
+						</blockquote>
+						<div class="layui-text" style="margin-bottom: 7px;">
+						<div>
+							Data release of dbDSM v2
+						</div>
+						<div>
+							  <table class="layui-table" style="background-color:#F2F2F2;width:900px;">
+							  	<colgroup>
+							      <col width="150">
+							      <col width="150">
+							      <col width="150">
+							    </colgroup>
+	
+						   	 	<tbody>
+						     		<tr>
+						        		<td rowspan="3">ClinVar</td>
+						        		<td>Description</td>
+						        		<td>Public archive of interpretations of clinically relevant variants</td>
+						      		</tr>
+						      		<tr>
+						        		<td>Download</td>
+						        		<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/" target='_blank' style="color:#5FB878;">ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/</a></td>
+						      		</tr>
+						      		<tr>
+						        		<td>Release</td>
+						        		<td>2018/07/09</td>
+						      		</tr>
+						      		<tr>
+						        		<td rowspan="3">GRASP</td>
+						        		<td>Description</td>
+						        		<td>Genome-Wide Repository of Associations Between SNPs and Phenotypes</td>
+						      		</tr>
+						      		<tr>
+						        		<td>Download</td>
+						        		<td><a href="https://s3.amazonaws.com/NHLBI_Public/GRASP/GraspFullDataset2.zip" target='_blank' style="color:#5FB878;">https://s3.amazonaws.com/NHLBI_Public/GRASP/GraspFullDataset2.zip</a></td>
+						      		</tr>
+						      		<tr>
+						        		<td>Release</td>
+						        		<td>GRASP 2.0.0.0</td>
+						      		</tr>
+						      		<tr>
+						        		<td rowspan="3">GWAS Catalog</td>
+						        		<td>Description</td>
+						        		<td>The NHGRI-EBI Catalog of published genome-wide association studies</td>
+						      		</tr>
+						      		<tr>
+						        		<td>Download</td>
+						        		<td><a href="http://www.ebi.ac.uk/gwas/downloads" target='_blank' style="color:#5FB878;">http://www.ebi.ac.uk/gwas/downloads</a></td>
+						      		</tr>
+						      		<tr>
+						        		<td>Release</td>
+						        		<td>v1.0.2 _e92_r2018/06/25</td>
+						      		</tr>
+						      		<tr>
+						        		<td rowspan="3">PolymiRTS 3.0</td>
+						        		<td>Description</td>
+						        		<td>Polymorphism in microRNAs and their TargetSites</td>
+						      		</tr>
+						      		<tr>
+						        		<td>Download</td>
+						        		<td><a href="http://compbio.uthsc.edu/miRSNP/download/" target='_blank' style="color:#5FB878;">http://compbio.uthsc.edu/miRSNP/download/</a></td>
+						      		</tr>
+						      		<tr>
+						        		<td>Release</td>
+						        		<td>PolymiRTS3.0_2013/07/22</td>
+						      		</tr>
+						      		<tr>
+						        		<td rowspan="3">GWASdb</td>
+						        		<td>Description</td>
+						        		<td>A database for human genetic variants identified by genome-wide association studies</td>
+						      		</tr>
+						      		<tr>
+						        		<td>Download</td>
+						        		<td><a href="http://jjwanglab.org/gwasdb" target='_blank' style="color:#5FB878;">http://jjwanglab.org/gwasdb</a></td>
+						      		</tr>
+						      		<tr>
+						        		<td>Release</td>
+						        		<td>2015/08</td>
+						      		</tr>
+						      		<tr>
+						        		<td rowspan="3">Manually curated</td>
+						        		<td>Description</td>
+						        		<td>An extensive literature query of PubMed database and Web of Knowledge using a list of keywords</td>
+						      		</tr>
+						      		<tr>
+						        		<td>Download</td>
+						        		<td>PubMed database and Web of Knowledge</td>
+						      		</tr>
+						      		<tr>
+						        		<td>Release</td>
+						        		<td>2015/12/31</td>
+						      		</tr>
+						      		<tr>
+						        		<td rowspan="3">tmVar</td>
+						        		<td>Description</td>
+						        		<td>tmVar extracts a wide range of sequence variants in both protein and gene levels (e.g. substitution, deletion, etc) in HGVS formats</td>
+						      		</tr>
+						      		<tr>
+						        		<td>Download</td>
+						        		<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/lu/PubTator/" target='_blank' style="color:#5FB878;">ftp://ftp.ncbi.nlm.nih.gov/pub/lu/PubTator/</a></td>
+						      		</tr>
+						      		<tr>
+						        		<td>Release</td>
+						        		<td>2017/12/09</td>
+						      		</tr>						     					      
+							    </tbody>
+							  </table>
+						</div>
+						<hr class="layui-bg-black">
+						<blockquote class="layui-elem-quote" id="Update" style="font-size: 20px;border-left-color: #5FB878;">
+							Update
+						</blockquote>
+						<div class="layui-text" style="margin-bottom: 7px;">
+							<strong>Brief release history<br><br></strong>
+							<div>
+								&emsp;07/06/2019: The Database of Deleterious Synonymous Mutation Version 2 (dbDSM v2) is updating.<br><br>
+								&emsp;08/31/2018: Data from tmVar added and ClinVar,GWAS Catalog updated.<br><br>
+								&emsp;09/21/2017: Manually curated data from PubMed and Web of Knowledge updated.<br><br>
+								&emsp;01/21/2016: Nearly one hundred entries were updated into dbDSM.<br><br>
+								&emsp;01/18/2016: Download page updated.<br><br>
+								&emsp;01/17/2016: Data in dbDSM were updated based on the comments from anonymous reviewers.<br><br>
+								&emsp;11/17/2015: Data from GRASdb added.<br><br>
+								&emsp;11/11/2015: Home page updated.<br><br>
+								&emsp;10/15/2015: Document page updated.<br><br>
+								&emsp;10/07/2015: Submit page updated.<br><br>
+								&emsp;09/20/2015: Release the dbDSM.<br><br>	
+							</div>			
+						</div>
+						<hr class="layui-bg-black">
+						<blockquote class="layui-elem-quote" id="Statistics" style="font-size: 20px;border-left-color: #5FB878;">
+							Statistics
+						</blockquote>
+						<div class="layui-text" style="margin-bottom: 7px;">
+						<div>
+							<strong>&emsp;Fields statistics<br></strong>
+						</div>
+						<div>
+							<table class="layui-table" style="background-color:#F2F2F2;width:800px;">
+							  	<colgroup>
+							      <col width="200">
+							      <col width="500">
+							    </colgroup>
+						 	   	<thead>
+							      	<tr style="background-color:#b5b4b2;">
+						  	    		<th><strong>Field</strong></th>
+						  	        	<th><strong>Description</strong></th>
+						  	    	</tr> 
+						 	   	</thead>
+						   	 	<tbody>
+						     		<tr>
+						        		<td>dbDSMAccNum</td>
+						        		<td>The access number of a variant in dbDSM</td>
+						        		
+						      		</tr>
+							     	<tr>
+							        	<td>Gene</td>
+						        		<td>Gene name</td>
+							      	</tr>
+							      	<tr>
+							        	<td>GeneID</td>
+						        		<td>The unique identifier for a gene</td>
+							      	</tr>
+							      	<tr>
+								        <td>MIM</td>
+						        		<td>The identifier of a gene linked to OMIM database</td>
+								    </tr>
+								    <tr>
+								        <td>Map_Location</td>
+						        		<td>The map location for this gene</td>
+								    </tr>
+								    <tr>
+								        <td>VariantType</td>
+						        		<td>Germline or somatic mutation</td>
+								    </tr>
+								    <tr>
+							        	<td>Disease</td>
+						        		<td>The main phenotype of the patient</td>
+							      	</tr>
+							      	<tr>
+								        <td>DOID</td>
+						        		<td>The identifier of a disease linked to OMIM database</td>
+								    </tr>
+								    <tr>
+								        <td>SNPID</td>
+						        		<td>dbSNP identifier of the variant. If there is no rs id this field is “n/a“</td>
+								    </tr>
+								    <tr>
+								        <td>GRCh38_Position</td>
+						        		<td>Genomic position in GRCh38</td>
+								    </tr>
+								    <tr>
+								        <td>GRCh37_Position</td>
+						        		<td>Genomic position in GRCh37</td>
+								    </tr>
+								    <tr>
+								        <td>Ref</td>
+						        		<td>Reference allele</td>
+								    </tr>
+								    <tr>
+								        <td>Alt</td>
+						        		<td>Alternate allele</td>
+								    </tr>
+								    <tr>
+								        <td>Strand</td>
+						        		<td>A variant occurred in forword chain(+) or reverse chain(-)</td>
+								    </tr>
+								    <tr>
+								        <td>c.DNA</td>
+						        		<td>A coding reference level representation of the variant</td>
+								    </tr>
+								    <tr>
+								        <td>Protein</td>
+						        		<td>A protein reference level representation of the variant</td>
+								    </tr>
+								    <tr>
+								        <td>CodonChange</td>
+						        		<td>Reference codon > Alternate codon</td>
+								    </tr>
+								    <tr>
+								        <td>RefseqTranscript</td>
+						        		<td>Refseq Transcript that the variant resides on</td>
+								    </tr>
+								    <tr>
+								        <td>P_Value</td>
+						        		<td>P-value in GWAS</td>
+								    </tr>
+								    <tr>
+								        <td>PhyloP100way</td>
+						        		<td>100 Vertebrate Phylop conservation score at mutation position</td>
+								    </tr>
+								    <tr>
+								        <td>PhastCons100way</td>
+						        		<td>100 Vertebrate PhastCons conservation score at mutation position</td>
+								    </tr>
+								    <tr>
+								        <td>GerpS</td>
+						        		<td>Rejected Substitution' score defined by GERP++</td>
+								    </tr>
+								    <tr>
+								        <td>Source</td>
+						        		<td>The source of a variant</td>
+								    </tr>
+								    <tr>
+								        <td>dbDSMScore</td>
+						        		<td>dbDSM score of a variant Which are including SilVA,DDIG-SN,FATHMM-MKL, TraP, CADD score.We use voting methods to evaluate the variant, dbDSM score plus one if the score above the threshold value for each tool.</td>
+								    </tr>
+								    <tr>
+								        <td>PMID</td>
+						        		<td>Pubmed ID for an article</td>
+								    </tr>
+								    <tr>
+								        <td>Year</td>
+						        		<td>Published time of an article</td>
+								    </tr>
+								    <tr>
+								        <td>KeySentence</td>
+						        		<td>Deleterious evidence of a variant extracted from the article</td>
+								    </tr>
+								    <tr>
+								        <td>Classification</td>
+						        		<td>Deleterious mechanism of a variant</td>
+								    </tr>
+								    <tr>
+								        <td>StrengthOfEvidence</td>
+						        		<td>Clinical classification of a variant</td>
+								    </tr>
+							    </tbody>
+							  </table>
+						</div>
+						<div>
+							<strong>Data statistics</strong>
+						</div>
+						<div>
+							<table class="layui-table" style="background-color:#F2F2F2;width:800px;">
+								<colgroup>
+							      <col width="200">
+							      <col width="400">
+							      <col width="150">
+							    </colgroup>
+						   	 	<tbody>
+						     		<tr>
+						        		<td rowspan="3">Entries</td>
+						        		<td>Disease</td>
+						        		<td>1499</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Gene</td>
+						        		<td>1624</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants</td>
+						        		<td>2747</td>
+						        	</tr>
+						        	<tr>
+						        		<td rowspan="25">Chromosomal location</td>
+						        		<td>Variants Entries mapped to chromosome 1</td>
+						        		<td>258</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 2</td>
+						        		<td>163</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 3</td>
+						        		<td>136</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 4</td>
+						        		<td>90</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 5</td>
+						        		<td>95</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 6</td>
+						        		<td>216</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 7</td>
+						        		<td>119</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 8</td>
+						        		<td>67</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 9</td>
+						        		<td>92</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 10</td>
+						        		<td>99</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 11</td>
+						        		<td>183</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 12</td>
+						        		<td>133</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 13</td>
+						        		<td>64</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 14</td>
+						        		<td>50</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 15</td>
+						        		<td>102</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 16</td>
+						        		<td>134</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 17</td>
+						        		<td>178</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 18</td>
+						        		<td>26</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 19</td>
+						        		<td>137</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 20</td>
+						        		<td>46</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 21</td>
+						        		<td>26</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome 22</td>
+						        		<td>49</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome X</td>
+						        		<td>109</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome Y</td>
+						        		<td>0</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Variants Entries mapped to chromosome MT</td>
+						        		<td>1</td>
+						        	</tr>
+						        	<tr>
+						        		<td rowspan="7">Publications</td>
+						        		<td>tmVar publications</td>
+						        		<td>2548</td>
+						        	</tr>
+						        	<tr>
+						        		<td>ClinVar publications</td>
+						        		<td>510</td>
+						        	</tr>
+						        	<tr>
+						        		<td>GRASP publications</td>
+						        		<td>196</td>
+						        	</tr>
+						        	<tr>
+						        		<td>GWASdb publications</td>
+						        		<td>357</td>
+						        	</tr>
+						        	<tr>
+						        		<td>PolymiRTS publications</td>
+						        		<td>80</td>
+						        	</tr>
+						        	<tr>
+						        		<td>GWAS Catalog publications</td>
+						        		<td>179</td>
+						        	</tr>
+						        	<tr>
+						        		<td>Manual Read publications</td>
+						        		<td>195</td>
+						        	</tr>					        	
+						        </tbody>
+							</table>
+						</div>		
+
+					</div>
+				</div>
+			</div>	
+		</div>		
+		<div class="layui-row" id="footer" align='center'>
+				<hr class="layui-bg-black">
+				<div class="link">
+					Links:
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/PrDSM/" target="_blank">PrDSM</a>
+					<div style="display:inline;">|</div>
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/IDSV/" target="_blank">IDSV</a>
+					<!-- <div style="display:inline;">|</div>
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/Melanoma/index.jsp" target="_blank">Melanoma</a> -->
+				</div>
+				<div class="copyright">
+					Copyright©
+					<a class="ow" href="http://en.ahu.edu.cn/" target="_blank">AnHui University</a> ©All Rights Reserved.
+				</div>
+				<div class="use">
+					<!-- Website content is for educational and research purposes only and is not intended to be used for medical advice, diagnosis or treatment. -->
+				</div>
+			</div>
+
+	</body>
+	
+	<script src="/newdbDSM/layui/layui.js"></script>
+	<script type="text/javascript" src="/newdbDSM/js/jquery-1.9.1.min.js"></script>
+	<script>
+			var rollSet = $('#site-tree');
+			var offset = rollSet.offset();
+			var fwidth = $("#footer").height();
+			console.log(fwidth);
+			$(window).scroll(function() {
+				var scrollTop = $(window).scrollTop();
+				var scrollBtm = $(document).height() - $(window).scrollTop() - rollSet.height();
+
+				if(offset.top < scrollTop) {
+					//console.log(scrollTop+","+offset.top+","+scrollBtm+","+fwidth);
+					if(scrollBtm > fwidth) {
+						rollSet.addClass('site-fix');
+					} else {
+						//rollSet.removeClass('site-fix');
+					}
+
+				} else {
+					rollSet.removeClass('site-fix');
+				}
+				if(document.getElementById("site-tree").getBoundingClientRect().top < 0) {
+					rollSet.addClass('site-fix');
+				} else {
+					rollSet.removeClass('site-fix');
+				}
+			})
+		</script>
+	
+
+</html>

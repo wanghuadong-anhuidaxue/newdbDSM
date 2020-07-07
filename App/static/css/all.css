@@ -1,0 +1,13 @@
+#select label{
+	width:180px;
+	
+}
+#select #AND{
+	width:1px;
+	margin-right:-1px;
+	
+}
+#select .layui-form-item .layui-input-block{
+	width:200px;
+	margin-left:200px;
+}

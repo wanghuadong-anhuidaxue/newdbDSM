@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>dbDSM</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" />
+		<link rel="stylesheet" href="/newdbDSM/css/home.css" />
+		<script type="text/javascript">
+	function checkPur(){
+		var str=document.getElementById("userinput").value;
+		str = str.replace(/&/g, '&amp;');
+		str = str.replace(/</g, '&lt;');
+  		str = str.replace(/>/g, '&gt;');
+  		str = str.replace(/"/g, '&quto;');
+  		str = str.replace(/'/g, '&#39;');
+		document.getElementById("userinput").value = str
+		if(str==null||str==""){
+		alert("error! value is None");
+		return false;
+		}
+	}
+</script>
+	</head>
+
+	<body>
+		<div class="layui-container" style="min-width:1140px;">
+			<div class="layui-row" id="header">
+				<!--头-->
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner" style="background: url(/newdbDSM/images/Picture8.png);background-size:cover;">
+				</div>
+				<!--这里是banner-->
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
+					<!--这里是导航栏-->
+					<ul class="layui-nav" lay-filter="" id="navbar">
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/">Home</a>
+						</li>
+						<li class="layui-nav-item layui-this">
+							<a href="/newdbDSM/search">Search</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/download">Download</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/about">About</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/submit">Submit</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/contact">Contact us</a>
+						</li>
+					</ul>
+				</div>
+				<!--导航栏到这-->
+			</div>
+			<!--头到这-->
+			
+			<div class="layui-row" id="bodyer" align="center" >
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="simplesearch" style="margin-top:50px;margin-bottom:30px;">
+					<fieldset class="layui-elem-field">
+						<legend style="align:left;margin-bottom:30px;"><i><strong>Search</strong></i></legend>
+						<form class="layui-form layui-field-box" id="search" action="/searchSubmit" method="post">
+							<table>
+								<tbody>
+								    <!-- <td><label class="layui-form-label" id="AND" style="border:none;background-color:inherit;width:1px;"></label></td> -->
+									<td>
+										{{ form.searchBy }}
+									</td>
+									<td>
+										{{ form.userinput }}
+									</td>
+								</tbody>
+							</table>
+							{{ form.csrf_token }}
+							<input type="text" name="search" class="layui-input layui-hide" value="1">
+							<div class="layui-text">
+								<p style="margin: 5px 0 5px -120px;">
+									eg. :
+									<a onclick="exampleFun1(this)" style="cursor: pointer;color: #5fb878;">Early-Onset Epilepsy</a>;
+									<a onclick="exampleFun2(this)" style="cursor: pointer;color: #5fb878;">PCDH19</a>;
+									<a onclick="exampleFun3(this)" style="cursor: pointer;color: #5fb878;">X:100342042</a>;
+									<a onclick="exampleFun4(this)" style="cursor: pointer;color: #5fb878;">c.954G>C</a>;
+									<a onclick="exampleFun5(this)" style="cursor: pointer;color: #5fb878;">p.Thr318=</a>
+								</p>
+							</div>
+							<div class="layui-input-block"  style="margin-bottom:30px;">
+								{{ form.submit1 }}
+								{{ form.reset }}
+							</div>
+						</form>
+					</fieldset>
+				</div>
+				<div style="height:50px;"></div>
+				<div align="center" class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="simplesearch" style="margin-bottom:30px;">
+					
+					<fieldset class="layui-elem-field">
+						<legend style="align:left;margin-bottom:30px;"><i><strong>Advanced search</strong></i></legend>
+					
+						<form id="select" class="layui-form layui-form-pane" action="/advancedSearchTable" method="get">
+							<input type="text" name="select" class="layui-input layui-hide" value="1">
+							
+							<div class="layui-form-item layui-hide">
+								<div class="layui-input-block">
+									<input id="hideU" type="text" required lay-verify="required" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							
+							<div class="layui-form-item" style="text-align:left;">
+							    <!-- <label class="layui-form-label" id="AND" style="border:none;background-color:inherit;width:1px"></label> -->
+								<label class="layui-form-label" style="text-align:left;width:17%;margin-left:11%;">Gene</label>
+								<div class="layui-input-block" style="width:61%;margin-left:28%;">
+									<select name="Gene" id="Gene" lay-filter="Gene">
+										<option value="" direction="rtl">Select Gene</option>
+									</select>
+								</div>
+							</div>
+							<div class="layui-form-item" style="text-align:left;margin-top:20px;">
+							    <!-- <label class="layui-form-label" id="AND" style="border:none;background-color:inherit;width:1px"></label> -->
+								<label class="layui-form-label" style="text-align:left;width:17%;margin-left:11%;">Disease</label>
+								<div class="layui-input-block" style="width:61%;margin-left:28%;">
+									<select name="Disease" id="Disease" lay-filter="Disease">
+										<option value="">Select Disease</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="layui-form-item" style="text-align:left;">
+							    <!-- <label class="layui-form-label" id="AND" style="border:none;background-color:inherit;width:1px"></label> -->
+								<label class="layui-form-label" style="text-align:left;width:17%;margin-left:11%;">Chromosome</label>
+								<div class="layui-input-block" style="width:61%;margin-left:28%;">
+									<select name="Chromosome" id="Chromosome" lay-filter="Chromosome">
+										<option value="">Select Chromosome</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="layui-form-item" style="text-align:left;">
+							    <!-- <label class="layui-form-label" id="AND" style="border:none;background-color:inherit;width:2px;"></label> -->
+								<label class="layui-form-label" style="text-align:left;width:17%;margin-left:11%;">dbDSMScore</label>
+								<div class="layui-input-block" style="width:61%;margin-left:28%;">
+									<select name="DBDSMScore" id="DBDSMScore" lay-filter="DBDSMScore">
+										<option value="">Select dbDSMScore</option>
+									</select>
+								</div>
+							</div>
+							<div class="layui-form-item" align="center" style="margin-bottom:50px;">
+								<div class="layui-input-block" style="margin-left: 0px;margin-right: 0px;">
+									<button class="layui-btn" lay-submit lay-filter="*" style="background-color: #5FB878;">Submit</button>
+									<button type="reset" class="layui-btn layui-btn-primary" lay-filter="reset" id="reset" onclick="formClick(this,selectId,'reset')">Reset</button>
+								</div>
+							</div>
+						</form>
+					</fieldset>
+			</div>
+			<div class="layui-row" id="footer" align='center'>
+				<hr class="layui-bg-black">
+				<div class="link">
+					Links:
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/PrDSM/" target="_blank">PrDSM</a>
+					<div style="display:inline;">|</div>
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/IDSV/" target="_blank">IDSV</a>
+					<!-- <div style="display:inline;">|</div>
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/Melanoma/index.jsp" target="_blank">Melanoma</a> -->
+				</div>
+				<div class="copyright">
+					Copyright©
+					<a class="ow" href="http://en.ahu.edu.cn/" target="_blank">AnHui University</a> ©All Rights Reserved.
+				</div>
+				<div class="use">
+					<!-- Website content is for educational and research purposes only and is not intended to be used for medical advice, diagnosis or treatment. -->
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="/newdbDSM/layui/layui.all.js "></script>
+	<script type="text/javascript" src="/newdbDSM/js/jquery-1.9.1.min.js"></script>
+	<script>
+		form = layui.form;
+		var selectId = new Array();
+		var searchBy = document.getElementsByName("searchBy").value;
+
+		function formClick(select, selectId, value) {
+			if($.inArray(select, selectId) == -1) {
+				if(select.getAttribute("id") == "reset") {
+					document.getElementById("hideU").value = "";
+					document.getElementById("Disease").options.length = 1;
+					document.getElementById("Gene").options.length = 1;
+					document.getElementById("Chromosome").options.length = 1;
+					document.getElementById("DBDSMScore").options.length = 1;
+					selectId.splice(0, selectId.length);
+				} else {
+					selectId.push(select);
+				}
+			}
+			for(var i = $.inArray(select, selectId) + 1; i < selectId.length; i++) {
+				selectId[i].options.length = 1;
+			}
+			for(var i = selectId.length - 1; i >= $.inArray(select, selectId); i--) {
+				if($(selectId[i]).val() == "") {
+					selectId.splice(i, 1);
+				}
+			}
+			$.ajax({
+				type: "get",
+				url: "/advancedSearch",
+				data: $('#select').serialize(),
+				success: function(msg) {
+					json_ = msg//jQuery.parseJSON(msg);
+					console.log(json_);
+					for(selectName in json_) {
+						var tempSelect = document.getElementById(selectName);
+						tempSelect.options.length = 1;
+						console.log(json_[selectName]);
+						var aa1=new Array();
+						var aa2=new Array();
+						for(ii in json_[selectName]){
+							if(json_[selectName][ii].match('^[0-9]*$')){
+								aa1.push(json_[selectName][ii]);
+							}
+							else{
+								aa2.push(json_[selectName][ii]);
+							}
+						}
+						aa1.sort(function(a,b){return a-b;});
+						aa2.sort();
+						// console.log(aa1);
+						// console.log(aa2);
+						if(aa1.length==0){
+							for(optionId in aa2) {
+								var tempOption = new Option(aa2[optionId], aa2[optionId]);
+								tempSelect.appendChild(tempOption);
+								tempOption.innerHTML = aa2[optionId];
+								tempOption.value = aa2[optionId];
+							}
+						}
+						else{
+							for(mm in aa2){
+								aa1.push(aa2[mm]);
+							}
+							for(optionId in aa1) {
+								var tempOption = new Option(aa1[optionId], aa1[optionId]);
+								tempSelect.appendChild(tempOption);
+								tempOption.innerHTML = aa1[optionId];
+								tempOption.value = aa1[optionId];
+							}
+						}
+
+						/*
+						for(optionId in json_[selectName]) {
+							var tempOption = new Option(json_[selectName][optionId], json_[selectName][optionId]);
+							tempSelect.appendChild(tempOption);
+							tempOption.innerHTML = json_[selectName][optionId];
+							tempOption.value = json_[selectName][optionId];
+						}
+						*/
+					}
+					form.render('select');
+				}
+			});
+			form.render('select');
+		};
+		window.onload = function() {
+			formClick(document.getElementById("reset"), selectId, "reset");
+			form.on('select(Disease)', function(data) {
+				document.getElementById("hideU").value = "1";
+				formClick(document.getElementById("Disease"), selectId, data.value);
+			});
+			form.on('select(Gene)', function(data) {
+				document.getElementById("hideU").value = "1";
+				formClick(document.getElementById("Gene"), selectId, data.value);
+			});
+			form.on('select(Chromosome)', function(data) {
+				document.getElementById("hideU").value = "1";
+				formClick(document.getElementById("Chromosome"), selectId, data.value);
+			});
+			form.on('select(DBDSMScore)', function(data) {
+				document.getElementById("hideU").value = "1";
+				formClick(document.getElementById("DBDSMScore"), selectId, data.value);
+			});
+			<!--
+			form.on('select(reset)', function(data) {
+				formClick(document.getElementById("reset"));
+			});
+			 -->
+
+		};
+		function exampleFun1(t) {
+			$("#userinput").val("");
+			$("#userinput").val($(t).text());
+			$("#searchBy").val("Disease");
+			var $div = $("#searchBy").next();
+			$div.find('.layui-this').removeClass('layui-this');
+			var parentCode = "Disease";
+			if(parentCode!==""){
+			    $div.find('div input').val(parentCode);
+			    $div.find('dl dd[lay-value="'+parentCode+'"]').addClass('layui-this');
+			}else{
+			    $div.find('div input').val("");
+			}
+		};
+		function exampleFun2(t) {
+			$("#userinput").val("");
+			$("#userinput").val($(t).text());
+			$("#searchBy").val("Gene");
+			var $div = $("#searchBy").next();
+			$div.find('.layui-this').removeClass('layui-this');
+			var parentCode = "Gene";
+			if(parentCode!==""){
+			    $div.find('div input').val(parentCode);
+			    $div.find('dl dd[lay-value="'+parentCode+'"]').addClass('layui-this');
+			}else{
+			    $div.find('div input').val("");
+			}
+
+		};
+		function exampleFun3(t) {
+			$("#userinput").val("");
+			$("#userinput").val($(t).text());
+			$("#searchBy").val("GRCh38_Position");
+			var $div = $("#searchBy").next();
+			$div.find('.layui-this').removeClass('layui-this');
+			var parentCode = "GRCh38_Position";
+			if(parentCode!==""){
+			    $div.find('div input').val(parentCode);
+			    $div.find('dl dd[lay-value="'+parentCode+'"]').addClass('layui-this');
+			}else{
+			    $div.find('div input').val("");
+			}
+
+		};
+		function exampleFun4(t) {
+			$("#userinput").val("");
+			$("#userinput").val($(t).text());
+			$("#searchBy").val("Mutation");
+			var $div = $("#searchBy").next();
+			$div.find('.layui-this').removeClass('layui-this');
+			var parentCode = "Mutation";
+			if(parentCode!==""){
+			    $div.find('div input').val(parentCode);
+			    $div.find('dl dd[lay-value="'+parentCode+'"]').addClass('layui-this');
+			}else{
+			    $div.find('div input').val("");
+			}
+
+		};
+		function exampleFun5(t) {
+			$("#userinput").val("");
+			$("#userinput").val($(t).text());
+			$("#searchBy").val("Mutation");
+			var $div = $("#searchBy").next();
+			$div.find('.layui-this').removeClass('layui-this');
+			var parentCode = "Mutation";
+			if(parentCode!==""){
+			    $div.find('div input').val(parentCode);
+			    $div.find('dl dd[lay-value="'+parentCode+'"]').addClass('layui-this');
+			}else{
+			    $div.find('div input').val("");
+			}
+
+		};
+		layui.use('element', function() {
+			var element = layui.element;
+		});
+		layui.use('table', function() {
+			var table = layui.table;
+		});
+	</script>
+
+</html>

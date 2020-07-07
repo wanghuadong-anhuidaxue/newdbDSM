@@ -1,0 +1,344 @@
+BODY {
+	TEXT-ALIGN: center;
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	COLOR: #000;
+	FONT-SIZE: 15px;
+	PADDING-TOP: 0px
+}
+
+#bg_img {
+	BACKGROUND: url(images/background.png) repeat-x
+}
+
+TABLE {
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	FONT-SIZE: 15px
+}
+
+TABLE.doc {
+	FONT-FAMILY: "trebuchet ms", "lucida grande", arial, sans-serif;
+	FONT-SIZE: 15px
+}
+
+H1 {
+	FONT-FAMILY: "Verdana", "lucida grande", arial, sans-serif;
+	FONT-SIZE: 18px
+}
+
+UL {
+	LIST-STYLE-POSITION: outside;
+	LINE-HEIGHT: 30px;
+	LIST-STYLE-TYPE: circle;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	COLOR: #00008b;
+	FONT-SIZE: 15px
+}
+
+A {
+	COLOR: #06f;
+	TEXT-DECORATION: none
+}
+
+.bluetabs {
+	BORDER-BOTTOM: gray 0px solid
+}
+
+.bluetabs UL {
+	TEXT-ALIGN: center;
+	PADDING-BOTTOM: 0px;
+	LIST-STYLE-TYPE: none;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	PADDING-TOP: 0px
+}
+
+.bluetabs LI {
+	BORDER-BOTTOM: white 0px solid;
+	TEXT-ALIGN: center;
+	BORDER-LEFT: white 0px solid;
+	MARGIN: 0px;
+	DISPLAY: inline;
+	COLOR: blue;
+	BORDER-TOP: white 0px solid;
+	BORDER-RIGHT: white 2px solid
+}
+
+.bluetabs LI A {
+	BORDER-BOTTOM: #778 0px solid;
+	TEXT-ALIGN: center;
+	BORDER-LEFT: #778 0px solid;
+	PADDING-BOTTOM: 0px;
+	PADDING-LEFT: 2px;
+	PADDING-RIGHT: 2px;
+	COLOR: blue;
+	BORDER-TOP: #778 0px solid;
+	FONT-WEIGHT: bold;
+	MARGIN-RIGHT: 0px;
+	BORDER-RIGHT: #778 0px solid;
+	TEXT-DECORATION: none;
+	PADDING-TOP: 0px
+}
+
+.bluetabs LI A:visited {
+	COLOR: blue
+}
+
+.bluetabs LI A:hover {
+	COLOR: blue;
+	TEXT-DECORATION: underline
+}
+
+.bluetabs LI.selected {
+	
+}
+
+.bluetabs LI.selected A {
+	BACKGROUND-IMAGE: url(media/bluetabactive.gif);
+	BORDER-BOTTOM-COLOR: white;
+	COLOR: white
+}
+
+.bluetabs LI.selected A:hover {
+	TEXT-DECORATION: none
+}
+
+.dropmenudiv_b {
+	Z-INDEX: 100;
+	BORDER-BOTTOM: #918d8d 0px solid;
+	POSITION: absolute;
+	BORDER-LEFT: #918d8d 1px solid;
+	LINE-HEIGHT: 18px;
+	BACKGROUND-COLOR: white;
+	WIDTH: 100px;
+	VISIBILITY: hidden;
+	BORDER-TOP: #918d8d 0px solid;
+	TOP: 0px;
+	BORDER-RIGHT: #918d8d 1px solid
+}
+
+.dropmenudiv_b A {
+	BORDER-BOTTOM: #918d8d 1px solid;
+	TEXT-ALIGN: left;
+	BORDER-LEFT: #918d8d 0px solid;
+	PADDING-BOTTOM: 2px;
+	TEXT-INDENT: 5px;
+	PADDING-LEFT: 0px;
+	WIDTH: auto;
+	PADDING-RIGHT: 0px;
+	DISPLAY: block;
+	COLOR: black;
+	BORDER-TOP: #918d8d 0px solid;
+	BORDER-RIGHT: #918d8d 0px solid;
+	TEXT-DECORATION: none;
+	PADDING-TOP: 2px
+}
+
+* HTML .dropmenudiv_b A {
+	WIDTH: 100%
+}
+
+.dropmenudiv_b A:hover {
+	BACKGROUND-COLOR: #edf3f3
+}
+
+#bluemenu {
+	MARGIN: 0px 20px;
+	BACKGROUND: #d7d6d6;
+	HEIGHT: 35px
+}
+
+#bluemenu UL LI A {
+	PADDING-RIGHT: 6px
+}
+
+#div_search {
+	BACKGROUND-IMAGE: url(images/img17.jpg);
+	MARGIN: 0px auto;
+	WIDTH: 1000px;
+	BACKGROUND-REPEAT: repeat-y
+}
+
+#div_info {
+	BACKGROUND-IMAGE: url(images/img17.jpg);
+	MARGIN: 0px auto;
+	WIDTH: 1000px;
+	BACKGROUND-REPEAT: repeat-y
+}
+
+#div_tab {
+	MARGIN: 0px auto;
+	WIDTH: 956px
+}
+
+H1#tab-title {
+	TEXT-ALIGN: center;
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	WIDTH: 954px;
+	HEIGHT: 20px;
+	FONT-SIZE: 15px;
+	PADDING-TOP: 7px
+}
+
+H1#tab-title:hover {
+	
+}
+
+#footer {
+	MARGIN: auto;
+	HEIGHT: 45px
+}
+
+#footer P {
+	TEXT-ALIGN: center;
+	PADDING-BOTTOM: 10px;
+	MARGIN: 0px;
+	PADDING-LEFT: 10px;
+	PADDING-RIGHT: 10px;
+	COLOR: #443e3f;
+	PADDING-TOP: 10px
+}
+
+.width_year {
+	WIDTH: 4em
+}
+
+.width_month {
+	WIDTH: 7.3em
+}
+
+.width_day {
+	WIDTH: 3em
+}
+
+.width_edit0 {
+	WIDTH: 15em
+}
+
+.width_edit {
+	WIDTH: 26em
+}
+
+.width_box {
+	WIDTH: 100%
+}
+
+.post {
+	PADDING-BOTTOM: 1em
+}
+
+.post .title {
+	COLOR: #8e959b;
+	FONT-SIZE: 1.1em;
+	FONT-WEIGHT: normal
+}
+
+.post .hlight {
+	COLOR: #5e657b;
+	FONT-SIZE: 1em;
+	FONT-WEIGHT: bold
+}
+
+.post .story {
+	TEXT-ALIGN: left;
+	PADDING-BOTTOM: 0px;
+	LINE-HEIGHT: 1.6em;
+	PADDING-LEFT: 20px;
+	PADDING-RIGHT: 20px;
+	PADDING-TOP: 0px
+}
+
+.post .meta {
+	MARGIN: 0px 20px;
+	PADDING-LEFT: 130px;
+	BACKGROUND: #cecdcd;
+	HEIGHT: 20px
+}
+
+.post .arrowlist {
+	TEXT-ALIGN: left;
+	PADDING-BOTTOM: 0px;
+	LINE-HEIGHT: 1.6em;
+	PADDING-LEFT: 40px;
+	PADDING-RIGHT: 40px;
+	COLOR: #000;
+	PADDING-TOP: 0px
+}
+
+.CollapsiblePanelContent UL {
+	TEXT-ALIGN: left;
+	PADDING-BOTTOM: 0px;
+	LINE-HEIGHT: 1.6em;
+	PADDING-LEFT: 40px;
+	PADDING-RIGHT: 40px;
+	COLOR: #000;
+	PADDING-TOP: 0px
+}
+
+.post .more {
+	PADDING-LEFT: 5px
+}
+
+.post .more A {
+	PADDING-BOTTOM: 0px;
+	LINE-HEIGHT: 28px;
+	PADDING-LEFT: 8px;
+	WIDTH: 55px;
+	PADDING-RIGHT: 25px;
+	DISPLAY: block;
+	BACKGROUND: url(images/bluecircle.gif) #fff no-repeat;
+	HEIGHT: 28px;
+	COLOR: #111;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: none;
+	PADDING-TOP: 0px
+}
+
+.post .more A:hover {
+	BACKGROUND: url(images/pinkcircle.gif) #fff no-repeat;
+	COLOR: #111;
+	TEXT-DECORATION: none
+}
+
+#imgbtn {
+	BORDER-BOTTOM-STYLE: none;
+	PADDING-BOTTOM: 2px;
+	BORDER-RIGHT-STYLE: none;
+	PADDING-LEFT: 2px;
+	WIDTH: 80px;
+	PADDING-RIGHT: 35px;
+	DISPLAY: block;
+	BORDER-TOP-STYLE: none;
+	BACKGROUND: url(images/bluesave.gif) no-repeat 0px 0px;
+	HEIGHT: 29px;
+	FONT-SIZE: 15px;
+	BORDER-LEFT-STYLE: none;
+	TEXT-DECORATION: none;
+	PADDING-TOP: 0px
+}
+
+#imgbtn:hover {
+	BACKGROUND: url(images/pinksave.gif) no-repeat 0px 0px
+}
+
+.title {
+	height: 44px;
+}
+
+.title a {
+	text-decoration: none;
+	text-transform: capitalize;
+	font-size: 30px;
+	color: #404040;
+}
+
+.STYLE11 {
+	font-size: 15px;
+	color: #404040;
+}
