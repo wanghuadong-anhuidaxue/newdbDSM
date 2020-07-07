@@ -16,3 +16,7 @@ def test():
 
 
 
+@testblue.route('/testData', methods=['GET', 'POST'])
+def testData():
+
+    return 'testData'
