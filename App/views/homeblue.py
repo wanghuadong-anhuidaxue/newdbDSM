@@ -27,9 +27,6 @@ def hello():
 
 
 
-
-
-
 @homeblue.route('/download')
 @homeblue.route('/newdbDSM/download')
 def download():
