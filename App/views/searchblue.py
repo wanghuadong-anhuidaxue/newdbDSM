@@ -213,13 +213,7 @@ def researchGene():
     return render_template('searchresult2.html',page=page,per_page=per_page, pagination=paginate, Disease=None, Gene=reGene, Chromosome=None, DBDSMScore=None)
 
 
-@searchblue.route('/test', methods=['GET', 'POST'])
-def test():
-    '''
-    测试
-    :return:
-    '''
-    return render_template('search2.html')
+
 
 
 

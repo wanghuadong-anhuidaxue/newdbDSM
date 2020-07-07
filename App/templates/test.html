@@ -7,30 +7,111 @@
 </head>
 <body>
 
-<div>
-    <button id="select" name="select">ok</button>
-    <p id="content name="content"></p>
+<div class="layui-row" id="bodyer">
+    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" style="margin:20px 0">
+            <blockquote class="layui-elem-quote">
+                <i class="layui-icon">&#xe602;</i>
+                <i><b>Disease</b></i>:&nbsp;Lynch syndrome;&nbsp;
+                <i><b>Gene</b></i>:&nbsp;MLH1;&nbsp;
+                <i><b>Indel</b></i>:&nbsp;c.105_106insAA;&nbsp;
+                <i><b>Level</b></i>:&nbsp;3;&nbsp;
+
+            </blockquote>
+    </div>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-bottom:5px;margin-top:20px;">
+        <legend>Search Result</legend>
+    </fieldset>
+    <table id="DataFrame"  class="layui-hide" ></table>
+
+    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" style="overflow-x:auto;text-align:center">
+
+    </div>
 </div>
+
 
 
 <script src="/newdbDSM/layui/layui.all.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script type="text/javascript" src="/newdbDSM/js/jquery-1.9.1.min.js"></script>
 <script>
-    $.ajax({
-            type: "get",
-            url: "/advancedSearch",
-            data: $('#select').serialize(),
-            success: function (msg) {
-                json_ = jQuery.parseJSON(msg);
-                alert('hello');
-                $("#content").html(data);
-            },
-            error: function () {
-                $("#content").html("获取数据失败！");
-            }
-        }
-    )
+    table=layui.table;
+    table.render({
+        elem: '#DataFrame',
+        url: 'questData',
+        page: {
+            layout:['prev', 'page', 'next','skip','limit','count'],
+            limit:10,
+            limits:[10,20,30,50,100],
+            hash:'page',
+            curr: location.hash.replace('#!page=', ''),},
+        request: {pageName: 'page'
+              ,limitName:'limit',},
+        where:{Gene:"MLH1",
+            Disease:"Lynch syndrome",
+            cDNA:"c.105_106insAA",
+            Level:"3",
+            userInput:"",
+        },
+        cols: [
+            [ //表头
+                		// 				<th>Disease</th>
+						// <th>Gene</th>
+						// <th>SNPID</th>
+						// <th>GRCh38_Position</th>
+						// <th>c.DNA</th>
+						// <th>Protein</th>
+						// <th>dbDSMscore</th>
+						// <th>dbDSM_AccNum</th>
+                {
+                    field: 'Gene',
+                    title: 'Gene',
+                    sort: true,
+                    width:120,
+                    templet:"#GeneLink1",
+                }, {
+                    field: 'Disease',
+                    title: 'Disease',
+                    sort:true,
+                    templet:"#DiseaseLink1",
+                }, {
+                    field: 'gDNA',
+                    title: 'gDNA',
+                    sort:true,
+                    templet:"#displaygDNA",
+                }
+                , {
+                    field: 'cDNA',
+                    title: 'cDNA',
+                    sort:true,
+                    templet:'#cDNALink',
+                }, {
+                    field: 'Protein',
+                    title: 'Protein',
+                    sort:true,
+                    templet:"#displayProtein",
+                }
+                  , /* {
+                    field: 'PMIDNum',
+                    title: 'PMIDNum',
+                    sort:true,
+                    //templet:"#displayProtein",
+                }   */
+            ]
+        ],
+        /*
+        done: function(res, curr, count){
+            //如果是异步请求数据方式，res即为你接口返回的信息。
+            //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+            console.log(res);
+
+            //得到当前页码
+            console.log(curr);
+
+            //得到数据总量
+            console.log(count);
+          } */
+    });
+
 </script>
 
 </body>
