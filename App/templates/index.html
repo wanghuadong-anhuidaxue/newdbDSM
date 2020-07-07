@@ -111,14 +111,14 @@
 								    <h2 class="layui-colla-title"><strong>Document</strong></h2>
 								    
 								    <div class="layui-colla-content">
-										<a href='about.jsp#1.Brief introduction' >1. Brief introduction<br></a>
-										<a href='about.jsp#2.The sources of the data' >2. The sources of the data<br></a>
-										<a href='about.jsp#3.The sum of the data' >3. The sum of the data <br></a>
-										<a href='about.jsp#4.The DSMs classification' >4. The DSMs classification <br></a>
-										<a href='about.jsp#5.Strength of evidence for variant assessment' >5. Strength of evidence for variant assessment<br></a>
-										<a href='about.jsp#6.The annotation tools used in dbDSMv2.0' >6. The annotation tools used in dbDSMv2.0<br></a>
-										<a href='about.jsp#7.The overview of the searching process' >7. The overview of the searching process<br></a>
-										<a href='about.jsp#8.Statistics dbDSMScore' >8. Statistics dbDSMScore<br></a>
+										<a href="{{ url_for('homeblue.about') }}#1.Brief introduction" >1. Brief introduction<br></a>
+										<a href='{{ url_for("homeblue.about") }}#2.The sources of the data' >2. The sources of the data<br></a>
+										<a href='{{ url_for("homeblue.about") }}#3.The sum of the data' >3. The sum of the data <br></a>
+										<a href='{{ url_for("homeblue.about") }}#4.The DSMs classification' >4. The DSMs classification <br></a>
+										<a href='{{ url_for("homeblue.about") }}#5.Strength of evidence for variant assessment' >5. Strength of evidence for variant assessment<br></a>
+										<a href='{{ url_for("homeblue.about") }}#6.The annotation tools used in dbDSMv2.0' >6. The annotation tools used in dbDSMv2.0<br></a>
+										<a href='{{ url_for("homeblue.about") }}#7.The overview of the searching process' >7. The overview of the searching process<br></a>
+										<a href='{{ url_for("homeblue.about") }}#8.Statistics dbDSMScore' >8. Statistics dbDSMScore<br></a>
 									</div>
 								</div>
 							</div>
@@ -154,7 +154,7 @@
 				
 				<div class="layui-row">
 				    <div class="layui-col-md4" align='left'>
-				      	<div style="display:inline-block;width:200px;"><script type="text/javascript" src="//rf.revolvermaps.com/0/0/7.js?i=0nqmwz0cey3&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script></div>
+<!--				      	<div style="display:inline-block;width:200px;"><script type="text/javascript" src="//rf.revolvermaps.com/0/0/7.js?i=0nqmwz0cey3&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script></div>-->
 				    </div>
 				    <div class="layui-col-md4"  align='center' style="margin-top:20px">
 				     	 Links:
@@ -169,7 +169,7 @@
 				    </div>
 				    <div class="layui-col-md4" align='right' style="margin-top:10px">
 				     	 <div>
-							<script type="text/javascript" src="//rf.revolvermaps.com/0/0/0.js?i=52m8mqpvyan&amp;d=3&amp;p=0&amp;b=0&amp;w=218&amp;g=2&amp;f=arial&amp;fs=12&amp;r=0&amp;c0=362b05&amp;c1=375363&amp;c2=000000&amp;ic0=0&amp;ic1=0" async="async"></script>
+<!--							<script type="text/javascript" src="//rf.revolvermaps.com/0/0/0.js?i=52m8mqpvyan&amp;d=3&amp;p=0&amp;b=0&amp;w=218&amp;g=2&amp;f=arial&amp;fs=12&amp;r=0&amp;c0=362b05&amp;c1=375363&amp;c2=000000&amp;ic0=0&amp;ic1=0" async="async"></script>-->
 						</div>
 				    </div>
 				</div>
@@ -183,94 +183,94 @@
 		layui.use('element', function() {
 			var element = layui.element;
 		});
-	</script> 
-	<script>
-		layui.use(['carousel', 'form'], function(){
-		  var carousel = layui.carousel
-		  ,form = layui.form;
-		  
-		  //常规轮播
-		  carousel.render({
-		    elem: '#test1'
-		    ,arrow: 'always'
-		    ,width: '700px'
-		    ,height: '440px'
-		  });
-		  var $ = layui.$, active = {
-			    set: function(othis){
-			      var THIS = 'layui-bg-normal'
-			      ,key = othis.data('key')
-			      ,options = {};
-			      
-			      othis.css('background-color', '#5FB878').siblings().removeAttr('style'); 
-			      options[key] = othis.data('value');
-			      ins3.reload(options);
-			    }
-			  };
-			  
-			  //监听开关
-			  form.on('switch(autoplay)', function(){
-			    ins3.reload({
-			      autoplay: this.checked
-			    });
-			  });
-			  
-			  $('.demoSet').on('keyup', function(){
-			    var value = this.value
-			    ,options = {};
-			    if(!/^\d+$/.test(value)) return;
-			    
-			    options[this.name] = value;
-			    ins3.reload(options);
-			  });
-			  
-			  //其它示例
-			  $('.demoTest .layui-btn').on('click', function(){
-			    var othis = $(this), type = othis.data('type');
-			    active[type] ? active[type].call(this, othis) : '';
-			  });
-			});
-    </script>
-	<script>
-		function searchchange() {
-			if(document.getElementById("searchChangeFlg").value == "1") {
-
-				document.getElementById("td1").style.display = "block";
-				document.getElementById("searchchange").innerHTML = "<";
-				document.getElementById("searchChangeFlg").value = "0";
-			} else {
-
-				document.getElementById("td1").style.display = "none";
-				document.getElementById("searchchange").innerHTML =">";
-				document.getElementById("searchChangeFlg").value = "1";
-			}
-			return false;
-		}
 	</script>
-	<script type="text/javascript">
-		(function(){
-			 var o = document.getElementById("testmore");
-			   Subt(o);     
-		})();    
-		function Subt(obj){
-			 var s = obj.innerHTML;
-			 var p = document.createElement("span");
-			 var n = document.createElement("a");
-			 p.innerHTML = s.substring(0,200);
-			 n.innerHTML = s.length > 200 ? "...see more" : "";
-			 n.href = "###";
-			 n.onclick = function(){
-				if (n.innerHTML == "...see more"){
-					 n.innerHTML = "  close"; 
-					 p.innerHTML = s;
-				}else{
-					 n.innerHTML = "...see more";
-					 p.innerHTML = s.substring(0,200);
-			    }
-		    } 
-			obj.innerHTML = "";
-			obj.appendChild(p);
-			obj.appendChild(n);
-	   }     
- </script>
+<!--	<script>-->
+<!--		layui.use(['carousel', 'form'], function(){-->
+<!--		  var carousel = layui.carousel-->
+<!--		  ,form = layui.form;-->
+<!--		  -->
+<!--		  //常规轮播-->
+<!--		  carousel.render({-->
+<!--		    elem: '#test1'-->
+<!--		    ,arrow: 'always'-->
+<!--		    ,width: '700px'-->
+<!--		    ,height: '440px'-->
+<!--		  });-->
+<!--		  var $ = layui.$, active = {-->
+<!--			    set: function(othis){-->
+<!--			      var THIS = 'layui-bg-normal'-->
+<!--			      ,key = othis.data('key')-->
+<!--			      ,options = {};-->
+<!--			      -->
+<!--			      othis.css('background-color', '#5FB878').siblings().removeAttr('style'); -->
+<!--			      options[key] = othis.data('value');-->
+<!--			      ins3.reload(options);-->
+<!--			    }-->
+<!--			  };-->
+<!--			  -->
+<!--			  //监听开关-->
+<!--			  form.on('switch(autoplay)', function(){-->
+<!--			    ins3.reload({-->
+<!--			      autoplay: this.checked-->
+<!--			    });-->
+<!--			  });-->
+<!--			  -->
+<!--			  $('.demoSet').on('keyup', function(){-->
+<!--			    var value = this.value-->
+<!--			    ,options = {};-->
+<!--			    if(!/^\d+$/.test(value)) return;-->
+<!--			    -->
+<!--			    options[this.name] = value;-->
+<!--			    ins3.reload(options);-->
+<!--			  });-->
+<!--			  -->
+<!--			  //其它示例-->
+<!--			  $('.demoTest .layui-btn').on('click', function(){-->
+<!--			    var othis = $(this), type = othis.data('type');-->
+<!--			    active[type] ? active[type].call(this, othis) : '';-->
+<!--			  });-->
+<!--			});-->
+<!--    </script>-->
+<!--	<script>-->
+<!--		function searchchange() {-->
+<!--			if(document.getElementById("searchChangeFlg").value == "1") {-->
+
+<!--				document.getElementById("td1").style.display = "block";-->
+<!--				document.getElementById("searchchange").innerHTML = "<";-->
+<!--				document.getElementById("searchChangeFlg").value = "0";-->
+<!--			} else {-->
+
+<!--				document.getElementById("td1").style.display = "none";-->
+<!--				document.getElementById("searchchange").innerHTML =">";-->
+<!--				document.getElementById("searchChangeFlg").value = "1";-->
+<!--			}-->
+<!--			return false;-->
+<!--		}-->
+<!--	</script>-->
+<!--	<script type="text/javascript">-->
+<!--		(function(){-->
+<!--			 var o = document.getElementById("testmore");-->
+<!--			   Subt(o);     -->
+<!--		})();    -->
+<!--		function Subt(obj){-->
+<!--			 var s = obj.innerHTML;-->
+<!--			 var p = document.createElement("span");-->
+<!--			 var n = document.createElement("a");-->
+<!--			 p.innerHTML = s.substring(0,200);-->
+<!--			 n.innerHTML = s.length > 200 ? "...see more" : "";-->
+<!--			 n.href = "###";-->
+<!--			 n.onclick = function(){-->
+<!--				if (n.innerHTML == "...see more"){-->
+<!--					 n.innerHTML = "  close"; -->
+<!--					 p.innerHTML = s;-->
+<!--				}else{-->
+<!--					 n.innerHTML = "...see more";-->
+<!--					 p.innerHTML = s.substring(0,200);-->
+<!--			    }-->
+<!--		    } -->
+<!--			obj.innerHTML = "";-->
+<!--			obj.appendChild(p);-->
+<!--			obj.appendChild(n);-->
+<!--	   }     -->
+<!-- </script>-->
 </html>
