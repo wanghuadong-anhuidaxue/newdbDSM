@@ -47,6 +47,9 @@
 				height: 35px;
 				margin: 0 5px;
 			}
+			select:hover {
+				border-color: #5FB878 !important;
+			}
 		</style>
 
 		
@@ -90,6 +93,18 @@
 					<strong>{{ searchBy }} like:</strong> {{ userinput }}
 				</legend>
 			</fieldset>
+			<div class="layui-row" style="">
+				<p class="layui-col-xs6 layui-col-sm6 layui-col-md6 layui-col-lg6">Showing 1 to {{ pagination.limit }} of {{ pagination.total }} entries</p>
+				<select id ="selectlimit" name="selectlimit" class="form-control layui-col-lg-offset4 layui-col-xs2 layui-col-sm2 layui-col-md2 layui-col-lg2" style="height: 35px;">
+					<li value ="10" selectd>10item/page</li>
+					<li value ="20">20item/page</li>
+					<li value ="50">50item/page</li>
+					<li value ="100">100item/page</li>
+				</select>
+
+
+
+			</div>
 
 			<table id="example" class="table table-striped table-bordered" align="center" lay-filter="demoEvent" style="margin:0 0 0 0;">
 				<thead>
@@ -166,6 +181,7 @@
 					<!-- Website content is for educational and research purposes only and is not intended to be used for medical advice, diagnosis or treatment. -->
 				</div>
 			</div>
+		</div>
 	</body>
 
 	<script src="/newdbDSM/layui/layui.all.js"></script>
