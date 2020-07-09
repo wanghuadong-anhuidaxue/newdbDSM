@@ -123,6 +123,7 @@ def advancedSearchTable():
     Gene = request.args.get('Gene')
     Chromosome = request.args.get('Chromosome')
     DBDSMScore = request.args.get('DBDSMScore')
+
     dict = {
         'Disease': Disease
         , 'Gene': Gene
@@ -133,6 +134,7 @@ def advancedSearchTable():
     per_page = request.args.get("per_page", 10, type=int)
     # print('dict',dict)
     paginate = showAdvancedTable(dict, page, per_page)
+    # print(paginate.items)
     return render_template('searchresult2.html',page=page,per_page=per_page, pagination=paginate, Disease=Disease, Gene=Gene, Chromosome=Chromosome, DBDSMScore=DBDSMScore)
 
 def showAdvancedTable(dict, page, limit):
@@ -210,7 +212,8 @@ def researchGene():
     per_page = request.args.get("per_page", 10, type=int)
     paginate = showAdvancedTable(dict, page, per_page)
     # print(paginate)
-    return render_template('searchresult2.html',page=page,per_page=per_page, pagination=paginate, Disease=None, Gene=reGene, Chromosome=None, DBDSMScore=None)
+    return render_template('searchresult2.html', page=page, per_page=per_page, pagination=paginate, Disease='', Gene=reGene, Chromosome='', DBDSMScore='')#不能写none，会导致查询and_查询无果
+
 
 
 

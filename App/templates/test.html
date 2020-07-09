@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="/newdbDSM/css/bootstrap.css" />
 </head>
 <body>
-
+<div>
+    <p>{{ retext }}</p>
+    <form action="/testData" method="get">
+        <input type="text" name="testtext">
+        <button type="submit">提交</button>
+    </form>
+</div>
 <div class="layui-row" id="bodyer">
     <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" style="margin:20px 0">
             <blockquote class="layui-elem-quote">
@@ -32,12 +39,16 @@
 
 <script src="/newdbDSM/layui/layui.all.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
 <script type="text/javascript" src="/newdbDSM/js/jquery-1.9.1.min.js"></script>
+
+
+
 <script>
     table=layui.table;
     table.render({
         elem: '#DataFrame',
-        url: 'questData',
+        url: 'testData',
         page: {
             layout:['prev', 'page', 'next','skip','limit','count'],
             limit:10,
@@ -50,54 +61,64 @@
             Disease:"Lynch syndrome",
             cDNA:"c.105_106insAA",
             Level:"3",
-            userInput:"",
+            userInput:"aa",
         },
         cols: [
             [ //表头
-                		// 				<th>Disease</th>
-						// <th>Gene</th>
-						// <th>SNPID</th>
-						// <th>GRCh38_Position</th>
-						// <th>c.DNA</th>
-						// <th>Protein</th>
-						// <th>dbDSMscore</th>
-						// <th>dbDSM_AccNum</th>
                 {
+                    field: 'dbDSM_AccNum',
+                    title: 'dbDSM_AccNum',
+                    templet:"#dbDSM_AccNumLink",
+                    style:"display:none;"
+                },
+                {
+                    field: 'Disease',
+                    title: 'Disease',
+                    sort:true,
+                    templet: function(d){
+                            return  '<a href="testdemo?dbid='+d.dbDSM_AccNum+'&Disease='+d.Disease+'" style="color:#009688;" title="'+d.Disease+'">'+d.Disease +'</a>'
+                    },
+                }, {
                     field: 'Gene',
                     title: 'Gene',
                     sort: true,
                     width:120,
-                    templet:"#GeneLink1",
-                }, {
-                    field: 'Disease',
-                    title: 'Disease',
+                    templet:"#GeneLink",
+                    templet: function(d){
+                        return  '<a href="testdemo?dbid='+d.dbDSM_AccNum+'&Disease='+d.Disease+'" style="color:#009688;" title="'+d.Disease+'">'+d.Disease +'</a>'
+                    },
+                },{
+                    field: 'SNPID',
+                    title: 'SNPID',
                     sort:true,
-                    templet:"#DiseaseLink1",
-                }, {
-                    field: 'gDNA',
-                    title: 'gDNA',
-                    sort:true,
-                    templet:"#displaygDNA",
+                    templet:"#SNPIDLink",
                 }
                 , {
+                    field: 'GRCh38_Position',
+                    title: 'GRCh38_Position',
+                    sort:true,
+                    templet:'#GRCh38_PositionLink',
+                }, {
                     field: 'cDNA',
                     title: 'cDNA',
                     sort:true,
-                    templet:'#cDNALink',
+                    templet:"#c.DNALink",
                 }, {
                     field: 'Protein',
                     title: 'Protein',
                     sort:true,
-                    templet:"#displayProtein",
-                }
-                  , /* {
-                    field: 'PMIDNum',
-                    title: 'PMIDNum',
+                    templet:"#ProteinLink",
+                }, {
+                    field: 'dbDSMscore',
+                    title: 'dbDSMscore',
                     sort:true,
-                    //templet:"#displayProtein",
-                }   */
+                    templet:"#dbDSMscoreLink",
+                }
             ]
         ],
+        done: function () {
+            $("[data-field='dbDSM_AccNum']").css('display','none');
+        }
         /*
         done: function(res, curr, count){
             //如果是异步请求数据方式，res即为你接口返回的信息。
@@ -111,8 +132,10 @@
             console.log(count);
           } */
     });
-
+     $('table.layui-table thead tr th:eq(0)').addClass('layui-hide');// 去除表头dbid
 </script>
+
+
 
 </body>
 </html>

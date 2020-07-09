@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="/newdbDSM/css/bootstrap.min.css" />
+    <script src="/newdbDSM/js/bootstrap.min.js"></script>
+    <script src="/newdbDSM/js/jquery-3.4.1.js"></script>
+  <style>
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>内嵌按钮组</h2>
+  <p>按钮组设置下拉菜单:</p>
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary">Apple</button>
+    <button type="button" class="btn btn-primary">Samsung</button>
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Sony
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Tablet</a>
+        <a class="dropdown-item" href="#">Smartphone</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="btn-group" role="group" aria-label="...">
+<div class="btn-group" role="group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        asdasdas
+    <span class="caret"></span>
+    <ul class="dropdown-menu">
+        <li><a href="searchTable?page=">10item/page</a></li>
+        <li><a href="searchTable?page=">20item/page</a></li>
+        <li><a href="searchTable?page=">50item/page</a></li>
+        <li><a href="searchTable?page=">100item/page</a></li>
+    </ul>
+</div>
+</div>
+<div class="layui-row" style="margin-top: 200px">
+    <form action="" id ="select" name="select">
+        <select  name="limits" onchange="sendLimit(this.value)" class="form-control layui-col-lg-offset4 layui-col-xs2 layui-col-sm2 layui-col-md2 layui-col-lg2" style="height: 35px;">
+            <option value ="10" selectd>10item/page</option>
+            <option value ="20">20item/page</option>
+            <option value ="50">50item/page</option>
+            <option value ="100">100item/page</option>
+        </select>
+    </form>
+    <div><h1  id="txtHint">结果 ...</h1></div>
+</div>
+
+<script src="/newdbDSM/layui/layui.all.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script type="text/javascript" src="/newdbDSM/js/jquery-1.9.1.min.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+<script>
+    function sendLimit(str)
+        {
+        var xmlhttp;
+        if (str=="")
+          {
+              document.getElementById("txtHint").innerHTML="";
+              return;
+          }
+        if (window.XMLHttpRequest)
+          {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+          }
+        else
+          {// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+          }
+            xmlhttp.open("GET","limittest?limit="+str,true);
+            xmlhttp.onreadystatechange=function()
+          {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+        }
+          }
+        xmlhttp.send();
+    }
+</script>
+
+</body>
+</html>
