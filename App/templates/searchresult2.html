@@ -96,8 +96,6 @@
 						<strong>Gene:</strong>{{ Gene }}
 					{% elif Chromosome != '' and Chromosome != none %}
 						<strong>Chromosome:</strong>{{ Chromosome }}
-					{% elif DBDSMScore != '' and DBDSMScore != none %}
-						<strong>dbDSMScore:</strong>{{ DBDSMScore }}
 					{% endif %}
 				</legend>
 			</fieldset>
@@ -149,7 +147,7 @@
 			<div class="">
 				<ul class="pagination">
 					{% if pagination.has_prev %}
-						<li class=""><a class="page-link" href="advancedSearchTable?page={{ pagination.prev_num }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}">&laquo;</a></li>
+						<li class=""><a class="page-link" href="advancedSearchTable?page={{ pagination.prev_num }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}">&laquo;</a></li>
 						{% else %}
 						<li class="disabled"><a class="page-link" href="#">&laquo;</a></li>
 					{% endif %}
@@ -158,7 +156,7 @@
 						{% if page %}
 							{% if page != pagination.page %}
 								<li class="">
-									<a href="advancedSearchTable?page={{ page }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}">{{ page }}</a>
+									<a href="advancedSearchTable?page={{ page }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}">{{ page }}</a>
 								</li>
 							{% else %}
 								<li class="active">
@@ -171,7 +169,7 @@
 					{% endfor %}
 
 					{% if pagination.has_next %}
-						<li class=""><a class="page-link" href="advancedSearchTable?page={{ pagination.next_num }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}">&raquo;</a></li>
+						<li class=""><a class="page-link" href="advancedSearchTable?page={{ pagination.next_num }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}">&raquo;</a></li>
 						{% else %}
 						<li class="disabled"><a class="page-link" href="#">&raquo;</a></li>
 					{% endif %}

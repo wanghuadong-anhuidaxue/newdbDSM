@@ -40,8 +40,6 @@ def showTable(indata, page, limit):
         paginate = AllData.query.filter(or_(AllData.Protein.like('%'+userinput+'%'),
                                            AllData.cDNA.like('%'+userinput+'%'),
                                            AllData.SNPID.like('%'+userinput+'%'))).paginate(page, limit, False)
-    elif searchBy == 'DBDSMScore':
-        paginate = AllData.query.filter(AllData.DBDSMScore.like('%'+userinput+'%')).paginate(page, limit, False)
     else:
         paginate = []
     return paginate
@@ -78,7 +76,7 @@ def searchTable():
 def detailScore():
     dbid = request.args.get("dbid")
     result = AllData.query.filter_by(dbid=dbid).first()
-    return render_template('details.html',dbDSMData = result)
+    return render_template('details2.html',dbDSMData = result)
 
 
 @searchblue.route('/advancedSearch', methods=['GET'])
@@ -86,18 +84,15 @@ def advancedSearch():
     Disease = request.args.get('Disease')
     Gene = request.args.get('Gene')
     Chromosome = request.args.get('Chromosome')
-    DBDSMScore = request.args.get('DBDSMScore')
-    flags = {'Disease':1, 'Gene':1, 'Chromosome':1, 'DBDSMScore':1}#立标签
+    flags = {'Disease':1, 'Gene':1, 'Chromosome':1}#立标签
     sql = 'select dbid,DBDSMID'\
           +(",Disease" if(Disease=="" or Disease==None) else"")\
           +(",Gene" if (Gene == "" or Gene == None) else "")\
           +(",Chromosome" if (Chromosome == "" or Chromosome == None) else "")\
-          +(",DBDSMScore" if (DBDSMScore == "" or DBDSMScore == None) else "")\
           + " from all_data where DBDSMID like '%'"\
           +("" if(Disease=="" or Disease==None) else(" and Disease='%s'"%Disease))\
           +("" if (Gene == "" or Gene == None) else (" and Gene='%s'"%Gene)) \
-          + ("" if (Chromosome == "" or Chromosome == None) else (" and Chromosome='%s'"%Chromosome)) \
-          + ("" if (DBDSMScore == "" or DBDSMScore == None) else (" and DBDSMScore='%s'"%DBDSMScore)) +';'
+          + ("" if (Chromosome == "" or Chromosome == None) else (" and Chromosome='%s'"%Chromosome)) +';'
     # print('sql:',sql)
     result = db.session.execute(sql)
     if (Disease == "" or Disease == None):
@@ -106,8 +101,6 @@ def advancedSearch():
         flags['Gene'] = 0
     if (Chromosome == "" or Chromosome == None):
         flags['Chromosome'] = 0
-    if (DBDSMScore == "" or DBDSMScore == None):
-        flags['DBDSMScore'] = 0
 
     payload = result_to_dict(result,flags)#转为字典
     return jsonify(payload)
@@ -122,20 +115,18 @@ def advancedSearchTable():
     Disease = request.args.get('Disease')
     Gene = request.args.get('Gene')
     Chromosome = request.args.get('Chromosome')
-    DBDSMScore = request.args.get('DBDSMScore')
 
     dict = {
         'Disease': Disease
         , 'Gene': Gene
         , 'Chromosome': Chromosome
-        , 'DBDSMScore': DBDSMScore
             }
     page = request.args.get("page", 1, type=int)
     per_page = request.args.get("per_page", 10, type=int)
     # print('dict',dict)
     paginate = showAdvancedTable(dict, page, per_page)
     # print(paginate.items)
-    return render_template('searchresult2.html',page=page,per_page=per_page, pagination=paginate, Disease=Disease, Gene=Gene, Chromosome=Chromosome, DBDSMScore=DBDSMScore)
+    return render_template('searchresult2.html',page=page,per_page=per_page, pagination=paginate, Disease=Disease, Gene=Gene, Chromosome=Chromosome)
 
 def showAdvancedTable(dict, page, limit):
     '''
@@ -148,11 +139,9 @@ def showAdvancedTable(dict, page, limit):
     Disease = dict['Disease']
     Gene = dict['Gene']
     Chromosome = dict['Chromosome']
-    DBDSMScore = dict['DBDSMScore']
     return AllData.query.filter(and_(AllData.Gene.like('%'+"" if(Gene=="" or Gene==None) else Gene+'%'),
                                         AllData.Disease.like('%'+"" if(Disease=="" or Disease==None) else Disease+'%'),
-                                        AllData.Chromosome.like('%'+"" if(Chromosome=="" or Chromosome==None) else Chromosome+'%'),
-                                        AllData.DBDSMScore.like('%'+"" if(DBDSMScore=="" or DBDSMScore==None) else DBDSMScore+'%'))).paginate(page, limit, False)
+                                        AllData.Chromosome.like('%'+"" if(Chromosome=="" or Chromosome==None) else Chromosome+'%'))).paginate(page, limit, False)
 
 
 
@@ -169,7 +158,6 @@ def result_to_dict(result,flags):
         'Disease': []
         , 'Gene': []
         , 'Chromosome': []
-        , 'DBDSMScore': []
             }
     result = np.array(list(result))
     i = 0
@@ -191,12 +179,11 @@ def researchDisease():
         'Disease': Disease
         , 'Gene': ''
         , 'Chromosome': ''
-        , 'DBDSMScore': ''
             }
     page = request.args.get("page", 1, type=int)
     per_page = request.args.get("per_page", 10, type=int)
     paginate = showAdvancedTable(dict, page, per_page)
-    return render_template('searchresult2.html',page=page,per_page=per_page, pagination=paginate, Disease=Disease, Gene='', Chromosome='', DBDSMScore='')
+    return render_template('searchresult2.html',page=page,per_page=per_page, pagination=paginate, Disease=Disease, Gene='', Chromosome='')
 
 
 @searchblue.route('/researchGene', methods=['GET','POST'])
@@ -206,13 +193,12 @@ def researchGene():
         'Disease': ''
         , 'Gene': reGene
         , 'Chromosome': ''
-        , 'DBDSMScore': ''
             }
     page = request.args.get("page", 1, type=int)
     per_page = request.args.get("per_page", 10, type=int)
     paginate = showAdvancedTable(dict, page, per_page)
     # print(paginate)
-    return render_template('searchresult2.html', page=page, per_page=per_page, pagination=paginate, Disease='', Gene=reGene, Chromosome='', DBDSMScore='')#不能写none，会导致查询and_查询无果
+    return render_template('searchresult2.html', page=page, per_page=per_page, pagination=paginate, Disease='', Gene=reGene, Chromosome='')#不能写none，会导致查询and_查询无果
 
 
 
@@ -256,54 +242,63 @@ def researchGene():
 
 
 #下面这是数据库载入的代码
-# import pandas as pd
-# @searchblue.route('/addall')
-# def addAllSql():
-#     data = pd.read_csv('C:/Users/whd/Desktop/7-2/DSMv2.csv',dtype=str , encoding='ISO-8859-1')
-#     for line in data.values:
-#         allDataInfo = AllData(
-#         DBDSMID = str(line[0]),
-#         Disease =  str(line[1]),
-#         DOID =  str(line[2]),
-#         Gene =  str(line[3]),
-#         GeneID =  str(line[4]),
-#         MIM =  str(line[5]),
-#         Map_Location =  str(line[6]),
-#         VariantType =  str(line[7]),
-#         Protein =  str(line[8]),
-#         cDNA =  str(line[9]),
-#         SNPID =  str(line[10]),
-#         CodonChange =  str(line[11]),
-#         RefseqTranscript =  str(line[12]),
-#         P_Value =  str(line[13]),
-#         Strand =  str(line[14]),
-#         GRCh38_Position =  str(line[15]),
-#         GRCh37_Position =  str(line[16]),
-#         Ref =  str(line[17]),
-#         Alt =  str(line[18]),
-#         Year =  str(line[19]),
-#         PMID =  str(line[20]),
-#         Ethnicity =  str(line[21]),
-#         Classification =  str(line[22]),
-#         StrengthOfEvidence =  str(line[23]),
-#         KeySentence =  str(line[24]),
-#         PhyloP100way =  str(line[25]),
-#         PhastCons100way =  str(line[26]),
-#         GerpS =  str(line[27]),
-#         Silva =  str(line[28]),
-#         DDIG =  str(line[29]),
-#         FATHMM_MKL =  str(line[30]),
-#         CADD =  str(line[31]),
-#         Trap =  str(line[32]),
-#         DBDSMScore =  str(line[33]),
-#         Source =  str(line[34]),
-#         Chromosome = 'nan' if str(line[15]) == 'nan' else str(line[15]).split(':')[0]
-#         )
-#         db.session.add(allDataInfo)
-#         # break
-#     db.session.commit()
-#     print('ok!')
-#     return render_template("success.html")
+@searchblue.route('/addall')
+def addAllSql():
+    import pandas as pd
+    data = pd.read_csv('C:/Users/whd/PycharmProjects/newdbDSM/DSMv2.1.csv',dtype=str , encoding='ISO-8859-1')
+    for line in data.values:
+        allDataInfo = AllData(
+        DBDSMID = str(line[0]),
+        Disease =  str(line[1]),
+        DOID =  str(line[2]),
+        Gene =  str(line[3]),
+        GeneID =  str(line[4]),
+        MIM =  str(line[5]),
+        Map_Location =  str(line[6]),
+        VariantType =  str(line[7]),
+        Protein =  str(line[8]),
+        cDNA =  str(line[9]),
+        SNPID =  str(line[10]),
+        CodonChange =  str(line[11]),
+        RefseqTranscript =  str(line[12]),
+        P_Value =  str(line[13]),
+        Strand =  str(line[14]),
+        GRCh38_Position =  str(line[15]),
+        GRCh37_Position =  str(line[16]),
+        Ref =  str(line[17]),
+        Alt =  str(line[18]),
+        Year =  str(line[19]),
+        PMID =  str(line[20]),
+        Ethnicity =  str(line[21]),
+        Classification =  str(line[22]),
+        StrengthOfEvidence =  str(line[23]),
+        KeySentence =  str(line[24]),
+        PrDSM = str(line[26]),
+        TraP = str(line[27]),
+        PhD_SNPg = str(line[28]),
+        FATHMM_MKL = str(line[29]),
+        CADD = str(line[30]),
+        DANN = str(line[31]),
+        FATHMM_XF = str(line[32]),
+        priPhCons = str(line[33]),
+        mamPhCons = str(line[34]),
+        verPhCons = str(line[35]),
+        priPhyloP = str(line[36]),
+        mamPhyloP = str(line[37]),
+        verPhyloP = str(line[38]),
+        GerpS = str(line[39]),
+        TFBs = str(line[40]),
+        TE = str(line[41]),
+        dPSIZ = str(line[42]),
+        DSP = str(line[43]),
+        Source =  str(line[25]),
+        Chromosome = 'nan' if str(line[15]) == 'nan' else str(line[15]).split(':')[0]
+        )
+        db.session.add(allDataInfo)
+        # break
+    db.session.commit()
+    print('ok!')
+    return render_template("success.html")
 
 
 

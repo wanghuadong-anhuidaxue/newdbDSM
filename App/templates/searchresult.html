@@ -127,7 +127,6 @@
 						<th>GRCh38_Position</th>
 						<th>c.DNA</th>
 						<th>Protein</th>
-						<th>dbDSMscore</th>
 						<th>dbDSM_AccNum</th>
 					</tr>
 				</thead>
@@ -139,7 +138,6 @@
 						<td>{{ dbDSMScore.GRCh38_Position }}</td>
 						<td>{{ dbDSMScore.cDNA }}</td>
 						<td>{{ dbDSMScore.Protein }}</td>
-						<td>{{ dbDSMScore.DBDSMScore }}</td>
 						<td><a style="color:#5FB878; " href="detailScore?dbid={{ dbDSMScore.dbid }}">{{ dbDSMScore.DBDSMID }}</a></td>
 					</tr>
             	{% endfor %}

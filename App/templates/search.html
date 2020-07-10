@@ -15,10 +15,10 @@
   		str = str.replace(/"/g, '&quto;');
   		str = str.replace(/'/g, '&#39;');
 		document.getElementById("userinput").value = str
-		if(str==null||str==""){
-		alert("error! value is None");
-		return false;
-		}
+		// if(str==null||str==""){
+		// alert("error! value is None");
+		// return false;
+		// }
 	}
 </script>
 	</head>
@@ -136,15 +136,6 @@
 								</div>
 							</div>
 
-							<div class="layui-form-item" style="text-align:left;">
-							    <!-- <label class="layui-form-label" id="AND" style="border:none;background-color:inherit;width:2px;"></label> -->
-								<label class="layui-form-label" style="text-align:left;width:17%;margin-left:11%;">dbDSMScore</label>
-								<div class="layui-input-block" style="width:61%;margin-left:28%;">
-									<select name="DBDSMScore" id="DBDSMScore" lay-filter="DBDSMScore">
-										<option value="">Select dbDSMScore</option>
-									</select>
-								</div>
-							</div>
 							<div class="layui-form-item" align="center" style="margin-bottom:50px;">
 								<div class="layui-input-block" style="margin-left: 0px;margin-right: 0px;">
 									<button class="layui-btn" lay-submit lay-filter="*" style="background-color: #5FB878;">Submit</button>
@@ -188,7 +179,6 @@
 					document.getElementById("Disease").options.length = 1;
 					document.getElementById("Gene").options.length = 1;
 					document.getElementById("Chromosome").options.length = 1;
-					document.getElementById("DBDSMScore").options.length = 1;
 					selectId.splice(0, selectId.length);
 				} else {
 					selectId.push(select);
@@ -274,10 +264,6 @@
 			form.on('select(Chromosome)', function(data) {
 				document.getElementById("hideU").value = "1";
 				formClick(document.getElementById("Chromosome"), selectId, data.value);
-			});
-			form.on('select(DBDSMScore)', function(data) {
-				document.getElementById("hideU").value = "1";
-				formClick(document.getElementById("DBDSMScore"), selectId, data.value);
 			});
 			<!--
 			form.on('select(reset)', function(data) {
