@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>dbDSM</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no” />
+		<link rel="stylesheet" href="/newdbDSM/layui/layui.js">
+		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css">
+		<link rel="stylesheet" href="/newdbDSM/css/home.css" />
+<!--		<link href="/newdbDSM/css/bootstrap.css" rel="stylesheet" />-->
+		<script src="/newdbDSM/js/jquery-3.4.1.js"></script>
+		<script src="/newdbDSM/js/bootstrap.min.js"></script>
+<!--		<link href="bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />-->
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>-->
+<!--		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+		<style>
+			body {
+				position: relative;
+			}
+			a {
+				color: #393d49;
+			}
+			ul.nav-pills {
+				width: 240px;
+				margin-top: 20px;
+				border-radius: 4px;
+				border: 1px solid #ddd;
+				box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+				position: fixed;
+			}
+
+			ul.nav-pills li {
+				margin: 0;
+				border-top: 1px solid #ddd;
+			}
+
+			ul.nav-pills li:first-child {
+				border-top: none;
+			}
+
+			ul.nav-pills li a {
+				margin: 0;
+				padding: 8px 16px;
+				border-radius: 0;
+			}
+
+			ul.nav-pills li.active a, ul.nav-pills li.active a:hover {
+				color: #fff;
+				background: #393d49;
+				border: 1px solid #393d49;
+			}
+
+			ul.nav-pills li:first-child a {
+				border-radius: 4px 4px 0 0;
+			}
+
+			ul.nav-pills li:last-child a {
+				border-radius: 0 0 4px 4px;
+			}
+
+			ul.nav-pills.affix {
+				top: 30px; /* Set the top position of pinned element */
+			}
+
+		</style>
+	</head>
+
+	<body data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+		<div class="layui-container" style="min-width:1140px;">
+			<div class="layui-row" id="header">
+				<!--头-->
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner" style="background: url(/newdbDSM/images/Picture8.png);background-size:cover;">
+				</div>
+				<!--这里是banner-->
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
+					<!--这里是导航栏-->
+					<ul class="layui-nav" lay-filter="" id="navbar">
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/">Home</a>
+						</li>
+						<li class="layui-nav-item layui-this">
+							<a href="/newdbDSM/search">Search</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/download">Download</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/about">About</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/submit">Submit</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="/newdbDSM/contact">Contact us</a>
+						</li>
+					</ul>
+				</div>
+				<!--导航栏到这-->
+			</div>
+			<!--头到这-->
+			<div class="container-fluid">
+				<div class="row">
+
+					<div class="col-sm-9 col-9">
+						<div id="section1">
+							<div class="page-header">
+								<strong>Overview</strong>
+							</div>
+							<div>
+								<p>Synonymous mutation is a form of single nucleotide mutation which replaces one base to another
+									in the coding sequence that does not alter amino acids in the translated protein due to the degeneracy genetic code. </p>
+							</div>
+						</div>
+						<div id="section2">
+							<div class="page-header">
+								<strong>Sequential information</strong>
+							</div>
+							<div>
+								<table id="details" class="layui-table table-striped" lay-filter="demoEvent" lay-even
+									   lay-skin="line" style="margin:auto">
+									<colgroup>
+										<col width="150"/>
+										<col/>
+
+									</colgroup>
+									<thread>
+									</thread>
+									<tbody>
+									<tr class="DBDSMID">
+										<td>dbDSMAccNum</td>
+										<td class="DBDSMID" colspan="11">{{ dbDSMData.DBDSMID }}</td>
+									</tr>
+									<tr class="Disease">
+										<td>Disease</td>
+										<td class="Disease" colspan="11">{{ dbDSMData.Disease }}</td>
+									</tr>
+									<tr class="DOID">
+										<td>DOID</td>
+										<td class="DOID" colspan="11"><a style="color:#5FB878; " href="https://disease-ontology.org/?id={{ dbDSMData.DOID }}" target="view_window">{{ dbDSMData.DOID }}</a></td>
+									</tr>
+									<tr class="Gene">
+										<td>Gene</td>
+										<td class="Gene" colspan="11">{{ dbDSMData.Gene }}</td>
+									</tr>
+
+									<tr class="GeneID">
+										<td>GeneID</td>
+										<td class="GeneID" colspan="11"><a style="color:#5FB878; "
+																		   href="https://www.ncbi.nlm.nih.gov/gene/{{ dbDSMData.GeneID }}"
+																		   target="view_window">{{ dbDSMData.GeneID
+											}}</a></td>
+									</tr>
+
+									<tr class="MIM">
+										<td>MIM</td>
+										<td class="MIM" colspan="11">{{ dbDSMData.MIM }}</td>
+									</tr>
+									<tr class="Map_Location">
+										<td>Map_Location</td>
+										<td class="Map_Location" colspan="11">{{ dbDSMData.Map_Location }}</td>
+									</tr>
+									<tr class="VariantType">
+										<td>VariantType</td>
+										<td class="VariantType" colspan="11">{{ dbDSMData.VariantType }}</td>
+									</tr>
+									<tr class="Protein">
+										<td>Protein</td>
+										<td class="Protein" colspan="11">{{ dbDSMData.Protein }}</td>
+									</tr>
+									<tr class="cDNA">
+										<td>c.DNA</td>
+										<td class="cDNA" colspan="11">{{ dbDSMData.cDNA }}</td>
+									</tr>
+
+									<tr class="SNPID">
+										<td>SNPID</td>
+										<td class="SNPID" colspan="11">{{ dbDSMData.SNPID }}</td>
+									</tr>
+									<tr class="CodonChange">
+										<td>CodonChange</td>
+										<td class="CodonChange" colspan="11">{{ dbDSMData.CodonChange }}</td>
+									</tr>
+
+									<tr class="RefseqTranscript">
+										<td>RefseqTranscript</td>
+										<td class="RefseqTranscript" colspan="11">{{ dbDSMData.RefseqTranscript }}</td>
+									</tr>
+
+									<tr class="P_Value">
+										<td>P_value</td>
+										<td class="P_Value" colspan="11">{{ dbDSMData.P_Value }}</td>
+									</tr>
+									<tr class="Strand">
+										<td>Strand</td>
+										<td class="Strand" colspan="11">{{ dbDSMData.Strand }}</td>
+									</tr>
+
+									<tr class="GRCh38_Position">
+										<td>GRCh38_Position</td>
+										<td class="GRCh38_Position" colspan="11">{{ dbDSMData.GRCh38_Position }}</td>
+									</tr>
+
+									<tr class="GRCh37_Position">
+										<td>GRCh37_Position</td>
+										<td class="GRCh37_Position" colspan="11">{{ dbDSMData.GRCh37_Position }}</td>
+									</tr>
+
+									<tr class="Ref">
+										<td>Ref</td>
+										<td class="Ref" colspan="11">{{ dbDSMData.Ref }}</td>
+									</tr>
+
+									<tr class="Alt">
+										<td>Alt</td>
+										<td class="Alt" colspan="11">{{ dbDSMData.Alt }}</td>
+									</tr>
+									<tr class="Source">
+										<td>Source</td>
+										<td class="Source" colspan="11">{{ dbDSMData.Source }}</td>
+									</tr>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+						<div id="section3">
+							<div class="page-header">
+								<strong>Evidence information</strong>
+							</div>
+							<div>
+								<table id="details3" class="layui-table table-striped" lay-filter="demoEvent" lay-even
+									   lay-skin="line" style="margin:auto">
+									<tr>
+										<th class="PMID">PMID</th>
+										<th class="Year">Year</th>
+										<th class="Ethnicity">Ethnicity</th>
+										<th class="Classification">Classification</th>
+										<th class="StrengthOfEvidence">StrengthOfEvidence</th>
+										<th class="KeySentence">KeySentence</th>
+									</tr>
+									<tr>
+										<td class="PMID">{{ dbDSMData.PMID }}</td>
+										<td class="Year">{{ dbDSMData.Year }}</td>
+										<td class="Ethnicity">{{ dbDSMData.Ethnicity }}</td>
+										<td class="Classification">{{ dbDSMData.Classification }}</td>
+										<td class="StrengthOfEvidence">{{ dbDSMData.StrengthOfEvidence }}</td>
+										<td class="KeySentence">{{ dbDSMData.KeySentence }}</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div id="section4">
+							<div class="page-header">
+								<strong>Functional information</strong>
+							</div>
+							<div>
+								<table id="details2" class="layui-table table-striped" lay-filter="demoEvent" lay-even
+									   lay-skin="line" style="margin:auto">
+
+									<tr class="PrDSM">
+										<td>PrDSM</td>
+										<td class="PrDSM" colspan="11">{{ dbDSMData.PrDSM }}</td>
+									<tr class="TraP">
+										<td>TraP</td>
+										<td class="TraP" colspan="11">{{ dbDSMData.TraP }}</td>
+									<tr class="PhD_SNPg">
+										<td>PhD_SNPg</td>
+										<td class="PhD_SNPg" colspan="11">{{ dbDSMData.PhD_SNPg }}</td>
+									<tr class="FATHMM_MKL">
+										<td>FATHMM_MKL</td>
+										<td class="FATHMM_MKL" colspan="11">{{ dbDSMData.FATHMM_MKL }}</td>
+									<tr class="CADD">
+										<td>CADD</td>
+										<td class="CADD" colspan="11">{{ dbDSMData.CADD }}</td>
+									<tr class="DANN">
+										<td>DANN</td>
+										<td class="DANN" colspan="11">{{ dbDSMData.DANN }}</td>
+									<tr class="FATHMM_XF">
+										<td>FATHMM_XF</td>
+										<td class="FATHMM_XF" colspan="11">{{ dbDSMData.FATHMM_XF }}</td>
+									<tr class="priPhCons">
+										<td>priPhCons</td>
+										<td class="priPhCons" colspan="11">{{ dbDSMData.priPhCons }}</td>
+									<tr class="mamPhCons">
+										<td>mamPhCons</td>
+										<td class="mamPhCons" colspan="11">{{ dbDSMData.mamPhCons }}</td>
+									<tr class="verPhCons">
+										<td>verPhCons</td>
+										<td class="verPhCons" colspan="11">{{ dbDSMData.verPhCons }}</td>
+									<tr class="priPhyloP">
+										<td>FATHMM_XF</td>
+										<td class="priPhyloP" colspan="11">{{ dbDSMData.priPhyloP }}</td>
+									<tr class="mamPhyloP">
+										<td>mamPhyloP</td>
+										<td class="mamPhyloP" colspan="11">{{ dbDSMData.mamPhyloP }}</td>
+									<tr class="verPhyloP">
+										<td>verPhyloP</td>
+										<td class="verPhyloP" colspan="11">{{ dbDSMData.verPhyloP }}</td>
+									<tr class="GerpS">
+										<td>GerpS</td>
+										<td class="GerpS" colspan="11">{{ dbDSMData.GerpS }}</td>
+									</tr>
+								</table>
+
+								<div id="container" style="height: 400px"></div>
+								<script type="text/javascript"
+										src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+								<script type="text/javascript"
+										src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+								<script type="text/javascript"
+										src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+								<script type="text/javascript"
+										src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+								<script type="text/javascript"
+										src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+								<script type="text/javascript">
+									var dom = document.getElementById("container");
+									var myChart1 = echarts.init(dom);
+									var app1 = {};
+									option1 = null;
+									var dataAxis = ['PrDSM', 'TraP', 'PhD_SNPg', 'FATHMM_MKL', 'CADD', 'DANN', 'FATHMM_XF', 'priPhCons', 'mamPhCons', 'verPhCons', 'FATHMM_XF', 'mamPhyloP', 'verPhyloP', 'GerpS'];
+									var data = ['{{ dbDSMData.PrDSM }}','{{ dbDSMData.TraP }}','{{ dbDSMData.PhD_SNPg }}','{{ dbDSMData.FATHMM_MKL }}','{{ dbDSMData.CADD }}','{{ dbDSMData.DANN }}','{{ dbDSMData.FATHMM_XF }}','{{ dbDSMData.priPhCons }}','{{ dbDSMData.mamPhCons }}','{{ dbDSMData.verPhCons }}','{{ dbDSMData.priPhyloP }}','{{ dbDSMData.mamPhyloP }}','{{ dbDSMData.verPhyloP }}','{{ dbDSMData.GerpS }}'];
+									var yMax = Math.max.apply(this,data);
+
+
+									option1 = {
+										title: {},
+										xAxis: {
+											data: dataAxis,
+											axisLabel: {
+
+												textStyle: {
+													color: '#000'
+												}
+											},
+											axisTick: {
+												show: false
+											},
+											axisLine: {
+												show: false
+											},
+											z: 10
+										},
+										yAxis: {
+											axisLine: {
+												show: false
+											},
+											axisTick: {
+												show: false
+											},
+											axisLabel: {
+												textStyle: {
+													color: '#999'
+												}
+											}
+										},
+										dataZoom: [
+											{
+												type: 'inside'
+											}
+										],
+										series: [
+											{
+												type: 'bar',
+												barGap: '-100%',
+												barCategoryGap: '60%',
+												label: {
+													show: true,
+													position: 'top'
+												},
+												itemStyle: {
+													color: new echarts.graphic.LinearGradient(
+															0, 0, 0, 1,
+															[
+																{offset: 0, color: '#C23531'},
+																{offset: 0.5, color: '#D86C86'},
+																{offset: 1, color: '#C23531'}
+															]
+													)
+												},
+												emphasis: {
+													itemStyle: {
+														color: new echarts.graphic.LinearGradient(
+																0, 0, 0, 1,
+																[
+																	{offset: 0, color: '#D86C86'},
+																	{offset: 0.7, color: '#C23531'},
+																	{offset: 1, color: '#D86C86'}
+																]
+														)
+													}
+												},
+												data: data
+											}
+										]
+									};
+
+									// Enable data zoom when user click bar.
+									var zoomSize = 6;
+									myChart1.on('click', function (params) {
+										console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+										myChart1.dispatchAction({
+											type: 'dataZoom',
+											startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+											endValue: dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+										});
+									});
+									;
+									if (option1 && typeof option1 === "object") {
+										myChart1.setOption(option1, true);
+									}
+								</script>
+								<div id="container2" style=" height: 600px"></div>
+								<script>
+									var dom = document.getElementById("container2");
+									var myChart = echarts.init(dom);
+									var app = {};
+									var list = ['PrDSM', 'TraP', 'PhD_SNPg', 'FATHMM_MKL', 'CADD', 'DANN', 'FATHMM_XF', 'priPhCons', 'mamPhCons', 'verPhCons', 'FATHMM_XF', 'mamPhyloP', 'verPhyloP', 'GerpS']
+									option = null;
+									option = {
+										title: {
+										},
+										tooltip: {
+											trigger: 'axis'
+										},
+										legend: {
+											left: 'center',
+											data: ['某突变']
+										},
+										radar: [
+											{
+												indicator: (function () {
+													var res = [];
+													for (var i = 0; i < 14; i++) {
+														res.push({text: list[i], max: 10});
+													}
+													return res;
+												})(),
+												radius: 200
+											}
+										],
+										series: [
+											{
+												type: 'radar',
+												tooltip: {
+													trigger: 'item'
+												},
+												areaStyle: {},
+												data: [
+													{
+														value: ['{{ dbDSMData.PrDSM }}','{{ dbDSMData.TraP }}','{{ dbDSMData.PhD_SNPg }}','{{ dbDSMData.FATHMM_MKL }}','{{ dbDSMData.CADD }}','{{ dbDSMData.DANN }}','{{ dbDSMData.FATHMM_XF }}','{{ dbDSMData.priPhCons }}','{{ dbDSMData.mamPhCons }}','{{ dbDSMData.verPhCons }}','{{ dbDSMData.priPhyloP }}','{{ dbDSMData.mamPhyloP }}','{{ dbDSMData.verPhyloP }}','{{ dbDSMData.GerpS }}'],
+														name: '功能打分'
+													}
+												]
+											}
+										]
+									};
+									;
+									if (option && typeof option === "object") {
+										myChart.setOption(option, true);
+									}
+								</script>
+							</div>
+						</div>
+					</div>
+					<nav class="col-sm-3 col-3" id="myScrollspy" >
+						<ul class="nav nav-pills nav-stacked"  id="myNav">
+							<li><a class="active" href="#section1">Overview</a></li>
+							<li><a href="#section2">Sequential information</a></li>
+							<li><a href="#section3">Evidence information</a></li>
+							<li><a href="#section4">Functional information</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<div class="layui-row" id="footer" align='center'>
+				<hr class="layui-bg-black">
+				<div class="link">
+					Links:
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/PrDSM/" target="_blank">PrDSM</a>
+					<div style="display:inline;">|</div>
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/IDSV/" target="_blank">IDSV</a>
+					<!-- <div style="display:inline;">|</div>
+					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/Melanoma/index.jsp" target="_blank">Melanoma</a> -->
+				</div>
+				<div class="copyright">
+					Copyright©
+					<a class="ow" href="http://en.ahu.edu.cn/" target="_blank">AnHui University</a> ©All Rights Reserved.
+				</div>
+				<div class="use">
+					<!-- Website content is for educational and research purposes only and is not intended to be used for medical advice, diagnosis or treatment. -->
+				</div>
+			</div>
+
+		</div>
+	</body>
+
+	<script src="/newdbDSM/layui/layui.all.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#myNav").affix({
+				offset: {
+					top: 125
+			  }
+			});
+		});
+	</script>
+
+
+</html>
