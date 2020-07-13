@@ -7,16 +7,16 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no” />
+
 		<link rel="stylesheet" href="/newdbDSM/layui/layui.js">
 		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css">
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/newdbDSM/css/home.css" />
-<!--		<link href="/newdbDSM/css/bootstrap.css" rel="stylesheet" />-->
+
 		<script src="/newdbDSM/js/jquery-3.4.1.js"></script>
 		<script src="/newdbDSM/js/bootstrap.min.js"></script>
-<!--		<link href="bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />-->
-		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-<!--		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>-->
-<!--		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+
 		<style>
 			body {
 				position: relative;
@@ -63,8 +63,10 @@
 			}
 
 			ul.nav-pills.affix {
-				top: 30px; /* Set the top position of pinned element */
+				/*top: 170px; !* Set the top position of pinned element *!*/
 			}
+
+			a:hover{text-decoration: none;}
 
 		</style>
 	</head>
@@ -80,7 +82,7 @@
 					<!--这里是导航栏-->
 					<ul class="layui-nav" lay-filter="" id="navbar">
 						<li class="layui-nav-item">
-							<a href="/newdbDSM/">Home</a>
+							<a name="heada" href="/newdbDSM/">Home</a>
 						</li>
 						<li class="layui-nav-item layui-this">
 							<a href="/newdbDSM/search">Search</a>
@@ -108,20 +110,92 @@
 					<div class="col-sm-9 col-9">
 						<div id="section1">
 							<div class="page-header">
-								<strong>Overview</strong>
+								<h1>Functional Score</h1>
 							</div>
-							<div>
-								<p>Synonymous mutation is a form of single nucleotide mutation which replaces one base to another
-									in the coding sequence that does not alter amino acids in the translated protein due to the degeneracy genetic code. </p>
+							<div class="alert alert-success" role="alert">
+								A Functional information for this SNP
+							</div>
+							<div class="layui-container">
+								<div class="layui-row">
+									<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
+										<table class="layui-table table-striped" style="width: 100%; margin-top: 20%">
+											<tr>
+												<th><strong>Tools</strong></th>
+												<th><strong>Score</strong></th>
+											</tr>
+
+											<tr class="PrDSM">
+												<td>PrDSM</td>
+												<td class="PrDSM" colspan="11">{{ dbDSMData.PrDSM }}</td>
+											<tr class="TraP">
+												<td>TraP</td>
+												<td class="TraP" colspan="11">{{ dbDSMData.TraP }}</td>
+											<tr class="PhD_SNPg">
+												<td>FATHMM-MKL</td>
+												<td class="FATHMM_MKL" colspan="11">{{ dbDSMData.FATHMM_MKL }}</td>
+										</table>
+									</div>
+									<div class="layui-col-xs8 layui-col-sm8 layui-col-md8 layui-col-lg8" style="height: 400px; margin-bottom:-5%;">
+										<div class="col-5" id="container1" style="height: 500px;"></div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div id="section2">
 							<div class="page-header">
-								<strong>Sequential information</strong>
+								<h1>Conservative Score</h1>
+							</div>
+							<div class="alert alert-success" role="alert">
+								A Functional information for this SNP
+							</div>
+							<div class="layui-container">
+								<div class="layui-row">
+									<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
+										<table id="" class="layui-table table-striped" style="width: 100%">
+											<tr>
+												<th><strong>Tools</strong></th>
+												<th><strong>Score</strong></th>
+											</tr>
+											<tr class="priPhCons">
+												<td>priPhCons</td>
+												<td class="priPhCons" colspan="11">{{ dbDSMData.priPhCons }}</td>
+											<tr class="mamPhCons">
+												<td>mamPhCons</td>
+												<td class="mamPhCons" colspan="11">{{ dbDSMData.mamPhCons }}</td>
+											<tr class="verPhCons">
+												<td>verPhCons</td>
+												<td class="verPhCons" colspan="11">{{ dbDSMData.verPhCons }}</td>
+											<tr class="priPhyloP">
+												<td>priPhyloP</td>
+												<td class="priPhyloP" colspan="11">{{ dbDSMData.priPhyloP }}</td>
+											<tr class="mamPhyloP">
+												<td>mamPhyloP</td>
+												<td class="mamPhyloP" colspan="11">{{ dbDSMData.mamPhyloP }}</td>
+											<tr class="verPhyloP">
+												<td>verPhyloP</td>
+												<td class="verPhyloP" colspan="11">{{ dbDSMData.verPhyloP }}</td>
+											<tr class="GerpS">
+												<td>GerpS</td>
+												<td class="GerpS" colspan="11">{{ dbDSMData.GerpS }}</td>
+											</tr>
+										</table>
+									</div>
+									<div class="layui-col-xs8 layui-col-sm8 layui-col-md8 layui-col-lg8">
+										<div class="col-5" id="container2" style="margin-right: 60px; height: 400%; width: 70%;"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="section3">
+							<div class="page-header">
+								<h1>Sequential information</h1>
+							</div>
+							<div class="alert alert-success" role="alert">
+								A Sequential information for this SNP
 							</div>
 							<div>
 								<table id="details" class="layui-table table-striped" lay-filter="demoEvent" lay-even
-									   lay-skin="line" style="margin:auto">
+									   lay-skin="line" style="word-break:break-all; ">
 									<colgroup>
 										<col width="150"/>
 										<col/>
@@ -227,9 +301,12 @@
 
 							</div>
 						</div>
-						<div id="section3">
+						<div id="section4">
 							<div class="page-header">
-								<strong>Evidence information</strong>
+								<h1>Evidence information</h1>
+							</div>
+							<div class="alert alert-success" role="alert">
+								A Evidence information for this SNP
 							</div>
 							<div>
 								<table id="details3" class="layui-table table-striped" lay-filter="demoEvent" lay-even
@@ -243,7 +320,9 @@
 										<th class="KeySentence">KeySentence</th>
 									</tr>
 									<tr>
-										<td class="PMID">{{ dbDSMData.PMID }}</td>
+										<td class="PMID"><a style="color:#5FB878; "
+															href="https://pubmed.ncbi.nlm.nih.gov/{{ dbDSMData.PMID }}"
+															target="view_window">{{ dbDSMData.PMID }}</a></td>
 										<td class="Year">{{ dbDSMData.Year }}</td>
 										<td class="Ethnicity">{{ dbDSMData.Ethnicity }}</td>
 										<td class="Classification">{{ dbDSMData.Classification }}</td>
@@ -253,226 +332,14 @@
 								</table>
 							</div>
 						</div>
-						<div id="section4">
-							<div class="page-header">
-								<strong>Functional information</strong>
-							</div>
-							<div>
-								<table id="details2" class="layui-table table-striped" lay-filter="demoEvent" lay-even
-									   lay-skin="line" style="margin:auto">
 
-									<tr class="PrDSM">
-										<td>PrDSM</td>
-										<td class="PrDSM" colspan="11">{{ dbDSMData.PrDSM }}</td>
-									<tr class="TraP">
-										<td>TraP</td>
-										<td class="TraP" colspan="11">{{ dbDSMData.TraP }}</td>
-									<tr class="PhD_SNPg">
-										<td>PhD_SNPg</td>
-										<td class="PhD_SNPg" colspan="11">{{ dbDSMData.PhD_SNPg }}</td>
-									<tr class="FATHMM_MKL">
-										<td>FATHMM_MKL</td>
-										<td class="FATHMM_MKL" colspan="11">{{ dbDSMData.FATHMM_MKL }}</td>
-									<tr class="CADD">
-										<td>CADD</td>
-										<td class="CADD" colspan="11">{{ dbDSMData.CADD }}</td>
-									<tr class="DANN">
-										<td>DANN</td>
-										<td class="DANN" colspan="11">{{ dbDSMData.DANN }}</td>
-									<tr class="FATHMM_XF">
-										<td>FATHMM_XF</td>
-										<td class="FATHMM_XF" colspan="11">{{ dbDSMData.FATHMM_XF }}</td>
-									<tr class="priPhCons">
-										<td>priPhCons</td>
-										<td class="priPhCons" colspan="11">{{ dbDSMData.priPhCons }}</td>
-									<tr class="mamPhCons">
-										<td>mamPhCons</td>
-										<td class="mamPhCons" colspan="11">{{ dbDSMData.mamPhCons }}</td>
-									<tr class="verPhCons">
-										<td>verPhCons</td>
-										<td class="verPhCons" colspan="11">{{ dbDSMData.verPhCons }}</td>
-									<tr class="priPhyloP">
-										<td>FATHMM_XF</td>
-										<td class="priPhyloP" colspan="11">{{ dbDSMData.priPhyloP }}</td>
-									<tr class="mamPhyloP">
-										<td>mamPhyloP</td>
-										<td class="mamPhyloP" colspan="11">{{ dbDSMData.mamPhyloP }}</td>
-									<tr class="verPhyloP">
-										<td>verPhyloP</td>
-										<td class="verPhyloP" colspan="11">{{ dbDSMData.verPhyloP }}</td>
-									<tr class="GerpS">
-										<td>GerpS</td>
-										<td class="GerpS" colspan="11">{{ dbDSMData.GerpS }}</td>
-									</tr>
-								</table>
-
-								<div id="container" style="height: 400px"></div>
-								<script type="text/javascript"
-										src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
-								<script type="text/javascript"
-										src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
-								<script type="text/javascript"
-										src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
-								<script type="text/javascript"
-										src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
-								<script type="text/javascript"
-										src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
-								<script type="text/javascript">
-									var dom = document.getElementById("container");
-									var myChart1 = echarts.init(dom);
-									var app1 = {};
-									option1 = null;
-									var dataAxis = ['PrDSM', 'TraP', 'PhD_SNPg', 'FATHMM_MKL', 'CADD', 'DANN', 'FATHMM_XF', 'priPhCons', 'mamPhCons', 'verPhCons', 'FATHMM_XF', 'mamPhyloP', 'verPhyloP', 'GerpS'];
-									var data = ['{{ dbDSMData.PrDSM }}','{{ dbDSMData.TraP }}','{{ dbDSMData.PhD_SNPg }}','{{ dbDSMData.FATHMM_MKL }}','{{ dbDSMData.CADD }}','{{ dbDSMData.DANN }}','{{ dbDSMData.FATHMM_XF }}','{{ dbDSMData.priPhCons }}','{{ dbDSMData.mamPhCons }}','{{ dbDSMData.verPhCons }}','{{ dbDSMData.priPhyloP }}','{{ dbDSMData.mamPhyloP }}','{{ dbDSMData.verPhyloP }}','{{ dbDSMData.GerpS }}'];
-									var yMax = Math.max.apply(this,data);
-
-
-									option1 = {
-										title: {},
-										xAxis: {
-											data: dataAxis,
-											axisLabel: {
-
-												textStyle: {
-													color: '#000'
-												}
-											},
-											axisTick: {
-												show: false
-											},
-											axisLine: {
-												show: false
-											},
-											z: 10
-										},
-										yAxis: {
-											axisLine: {
-												show: false
-											},
-											axisTick: {
-												show: false
-											},
-											axisLabel: {
-												textStyle: {
-													color: '#999'
-												}
-											}
-										},
-										dataZoom: [
-											{
-												type: 'inside'
-											}
-										],
-										series: [
-											{
-												type: 'bar',
-												barGap: '-100%',
-												barCategoryGap: '60%',
-												label: {
-													show: true,
-													position: 'top'
-												},
-												itemStyle: {
-													color: new echarts.graphic.LinearGradient(
-															0, 0, 0, 1,
-															[
-																{offset: 0, color: '#C23531'},
-																{offset: 0.5, color: '#D86C86'},
-																{offset: 1, color: '#C23531'}
-															]
-													)
-												},
-												emphasis: {
-													itemStyle: {
-														color: new echarts.graphic.LinearGradient(
-																0, 0, 0, 1,
-																[
-																	{offset: 0, color: '#D86C86'},
-																	{offset: 0.7, color: '#C23531'},
-																	{offset: 1, color: '#D86C86'}
-																]
-														)
-													}
-												},
-												data: data
-											}
-										]
-									};
-
-									// Enable data zoom when user click bar.
-									var zoomSize = 6;
-									myChart1.on('click', function (params) {
-										console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
-										myChart1.dispatchAction({
-											type: 'dataZoom',
-											startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
-											endValue: dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
-										});
-									});
-									;
-									if (option1 && typeof option1 === "object") {
-										myChart1.setOption(option1, true);
-									}
-								</script>
-								<div id="container2" style=" height: 600px"></div>
-								<script>
-									var dom = document.getElementById("container2");
-									var myChart = echarts.init(dom);
-									var app = {};
-									var list = ['PrDSM', 'TraP', 'PhD_SNPg', 'FATHMM_MKL', 'CADD', 'DANN', 'FATHMM_XF', 'priPhCons', 'mamPhCons', 'verPhCons', 'FATHMM_XF', 'mamPhyloP', 'verPhyloP', 'GerpS']
-									option = null;
-									option = {
-										title: {
-										},
-										tooltip: {
-											trigger: 'axis'
-										},
-										legend: {
-											left: 'center',
-											data: ['某突变']
-										},
-										radar: [
-											{
-												indicator: (function () {
-													var res = [];
-													for (var i = 0; i < 14; i++) {
-														res.push({text: list[i], max: 10});
-													}
-													return res;
-												})(),
-												radius: 200
-											}
-										],
-										series: [
-											{
-												type: 'radar',
-												tooltip: {
-													trigger: 'item'
-												},
-												areaStyle: {},
-												data: [
-													{
-														value: ['{{ dbDSMData.PrDSM }}','{{ dbDSMData.TraP }}','{{ dbDSMData.PhD_SNPg }}','{{ dbDSMData.FATHMM_MKL }}','{{ dbDSMData.CADD }}','{{ dbDSMData.DANN }}','{{ dbDSMData.FATHMM_XF }}','{{ dbDSMData.priPhCons }}','{{ dbDSMData.mamPhCons }}','{{ dbDSMData.verPhCons }}','{{ dbDSMData.priPhyloP }}','{{ dbDSMData.mamPhyloP }}','{{ dbDSMData.verPhyloP }}','{{ dbDSMData.GerpS }}'],
-														name: '功能打分'
-													}
-												]
-											}
-										]
-									};
-									;
-									if (option && typeof option === "object") {
-										myChart.setOption(option, true);
-									}
-								</script>
-							</div>
-						</div>
 					</div>
 					<nav class="col-sm-3 col-3" id="myScrollspy" >
 						<ul class="nav nav-pills nav-stacked"  id="myNav">
-							<li><a class="active" href="#section1">Overview</a></li>
-							<li><a href="#section2">Sequential information</a></li>
-							<li><a href="#section3">Evidence information</a></li>
-							<li><a href="#section4">Functional information</a></li>
+							<li><a class="active" href="#section1">Functional Score</a></li>
+							<li><a class="active" href="#section2">Conservative Score</a></li>
+							<li><a href="#section3">Sequential information</a></li>
+							<li><a href="#section4">Evidence information</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -501,14 +368,123 @@
 
 	<script src="/newdbDSM/layui/layui.all.js"></script>
 	<script>
-		$(document).ready(function(){
+		$(document).ready(function () {
 			$("#myNav").affix({
 				offset: {
 					top: 125
-			  }
+				}
 			});
 		});
 	</script>
 
+	<script type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+	<script type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+	<script type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+	<script type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+	<script type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
 
+	<script type="text/javascript">
+
+		var list = ['PrDSM', 'TraP', 'FATHMM-MKL']
+		var data = ['{{ dbDSMData.PrDSM }}', '{{ dbDSMData.TraP }}', '{{ dbDSMData.FATHMM_MKL }}'];
+		var dom = document.getElementById("container1");
+		var myChart = echarts.init(dom);
+		var app = {};
+		var yMax = Math.max.apply(this, data);
+		option = null;
+		option = {
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+					type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+				}
+			},
+			xAxis: {
+				type: 'category',
+				data: list,
+				show: true,
+				name: 'Tools'
+			},
+			yAxis: {
+				type: 'value',
+				show: true,
+				name: 'Score'
+			},
+			series: [{
+				data: data,
+				type: 'bar',
+				showBackground: true,
+				backgroundStyle: {
+					color: 'rgba(220, 220, 220, 0.6)'
+				}
+			}],
+			grid: [{
+				top: 10,
+				width: '50%',
+				bottom: '40%',
+				left: 80,
+				containLabel: true
+			}]
+		};
+		;
+		if (option && typeof option === "object") {
+			myChart.setOption(option, true);
+		}
+	</script>
+
+	<script>
+		var dom = document.getElementById("container2");
+		var myChart = echarts.init(dom);
+		var app = {};
+		var list = ['priPhCons', 'mamPhCons', 'verPhCons', 'priPhyloP', 'mamPhyloP', 'verPhyloP', 'GerpS']
+		var listMax = [1,1,1,1,3,7,7]
+		var listMin = [0,0,0,-5,-8,-8,-13]
+		option = null;
+		option = {
+			title: {},
+			tooltip: {
+				trigger: 'axis'
+			},
+			legend: {
+				left: 'center',
+				data: ['xx']
+			},
+			radar: [
+				{
+					indicator: (function () {
+						var res = [];
+						for (var i = 0; i < 7; i++) {
+							res.push({text: list[i],min:listMin[i], max: listMax[i]});
+						}
+						return res;
+					})(),
+					radius: 150
+				}
+			],
+			series: [
+				{
+					type: 'radar',
+					tooltip: {
+						trigger: 'item'
+					},
+					areaStyle: {},
+					data: [
+						{
+							value: ['{{ dbDSMData.priPhCons }}', '{{ dbDSMData.mamPhCons }}', '{{ dbDSMData.verPhCons }}', '{{ dbDSMData.priPhyloP }}', '{{ dbDSMData.mamPhyloP }}', '{{ dbDSMData.verPhyloP }}', '{{ dbDSMData.GerpS }}'],
+							name: 'Conservative Score'
+						}
+					]
+				}
+			]
+		};
+		;
+		if (option && typeof option === "object") {
+			myChart.setOption(option, true);
+		}
+	</script>
 </html>
