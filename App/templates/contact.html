@@ -1,105 +1,109 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>dbDSM</title>
-		<meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no” />
-		<link rel="stylesheet" href="/newdbDSM/layui/layui.js" media="all">
-		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" media="all">
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Home</title>
-		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" />
-		<link rel="stylesheet" href="/newdbDSM/css/home.css" />
-	</head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>dbDSM</title>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,
+          user-scalable=no”/>
 
-	<body>
-		<div class="layui-container" style="min-width:1140px;">
-			<div class="layui-row" id="header">
-				<!--头-->
-				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner"style="background: url(/newdbDSM/images/Picture8.png);background-size:cover;">
-				</div>
-				<!--这里是banner-->
-				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
-					<!--这里是导航栏-->
-					<ul class="layui-nav" id="navbar">
-							<li class="layui-nav-item">
-								<a href="/newdbDSM/">Home</a>
-							</li>
-							<li class="layui-nav-item">
-								<a href="/newdbDSM/search">Search</a>
-							</li>
-							<li class="layui-nav-item">
-								<a href="/newdbDSM/download">Download</a>
-							</li>
-							<li class="layui-nav-item">
-								<a href="/newdbDSM/about">About</a>
-							</li>
-							<li class="layui-nav-item">
-								<a href="/newdbDSM/submit">Submit</a>
-							</li>
-							<li class="layui-nav-item layui-this">
-								<a href="/newdbDSM/contact">Contact us</a>
-							</li>
-					</ul>
-				</div>
-				<!--导航栏到这-->
-			</div>
-			<!--头到这-->
-			<div class="layui-row " id="bodyer" style="padding:40px;">
-				<!--主体部分-->
-	
-				<div class="layui-row" id="bodyer1">
-					<div id="overview">
-						<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
-							<div class="layui-text" style="font-size: 18px;margin: 0 0 10px 0; color:black;">
-								<strong>Principal Investigator:</strong>&nbsp;Dr. Junfeng Xia
-							</div>
-							<div class="layui-text" style="font-size: 18px;margin: 0 0 10px 0; color:black;">
-								Institutes of Physical Science and Information Technology, School of Computer Science and Technology, Anhui University, Hefei, Anhui 230601, China.
-							</div>
-							<div class="layui-text" style="font-size: 18px;margin: 0 0 10px 0; color:black;">
-								<strong>Phone:</strong>&nbsp;86-551-63861990
-							</div>
-							<div class="layui-text" style="font-size: 18px; color:black;">
-								<strong>Email:</strong>&nbsp;jfxia@ahu.edu.cn
-							</div>
-						</div>
-					</div>
-					
-				</div>
-				<!-- 
-				<div align="center">
-		            <script type="text/javascript" src="//ra.revolvermaps.com/0/0/8.js?i=0nqmwz0cey3&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script>
-				</div>
-				 -->
-			
-			</div>
-			<div class="layui-row" id="footer" align='center'>
-				<hr class="layui-bg-black">
-				<div class="link">
-					Links:
-					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/PrDSM/" target="_blank">PrDSM</a>
-					<div style="display:inline;">|</div>
-					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/IDSV/" target="_blank">IDSV</a>
-					<!-- <div style="display:inline;">|</div>
-					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/Melanoma/index.jsp" target="_blank">Melanoma</a> -->
-				</div>
-				<div class="copyright">
-					Copyright©
-					<a class="ow" href="http://en.ahu.edu.cn/" target="_blank">AnHui University</a> ©All Rights Reserved.
-				</div>
-				<div class="use">
-					<!-- Website content is for educational and research purposes only and is not intended to be used for medical advice, diagnosis or treatment. -->
-				</div>
-			</div>
-		</div>
-	</body>
-	<script src="/newdbDSM/layui/layui.js"></script>
-	<script>
-		layui.use('element', function() {
-			var element = layui.element;
+    <link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/newdbDSM/css/home.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-		});
-	</script>
+</head>
+
+<body>
+<div class="layui-container" style="min-width:1140px;">
+    <div class="layui-row" id="header">
+        <!--头-->
+        <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner">
+        </div>
+        <!--这里是banner-->
+        <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
+            <!--这里是导航栏-->
+            <ul class="layui-nav" id="navbar">
+                <li class="layui-nav-item">
+                    <a href="/newdbDSM/">Home</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="/newdbDSM/search">Search</a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="/newdbDSM/analysis">Analysis</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="/newdbDSM/download">Download</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="/newdbDSM/about">About</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="/newdbDSM/submit">Submit</a>
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a href="/newdbDSM/contact">Contact us</a>
+                </li>
+            </ul>
+        </div>
+        <!--导航栏到这-->
+    </div>
+    <!--头到这-->
+    <div class="layui-row " id="bodyer" style="padding:40px;">
+        <!--主体部分-->
+
+        <div class="layui-row" id="bodyer1">
+            <div id="overview">
+                <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+                    <div class="layui-text" style="font-size: 18px;margin: 0 0 10px 0; color:black;">
+                        <strong>Principal Investigator:</strong>&nbsp;Dr. Junfeng Xia
+                    </div>
+                    <div class="layui-text" style="font-size: 18px;margin: 0 0 10px 0; color:black;">
+                        Institutes of Physical Science and Information Technology, School of Computer Science and
+                        Technology, Anhui University, Hefei, Anhui 230601, China.
+                    </div>
+                    <div class="layui-text" style="font-size: 18px;margin: 0 0 10px 0; color:black;">
+                        <strong>Phone:</strong>&nbsp;86-551-63861990
+                    </div>
+                    <div class="layui-text" style="font-size: 18px; color:black;">
+                        <strong>Email:</strong>&nbsp;jfxia@ahu.edu.cn
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--
+        <div align="center">
+            <script type="text/javascript" src="//ra.revolvermaps.com/0/0/8.js?i=0nqmwz0cey3&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script>
+        </div>
+         -->
+
+    </div>
+    <div class="layui-row" id="footer" align='center' style="margin-top: 30%">
+        <hr class="layui-bg-black">
+        <div class="link">
+            Links:
+            <a class="ow" href="http://bioinfo.ahu.edu.cn:8080/PrDSM/" target="_blank">PrDSM</a>
+            <div style="display:inline;">|</div>
+            <a class="ow" href="http://bioinfo.ahu.edu.cn:8080/IDSV/" target="_blank">IDSV</a>
+            <!-- <div style="display:inline;">|</div>
+            <a class="ow" href="http://bioinfo.ahu.edu.cn:8080/Melanoma/index.jsp" target="_blank">Melanoma</a> -->
+        </div>
+        <div class="copyright">
+            Copyright©
+            <a class="ow" href="http://en.ahu.edu.cn/" target="_blank">AnHui University</a> ©All Rights Reserved.
+        </div>
+        <div class="use">
+            <!-- Website content is for educational and research purposes only and is not intended to be used for medical advice, diagnosis or treatment. -->
+        </div>
+    </div>
+</div>
+</body>
+<script src="/newdbDSM/layui/layui.js"></script>
+<script>
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
 </html>

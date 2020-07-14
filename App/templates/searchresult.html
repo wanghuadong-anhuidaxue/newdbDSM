@@ -7,7 +7,6 @@
 		<title>dbDSM</title>
 		<link rel="stylesheet" href="/newdbDSM/css/global.css" />
 		<link rel="stylesheet" href="/newdbDSM/css/all.css" />
-		<link rel="stylesheet" href="/newdbDSM/layui/layui.js">
 		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css">
 		<link rel="stylesheet" type="text/css" href="/newdbDSM/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css" />
@@ -74,6 +73,9 @@
 						<li class="layui-nav-item layui-this">
 							<a href="/newdbDSM/search">Search</a>
 						</li>
+						<li class="layui-nav-item ">
+							<a href="/newdbDSM/analysis">Analysis</a>
+						</li>
 						<li class="layui-nav-item">
 							<a href="/newdbDSM/download">Download</a>
 						</li>
@@ -136,8 +138,8 @@
 						<td><a style="color:#5FB878; " href="researchGene?reGene={{ dbDSMScore.Gene }}">{{ dbDSMScore.Gene }}</a></td>
 						<td>{{ dbDSMScore.SNPID }}</td>
 						<td>{{ dbDSMScore.GRCh38_Position }}</td>
-						<td>{{ dbDSMScore.cDNA }}</td>
-						<td>{{ dbDSMScore.Protein }}</td>
+						<td>{{ dbDSMScore.cDNA.replace('*','') }}</td>
+						<td>{{ dbDSMScore.Protein.replace('*','') }}</td>
 						<td><a style="color:#5FB878; " href="detailScore?dbid={{ dbDSMScore.dbid }}">{{ dbDSMScore.DBDSMID }}</a></td>
 					</tr>
             	{% endfor %}
@@ -194,8 +196,5 @@
 		</div>
 	</body>
 	<script src="/newdbDSM/layui/layui.all.js"></script>
-
-
-
 
 </html>

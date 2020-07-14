@@ -46,6 +46,26 @@ class SearchForm(FlaskForm):
     reset = SubmitField('Reset', id='resetBtn', render_kw={'class_': 'layui-btn layui-btn-primary', 'type': "reset"})
 
 
+
+
+
+class AnalysisForm(FlaskForm):
+    data = TextAreaField(label='data',id="userInput", render_kw={'placeholder':'Type synonymous mutations as VCF format','class_':"layui-textarea", 'style':'', 'autocomplete':"off",})
+    email = StringField(label='eMail', id='eMail',
+                            render_kw={ 'class_': 'layui-input','lay-verify':"required", 'size':"100", 'style':"",'placeholder':"Email address (Optional)"})
+    uploaddata = FileField(label='customFile',_name='customFile',id="customFile", validators=[FileAllowed(['vcf'], message='文件格式错误')], render_kw={'class_':"custom-file-input", 'onchange':"getFileName(this.value)"})
+
+    submit = SubmitField('Submit', id='submitBtn',
+                         render_kw={'lay-submit': '', 'lay-filter': 'formDemo', 'class_': 'layui-btn',
+                                    'style': "background-color: #5FB878;"})
+    reset = SubmitField('Reset', id='resetBtn', render_kw={'class_': 'layui-btn layui-btn-primary', 'type': "reset", 'onclick':'reset1()'})
+
+
+
+
+
+
+
 # class AdvancedSearchForm(FlaskForm):
 #     Gene = SelectField(label='Gene', id='Gene',render_kw={'lay-verify':"required", 'style':'width:17%;margin-left:10%;','class':'layui-nav-item'},)
 #     Disease = SelectField(label='Disease', id='Disease',render_kw={'lay-verify':"required", 'style':'width:17%;margin-left:10%;'},)

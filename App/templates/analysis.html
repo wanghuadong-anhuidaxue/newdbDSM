@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <title>dbDSM</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <link href="/newdbDSM/layui/css/layui.css" rel="stylesheet"/>
+    <link href="/newdbDSM/css/home.css" rel="stylesheet"/>
+    <link href="/newdbDSM/css/bootstrap.css" rel="stylesheet"/>
+    <script src="/newdbDSM/layui/layui.all.js "></script>
+    <script src="/newdbDSM/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <style>
+        body {
+            background-color: #EEEEEE;
+        }
+        .page-header {
+            border-color: rgba(147, 147, 147, 0.5);
+        }
+
+        i {
+            font-size: 18px;
+        }
+        a:hover,a:active,a:link{text-decoration: none;}
+    </style>
+</head>
+
+<body>
+<div class="layui-container" style="min-width:1140px;">
+    <div class="layui-row" id="header">
+        <!--头-->
+        <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner">
+        </div>
+        <!--这里是banner-->
+        <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
+            <!--这里是导航栏-->
+            <ul class="layui-nav" id="navbar">
+                <li class="layui-nav-item ">
+                    <a class="heada" href="/newdbDSM/">Home</a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="heada" href="/newdbDSM/search">Search</a>
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a href="/newdbDSM/analysis">Analysis</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="heada" href="/newdbDSM/download">Download</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="heada" href="/newdbDSM/about">About</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="heada" href="/newdbDSM/submit">Submit</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="heada" href="/newdbDSM/contact">Contact us</a>
+                </li>
+            </ul>
+        </div>
+        <!--导航栏到这-->
+    </div>
+    <!--头到这-->
+    <div class="layui-row">
+        <div class="layui-col-lg-offset1 layui-col-xs10 layui-col-sm10 layui-col-md10 layui-col-lg10 "
+             id="bodyer" style="">
+<!--            <fieldset class="layui-elem-field layui-field-title"-->
+<!--                      style="align:left;margin-top:30px;margin-bottom:10px; border-color: rgba(147,147,147,0.5)">-->
+<!--                <legend><b><i>Overview</i></b></legend>-->
+<!--            </fieldset>-->
+            <div class="page-header"><strong><i>Overview</i></strong></div>
+            <p>Synonymous mutation is a form of single nucleotide mutation
+                which replaces one base to another in the coding
+                sequence that does not alter amino acids in the translated protein due to the degeneracy genetic
+                code. Because of synonymous mutation does not change the protein primary structure, it has been
+                considered
+                nonfunctional for a long time.
+                So it sometimes called 'silent mutation'. But recent studies suggesting that such synonymous
+                mutations play an important role
+                in human phenotype by affecting transcript splicing, mRNA stability, RNA secondary structure, the
+                biding site of transcription factor binding and microRNA,
+                codon optimality and protein expression and so on.
+            </p>
+<!--            <fieldset class="layui-elem-field layui-field-title"-->
+<!--                      style="align:left;margin-top:30px;margin-bottom:10px; border-color: rgba(147,147,147,0.5)">-->
+<!--                <legend><b><i>Job Start</i></b></legend>-->
+<!--            </fieldset>-->
+            <div class="page-header"><strong><i>Job Start</i></strong></div>
+            <p>dasdasdsa<a style="cursor: pointer" onclick="runExample()">Example</a></p>
+
+            <form class="layui-form" method="post" onsubmit="return checkForm1()">
+                <div class="layui-form-item">
+                    {{ form.data }}
+                </div>
+
+                <div class="custom-file mb-3" style="width: 50%">
+                    {{ form.uploaddata }}
+                    <label id="t1" class="custom-file-label" for="customFile">Please upload the VCF file.</label>
+
+                </div>
+                <div class="layui-text" style="float: right" align="justify">
+                    Learn more about dbDSM's <a style="cursor: pointer"
+                                                href="{{ url_for('homeblue.about') }}#1.Brief introduction">Output</a>.
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-text">
+                        Input your email address
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            {{ form.email }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    {{ form.csrf_token }}
+                    {{ form.submit }}
+                    {{ form.reset }}
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+
+    <div class="layui-container" id="footer">
+        <hr class="layui-bg-black">
+        <div class="layui-row">
+
+            <div class="layui-row">
+                <div align='left' class="layui-col-md4">
+                    <div style="display:inline-block;width:200px;"></div>
+                    <!--				      	<div style="display:inline-block;width:200px;"><script type="text/javascript" src="//rf.revolvermaps.com/0/0/7.js?i=0nqmwz0cey3&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script></div>-->
+                </div>
+                <div align='center' class="layui-col-md4" style="margin-top:20px">
+                    Links:
+                    <a class="ow" href="http://bioinfo.ahu.edu.cn:8080/PrDSM/" target="_blank">PrDSM</a>
+                    <div style="display:inline;">|</div>
+                    <a class="ow" href="http://bioinfo.ahu.edu.cn:8080/IDSV/" target="_blank">IDSV</a>
+
+                    <div class="copyright">
+                        Copyright©
+                        <a class="ow" href="http://en.ahu.edu.cn/" target="_blank">AnHui University</a> ©All Rights
+                        Reserved.
+                    </div>
+                </div>
+                <div align='right' class="layui-col-md4" style="margin-top:10px">
+                    <div>
+                        <!--							<script type="text/javascript" src="//rf.revolvermaps.com/0/0/0.js?i=52m8mqpvyan&amp;d=3&amp;p=0&amp;b=0&amp;w=218&amp;g=2&amp;f=arial&amp;fs=12&amp;r=0&amp;c0=362b05&amp;c1=375363&amp;c2=000000&amp;ic0=0&amp;ic1=0" async="async"></script>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+
+    function checkForm1() {
+        if ($('#userInput').val() == '' && $('#t1').text() == '') {
+            layer.msg('Please paste mutation list or upload VCF file');
+            return false;
+        } else if ($('#eMail').val() != '') {
+            if (!reg.test($('#eMail').val())) {
+                layer.msg('Please check you e-mail address');
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function runExample() {
+        $("#userInput").val("1	69096	.	G	A");
+    };
+
+    function reset1() {
+        $('#t1').text("");
+        return true;
+    };
+</script>
+<script>
+
+    function getFileName(path) {
+        var obj = document.getElementById("t1");
+        var pos1 = path.lastIndexOf('/');
+        var pos2 = path.lastIndexOf('\\');
+        var pos = Math.max(pos1, pos2)
+        if (pos < 0) {
+            obj.innerHTML = path;
+        } else {
+            obj.innerHTML = path.substring(pos + 1);
+        }
+    }
+</script>
+</body>
+</html>

@@ -9,7 +9,9 @@
 		<meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no” />
 
 		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css">
-		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/newdbDSM/css/bootstrap.min.css">
+<!--		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">-->
+
 		<link rel="stylesheet" href="/newdbDSM/css/home.css" />
 
 		<script src="/newdbDSM/js/jquery-3.4.1.js"></script>
@@ -65,8 +67,20 @@
 				/*top: 170px; !* Set the top position of pinned element *!*/
 			}
 
-			a:hover{text-decoration: none;}
+			a:hover,a:active,a:link{text-decoration: none;}
 
+			.page-header {
+				border-color: #DDDDDD;
+			}
+			hr {
+				border-color: #000000;
+			}
+			.alert-success {
+				background-color: rgba(95,184,120,0.4);
+			}
+			.page-header h1 {
+				font-size: 30px;
+			}
 		</style>
 	</head>
 
@@ -84,7 +98,10 @@
 							<a name="heada" href="/newdbDSM/">Home</a>
 						</li>
 						<li class="layui-nav-item layui-this">
-							<a href="/newdbDSM/search">Search</a>
+							<a href="javascript:;">Search</a>
+						</li>
+						<li class="layui-nav-item ">
+							<a href="/newdbDSM/analysis">Analysis</a>
 						</li>
 						<li class="layui-nav-item">
 							<a href="/newdbDSM/download">Download</a>
@@ -110,33 +127,40 @@
 						<div id="section1">
 							<div class="page-header">
 								<h1>Functional Score</h1>
+
 							</div>
+
 							<div class="alert alert-success" role="alert">
 								A Functional information for this SNP
 							</div>
 							<div class="layui-container">
 								<div class="layui-row">
-									<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
-										<table class="layui-table table-striped" style="width: 100%; margin-top: 20%">
+									<div class="layui-col-xs9 layui-col-sm9 layui-col-md9 layui-col-lg9" style="">
+										<table class="layui-table table-striped" style="width: 95%">
 											<tr>
-												<th><strong>Tools</strong></th>
-												<th><strong>Score</strong></th>
+												<th ><strong>PrDSM</strong></th>
+												<th><strong>TraP</strong></th>
+												<th><strong>PhD-SNPg</strong></th>
+												<th><strong>FATHMM-MKL</strong></th>
+												<th><strong>CADD</strong></th>
+												<th><strong>DANN</strong></th>
+												<th><strong>FATHMM-XF</strong></th>
 											</tr>
 
-											<tr class="PrDSM">
-												<td>PrDSM</td>
-												<td class="PrDSM" colspan="11">{{ dbDSMData.PrDSM }}</td>
-											<tr class="TraP">
-												<td>TraP</td>
-												<td class="TraP" colspan="11">{{ dbDSMData.TraP }}</td>
-											<tr class="PhD_SNPg">
-												<td>FATHMM-MKL</td>
-												<td class="FATHMM_MKL" colspan="11">{{ dbDSMData.FATHMM_MKL }}</td>
+											<tr>
+												<td style="width: auto">{{ dbDSMData.PrDSM }}</td>
+												<td style="width: auto">{{ dbDSMData.TraP }}</td>
+												<td style="width: auto">{{ dbDSMData.PhD_SNPg }}</td>
+												<td style="width: auto">{{ dbDSMData.FATHMM_MKL }}</td>
+												<td style="width: auto">{{ dbDSMData.CADD }}</td>
+												<td style="width: auto">{{ dbDSMData.DANN }}</td>
+												<td style="width: auto">{{ dbDSMData.FATHMM_XF }}</td>
+											</tr>
+
+
 										</table>
 									</div>
-									<div class="layui-col-xs8 layui-col-sm8 layui-col-md8 layui-col-lg8" style="height: 400px; margin-bottom:-5%;">
-										<div class="col-5" id="container1" style="height: 500px;"></div>
-									</div>
+
 								</div>
 							</div>
 						</div>
@@ -145,42 +169,12 @@
 								<h1>Conservative Score</h1>
 							</div>
 							<div class="alert alert-success" role="alert">
-								A Functional information for this SNP
+								A Conservative Score for this SNP
 							</div>
 							<div class="layui-container">
 								<div class="layui-row">
-									<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
-										<table id="" class="layui-table table-striped" style="width: 100%">
-											<tr>
-												<th><strong>Tools</strong></th>
-												<th><strong>Score</strong></th>
-											</tr>
-											<tr class="priPhCons">
-												<td>priPhCons</td>
-												<td class="priPhCons" colspan="11">{{ dbDSMData.priPhCons }}</td>
-											<tr class="mamPhCons">
-												<td>mamPhCons</td>
-												<td class="mamPhCons" colspan="11">{{ dbDSMData.mamPhCons }}</td>
-											<tr class="verPhCons">
-												<td>verPhCons</td>
-												<td class="verPhCons" colspan="11">{{ dbDSMData.verPhCons }}</td>
-											<tr class="priPhyloP">
-												<td>priPhyloP</td>
-												<td class="priPhyloP" colspan="11">{{ dbDSMData.priPhyloP }}</td>
-											<tr class="mamPhyloP">
-												<td>mamPhyloP</td>
-												<td class="mamPhyloP" colspan="11">{{ dbDSMData.mamPhyloP }}</td>
-											<tr class="verPhyloP">
-												<td>verPhyloP</td>
-												<td class="verPhyloP" colspan="11">{{ dbDSMData.verPhyloP }}</td>
-											<tr class="GerpS">
-												<td>GerpS</td>
-												<td class="GerpS" colspan="11">{{ dbDSMData.GerpS }}</td>
-											</tr>
-										</table>
-									</div>
-									<div class="layui-col-xs8 layui-col-sm8 layui-col-md8 layui-col-lg8">
-										<div class="col-5" id="container2" style="margin-right: 60px; height: 400%; width: 70%;"></div>
+									<div class="layui-col-xs9 layui-col-sm9 layui-col-md9 layui-col-lg9">
+										<div class="" id="container1" style="height: 400%; width: 100%;"></div>
 									</div>
 								</div>
 							</div>
@@ -344,7 +338,7 @@
 				</div>
 			</div>
 			<div class="layui-row" id="footer" align='center'>
-				<hr class="layui-bg-black">
+				<hr class="layui-bg-black"/>
 				<div class="link">
 					Links:
 					<a class="ow" href="http://bioinfo.ahu.edu.cn:8080/PrDSM/" target="_blank">PrDSM</a>
@@ -389,8 +383,8 @@
 
 	<script type="text/javascript">
 
-		var list = ['PrDSM', 'TraP', 'FATHMM-MKL']
-		var data = ['{{ dbDSMData.PrDSM }}', '{{ dbDSMData.TraP }}', '{{ dbDSMData.FATHMM_MKL }}'];
+		var list = ['priPhCons', 'mamPhCons', 'verPhCons', 'priPhyloP', 'mamPhyloP', 'verPhyloP', 'GerpS']
+		var data = ['{{ dbDSMData.priPhCons }}', '{{ dbDSMData.mamPhCons }}', '{{ dbDSMData.verPhCons }}', '{{ dbDSMData.priPhyloP }}', '{{ dbDSMData.mamPhyloP }}', '{{ dbDSMData.verPhyloP }}', '{{ dbDSMData.GerpS }}'];
 		var dom = document.getElementById("container1");
 		var myChart = echarts.init(dom);
 		var app = {};
@@ -406,8 +400,6 @@
 			xAxis: {
 				type: 'category',
 				data: list,
-				show: true,
-				name: 'Tools'
 			},
 			yAxis: {
 				type: 'value',
@@ -424,9 +416,10 @@
 			}],
 			grid: [{
 				top: 10,
-				width: '50%',
-				bottom: '40%',
-				left: 80,
+				width: '90%',
+				top: '10%',
+				bottom: '0%',
+				left: 30,
 				containLabel: true
 			}]
 		};

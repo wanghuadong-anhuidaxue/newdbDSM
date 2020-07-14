@@ -12,7 +12,7 @@ def test():
     测试
     :return:
     '''
-    return render_template('newsearchresult.html')
+    return render_template('test.html')
 
 @testblue.route('/testdemo', methods=['GET', 'POST'])
 def testdemo():
@@ -51,7 +51,7 @@ def testData():
 @testblue.route('/test2', methods=['GET', 'POST'])
 def test2():
 
-    return render_template('details2.html')
+    return render_template('temp.html')
 
 @testblue.route('/limittest', methods=['GET', 'POST'])
 def limittest():
