@@ -7,7 +7,7 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no” />
-
+		<link rel="shortcut icon" href="/newdbDSM/images/dbdsmico.png" type="image/x-icon">
 		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css">
 		<link rel="stylesheet" href="/newdbDSM/css/bootstrap.min.css">
 <!--		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">-->
@@ -174,7 +174,7 @@
 							<div class="layui-container">
 								<div class="layui-row">
 									<div class="layui-col-xs9 layui-col-sm9 layui-col-md9 layui-col-lg9">
-										<div class="" id="container1" style="height: 400%; width: 100%;"></div>
+										<div class="" id="container1" style="height: 400%; width: 90%;"></div>
 									</div>
 								</div>
 							</div>
@@ -236,16 +236,16 @@
 									</tr>
 									<tr class="Protein">
 										<td>Protein</td>
-										<td class="Protein" colspan="11">{{ dbDSMData.Protein }}</td>
+										<td class="Protein" colspan="11">{{ dbDSMData.Protein.replace('*','') }}</td>
 									</tr>
 									<tr class="cDNA">
 										<td>c.DNA</td>
-										<td class="cDNA" colspan="11">{{ dbDSMData.cDNA }}</td>
+										<td class="cDNA" colspan="11">{{ dbDSMData.cDNA.replace('*','') }}</td>
 									</tr>
 
 									<tr class="SNPID">
 										<td>SNPID</td>
-										<td class="SNPID" colspan="11">{{ dbDSMData.SNPID }}</td>
+										<td class="SNPID" colspan="11">{{ dbDSMData.SNPID.replace('*','') }}</td>
 									</tr>
 									<tr class="CodonChange">
 										<td>CodonChange</td>
@@ -382,7 +382,6 @@
 			src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
 
 	<script type="text/javascript">
-
 		var list = ['priPhCons', 'mamPhCons', 'verPhCons', 'priPhyloP', 'mamPhyloP', 'verPhyloP', 'GerpS']
 		var data = ['{{ dbDSMData.priPhCons }}', '{{ dbDSMData.mamPhCons }}', '{{ dbDSMData.verPhCons }}', '{{ dbDSMData.priPhyloP }}', '{{ dbDSMData.mamPhyloP }}', '{{ dbDSMData.verPhyloP }}', '{{ dbDSMData.GerpS }}'];
 		var dom = document.getElementById("container1");
@@ -397,29 +396,52 @@
 					type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
 				}
 			},
+			toolbox: {
+				show: true,
+				feature: {
+					mark: {show: true},
+					dataView: {show: true, readOnly: false},
+					magicType: {show: true, type: ['line', 'bar']},
+					restore: {show: true},
+					saveAsImage: {show: true}
+				}
+			},
 			xAxis: {
 				type: 'category',
 				data: list,
+				axisLabel: {
+					interval: 0,
+					rotate: 30
+				},
 			},
 			yAxis: {
 				type: 'value',
 				show: true,
-				name: 'Score'
+				name: 'Score',
+				nameLocation:'middle',
+				nameGap:30,
 			},
+
 			series: [{
+				name: 'scores',
 				data: data,
 				type: 'bar',
 				showBackground: true,
 				backgroundStyle: {
 					color: 'rgba(220, 220, 220, 0.6)'
+				},
+				color: '#DD6B66',
+				label: {
+					show: true,
+					position: 'inside'
 				}
 			}],
 			grid: [{
 				top: 10,
-				width: '90%',
+				width: '60%',
 				top: '10%',
 				bottom: '0%',
-				left: 30,
+				left: "20%",
 				containLabel: true
 			}]
 		};

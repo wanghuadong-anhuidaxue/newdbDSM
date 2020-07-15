@@ -4,11 +4,13 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <title>dbDSM</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <link rel="shortcut icon" href="/newdbDSM/images/dbdsmico.png" type="image/x-icon">
     <link href="/newdbDSM/layui/css/layui.css" rel="stylesheet"/>
     <link href="/newdbDSM/css/home.css" rel="stylesheet"/>
     <link href="/newdbDSM/css/bootstrap.css" rel="stylesheet"/>
-    <script src="/newdbDSM/layui/layui.all.js "></script>
-    <script src="/newdbDSM/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+
+    <script src="/newdbDSM/js/jquery-3.4.1.js" type="text/javascript"></script>
+    <script src="/newdbDSM/layui/layui.js"></script>
     <style>
         body {
             background-color: #EEEEEE;
@@ -19,6 +21,9 @@
 
         i {
             font-size: 18px;
+        }
+        li.layui-nav-item a {
+            font-size: 20px !important;
         }
         a:hover,a:active,a:link{text-decoration: none;}
     </style>
@@ -85,7 +90,7 @@
 <!--                <legend><b><i>Job Start</i></b></legend>-->
 <!--            </fieldset>-->
             <div class="page-header"><strong><i>Job Start</i></strong></div>
-            <p>dasdasdsa<a style="cursor: pointer" onclick="runExample()">Example</a></p>
+            <p>dasdasdsa<a style="color: #5fb878" onclick="runExample()">Example</a></p>
 
             <form class="layui-form" method="post" onsubmit="return checkForm1()">
                 <div class="layui-form-item">
@@ -98,8 +103,7 @@
 
                 </div>
                 <div class="layui-text" style="float: right" align="justify">
-                    Learn more about dbDSM's <a style="cursor: pointer"
-                                                href="{{ url_for('homeblue.about') }}#1.Brief introduction">Output</a>.
+                    Learn more about dbDSM's <a style="color: #5fb878" href="{{ url_for('homeblue.about') }}#1.Brief introduction">Output</a>.
                 </div>
 
                 <div class="layui-form-item">
@@ -195,6 +199,12 @@
             obj.innerHTML = path.substring(pos + 1);
         }
     }
+</script>
+<script>
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
 </script>
 </body>
 </html>

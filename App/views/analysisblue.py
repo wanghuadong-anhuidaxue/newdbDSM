@@ -12,7 +12,7 @@ analysisblue = Blueprint("analysisblue", __name__)
 def analysisIndex():
     form = AnalysisForm()
     if form.validate_on_submit():
-        if form.uploaddata.data is None:
+        if form.uploaddata.data == None:
             print(len(form.data.data))
             print('hahahNone')
         else:

@@ -5,6 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no” />
 		<title>dbDSM</title>
+        <link rel="shortcut icon" href="/newdbDSM/images/dbdsmico.png" type="image/x-icon">
 		<link rel="stylesheet" href="/newdbDSM/css/global.css" />
 		<link rel="stylesheet" href="/newdbDSM/css/all.css" />
 		<link rel="stylesheet" href="/newdbDSM/layui/layui.js">
@@ -95,10 +96,18 @@
 				<legend><i><b>Search Result:</b></i>&nbsp;
 					{% if Disease != '' and Disease != none %}
 						<strong>Disease:</strong>{{ Disease }}
-					{% elif Gene != '' and Gene != none %}
+					{% endif %}
+					{% if Gene != '' and Gene != none %}
 						<strong>Gene:</strong>{{ Gene }}
-					{% elif Chromosome != '' and Chromosome != none %}
-						<strong>Chromosome:</strong>{{ Chromosome }}
+					{% endif %}
+					{% if Chromosome != '' and Chromosome != none %}
+					<strong>Chromosome:</strong>{{ Chromosome }}
+					{% endif %}
+					{% if Classification != '' and Classification != none %}
+					<strong>Classification:</strong>{{ Classification }}
+					{% endif %}
+					{% if StrengthOfEvidence != '' and StrengthOfEvidence != none %}
+					<strong>StrengthOfEvidence:</strong>{{ StrengthOfEvidence }}
 					{% endif %}
 				</legend>
 			</fieldset>
@@ -114,10 +123,10 @@
 					 of {{ pagination.total }} entries</p>
 				</div>
 				<div class="layui-col-md-offset3 layui-col-xs6 layui-col-sm6 layui-col-md6 layui-col-lg6 btn-group " role="group">
-						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 10%}active{% endif %}"><a href="advancedSearchTable?page=1&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}" style="color: #000000" name="abutton">10item/page</a></button>
-						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 20%}active{% endif %}"><a href="advancedSearchTable?page=1&per_page=20&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}" style="color: #000000" name="abutton">20item/page</a></button>
-						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 50%}active{% endif %}"><a href="advancedSearchTable?page=1&per_page=50&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}" style="color: #000000" name="abutton">50item/page</a></button>
-						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 100%}active{% endif %}"><a href="advancedSearchTable?page=1&per_page=100&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}" style="color: #000000;" name="abutton">100item/page</a></button>
+						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 10%}active{% endif %}"><a href="advancedSearchTable?page=1&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}" style="color: #000000" name="abutton">10item/page</a></button>
+						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 20%}active{% endif %}"><a href="advancedSearchTable?page=1&per_page=20&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}" style="color: #000000" name="abutton">20item/page</a></button>
+						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 50%}active{% endif %}"><a href="advancedSearchTable?page=1&per_page=50&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}" style="color: #000000" name="abutton">50item/page</a></button>
+						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 100%}active{% endif %}"><a href="advancedSearchTable?page=1&per_page=100&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}" style="color: #000000;" name="abutton">100item/page</a></button>
 				</div>
 			</div>
 
@@ -137,7 +146,7 @@
 					<tr>
 						<td><a style="color:#5FB878; " href="researchDisease?Disease={{ dbDSMScore.Disease }}">{{ dbDSMScore.Disease }}</a></td>
 						<td><a style="color:#5FB878; " href="researchGene?reGene={{ dbDSMScore.Gene }}">{{ dbDSMScore.Gene }}</a></td>
-						<td>{{ dbDSMScore.SNPID }}</td>
+						<td>{{ dbDSMScore.SNPID.replace('*','') }}</td>
 						<td>{{ dbDSMScore.GRCh38_Position }}</td>
 						<td>{{ dbDSMScore.cDNA.replace('*','') }}</td>
 						<td>{{ dbDSMScore.Protein.replace('*','') }}</td>
@@ -148,7 +157,7 @@
 			<div class="">
 				<ul class="pagination">
 					{% if pagination.has_prev %}
-						<li class=""><a class="page-link" href="advancedSearchTable?page={{ pagination.prev_num }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}">&laquo;</a></li>
+						<li class=""><a class="page-link" href="advancedSearchTable?page={{ pagination.prev_num }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}">&laquo;</a></li>
 						{% else %}
 						<li class="disabled"><a class="page-link" href="#">&laquo;</a></li>
 					{% endif %}
@@ -157,7 +166,7 @@
 						{% if page %}
 							{% if page != pagination.page %}
 								<li class="">
-									<a href="advancedSearchTable?page={{ page }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}">{{ page }}</a>
+									<a href="advancedSearchTable?page={{ page }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}">{{ page }}</a>
 								</li>
 							{% else %}
 								<li class="active">
@@ -170,7 +179,7 @@
 					{% endfor %}
 
 					{% if pagination.has_next %}
-						<li class=""><a class="page-link" href="advancedSearchTable?page={{ pagination.next_num }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}">&raquo;</a></li>
+						<li class=""><a class="page-link" href="advancedSearchTable?page={{ pagination.next_num }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}">&raquo;</a></li>
 						{% else %}
 						<li class="disabled"><a class="page-link" href="#">&raquo;</a></li>
 					{% endif %}

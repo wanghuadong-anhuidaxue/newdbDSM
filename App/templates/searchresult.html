@@ -5,6 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no” />
 		<title>dbDSM</title>
+		<link rel="shortcut icon" href="/newdbDSM/images/dbdsmico.png" type="image/x-icon">
 		<link rel="stylesheet" href="/newdbDSM/css/global.css" />
 		<link rel="stylesheet" href="/newdbDSM/css/all.css" />
 		<link rel="stylesheet" href="/newdbDSM/layui/css/layui.css">
@@ -136,7 +137,7 @@
 					<tr>
 						<td><a style="color:#5FB878; " href="researchDisease?Disease={{ dbDSMScore.Disease }}">{{ dbDSMScore.Disease }}</a></td>
 						<td><a style="color:#5FB878; " href="researchGene?reGene={{ dbDSMScore.Gene }}">{{ dbDSMScore.Gene }}</a></td>
-						<td>{{ dbDSMScore.SNPID }}</td>
+						<td>{{ dbDSMScore.SNPID.replace('*','') }}</td>
 						<td>{{ dbDSMScore.GRCh38_Position }}</td>
 						<td>{{ dbDSMScore.cDNA.replace('*','') }}</td>
 						<td>{{ dbDSMScore.Protein.replace('*','') }}</td>

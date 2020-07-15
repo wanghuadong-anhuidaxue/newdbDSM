@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>dbDSM</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/newdbDSM/images/dbdsmico.png" type="image/x-icon">
     <link rel="stylesheet" href="/newdbDSM/layui/css/layui.css"/>
     <link rel="stylesheet" href="/newdbDSM/css/home.css"/>
     <script type="text/javascript">
@@ -65,7 +66,7 @@
     <div class="layui-row" id="bodyer" align="center">
         <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="simplesearch"
              style="margin-top:50px;margin-bottom:30px;">
-            <fieldset class="layui-elem-field" >
+            <fieldset class="layui-elem-field">
                 <legend style="align:left;margin-bottom:30px;"><i><strong>Search</strong></i></legend>
                 <form class="layui-form layui-field-box" id="search" action="/searchSubmit" method="post">
                     <table>
@@ -84,8 +85,7 @@
                     <div class="layui-text">
                         <p style="margin: 5px 0 5px -120px;">
                             eg. :
-                            <a onclick="exampleFun1(this)" style="cursor: pointer;color: #5fb878;">Early-Onset
-                                Epilepsy</a>;
+                            <a onclick="exampleFun1(this)" style="cursor: pointer;color: #5fb878;">Early-Onset Epilepsy</a>;
                             <a onclick="exampleFun2(this)" style="cursor: pointer;color: #5fb878;">PCDH19</a>;
                             <a onclick="exampleFun3(this)" style="cursor: pointer;color: #5fb878;">X:100342042</a>;
                             <a onclick="exampleFun4(this)" style="cursor: pointer;color: #5fb878;">c.954G>C</a>;
@@ -137,7 +137,6 @@
                     </div>
 
                     <div class="layui-form-item" style="text-align:left;">
-                        <!-- <label class="layui-form-label" id="AND" style="border:none;background-color:inherit;width:1px"></label> -->
                         <label class="layui-form-label"
                                style="text-align:left;width:17%;margin-left:11%;">Chromosome</label>
                         <div class="layui-input-block" style="width:61%;margin-left:28%;">
@@ -147,6 +146,24 @@
                         </div>
                     </div>
 
+                    <div class="layui-form-item" style="text-align:left;">
+                        <label class="layui-form-label"
+                               style="text-align:left;width:17%;margin-left:11%;">Classification</label>
+                        <div class="layui-input-block" style="width:61%;margin-left:28%;">
+                            <select name="Classification" id="Classification" lay-filter="Classification">
+                                <option value="">Select Classification</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" style="text-align:left;">
+                        <label class="layui-form-label"
+                               style="text-align:left;width:17%;margin-left:11%;">StrengthOfEvidence</label>
+                        <div class="layui-input-block" style="width:61%;margin-left:28%;">
+                            <select name="StrengthOfEvidence" id="StrengthOfEvidence" lay-filter="StrengthOfEvidence">
+                                <option value="">Select StrengthOfEvidence</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="layui-form-item" align="center" style="margin-bottom:50px;">
                         <div class="layui-input-block" style="margin-left: 0px;margin-right: 0px;">
                             <button class="layui-btn" lay-submit lay-filter="*" style="background-color: #5FB878;">
@@ -195,6 +212,8 @@
                 document.getElementById("Disease").options.length = 1;
                 document.getElementById("Gene").options.length = 1;
                 document.getElementById("Chromosome").options.length = 1;
+                document.getElementById("Classification").options.length = 1;
+                document.getElementById("StrengthOfEvidence").options.length = 1;
                 selectId.splice(0, selectId.length);
             } else {
                 selectId.push(select);
@@ -280,6 +299,14 @@
         form.on('select(Chromosome)', function (data) {
             document.getElementById("hideU").value = "1";
             formClick(document.getElementById("Chromosome"), selectId, data.value);
+        });
+        form.on('select(Classification)', function (data) {
+            document.getElementById("hideU").value = "1";
+            formClick(document.getElementById("Classification"), selectId, data.value);
+        });
+        form.on('select(StrengthOfEvidence)', function (data) {
+            document.getElementById("hideU").value = "1";
+            formClick(document.getElementById("StrengthOfEvidence"), selectId, data.value);
         });
         <!--
         form.on('select(reset)', function(data) {
