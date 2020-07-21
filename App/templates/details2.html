@@ -81,6 +81,10 @@
 			.page-header h1 {
 				font-size: 30px;
 			}
+			.asvg:hover {
+				color: #5fb878;
+			}
+
 		</style>
 	</head>
 
@@ -131,45 +135,49 @@
 							</div>
 
 							<div class="alert alert-success" role="alert">
-								A Functional information for this SNP
+								Functional scores of PrDSM, TraP, PhD-SNPg, FATHMM-MKL, CADD, DANN, FATHMM-XF for the mutation.
 							</div>
-							<div class="layui-container">
-								<div class="layui-row">
-									<div class="layui-col-xs9 layui-col-sm9 layui-col-md9 layui-col-lg9" style="">
-										<table class="layui-table table-striped" style="width: 95%">
-											<tr>
-												<th ><strong>PrDSM</strong></th>
-												<th><strong>TraP</strong></th>
-												<th><strong>PhD-SNPg</strong></th>
-												<th><strong>FATHMM-MKL</strong></th>
-												<th><strong>CADD</strong></th>
-												<th><strong>DANN</strong></th>
-												<th><strong>FATHMM-XF</strong></th>
-											</tr>
-
-											<tr>
-												<td style="width: auto">{{ dbDSMData.PrDSM }}</td>
-												<td style="width: auto">{{ dbDSMData.TraP }}</td>
-												<td style="width: auto">{{ dbDSMData.PhD_SNPg }}</td>
-												<td style="width: auto">{{ dbDSMData.FATHMM_MKL }}</td>
-												<td style="width: auto">{{ dbDSMData.CADD }}</td>
-												<td style="width: auto">{{ dbDSMData.DANN }}</td>
-												<td style="width: auto">{{ dbDSMData.FATHMM_XF }}</td>
-											</tr>
 
 
-										</table>
-									</div>
+							<div>
+								<table class="layui-table table-striped" lay-filter="demoEvent" lay-even
+									   lay-skin="line" style="word-break:break-all; ">
+									<thread>
+									</thread>
+									<tbody>
+									<tr>
+										<th><strong>PrDSM</strong></th>
+										<th><strong>TraP</strong></th>
+										<th><strong>PhD-SNPg</strong></th>
+										<th><strong>FATHMM-MKL</strong></th>
+										<th><strong>CADD</strong></th>
+										<th><strong>DANN</strong></th>
+										<th><strong>FATHMM-XF</strong></th>
+									</tr>
 
-								</div>
+									<tr>
+										<td style="width: auto">{{ dbDSMData.PrDSM }}</td>
+										<td style="width: auto">{{ dbDSMData.TraP }}</td>
+										<td style="width: auto">{{ dbDSMData.PhD_SNPg }}</td>
+										<td style="width: auto">{{ dbDSMData.FATHMM_MKL }}</td>
+										<td style="width: auto">{{ dbDSMData.CADD }}</td>
+										<td style="width: auto">{{ dbDSMData.DANN }}</td>
+										<td style="width: auto">{{ dbDSMData.FATHMM_XF }}</td>
+									</tr>
+
+									</tbody>
+								</table>
 							</div>
+
+
+
 						</div>
 						<div id="section2">
 							<div class="page-header">
-								<h1>Conservative Score</h1>
+								<h1>Conservation Score</h1>
 							</div>
 							<div class="alert alert-success" role="alert">
-								A Conservative Score for this SNP
+								PhyloP scores of 100 mammals, 100 primates and 100 vertebrates obtained from CADD. PhCons scores of 100 mammals, 100 Primates and 100 vertebrates obtained from CADD. GerpS obtained from GERP++.
 							</div>
 							<div class="layui-container">
 								<div class="layui-row">
@@ -184,7 +192,7 @@
 								<h1>Sequential information</h1>
 							</div>
 							<div class="alert alert-success" role="alert">
-								A Sequential information for this SNP
+								Basic information obtained from literatures, Disease Ontology, VEP, TransVar and LiftOver for the mutation.
 							</div>
 							<div>
 								<table id="details" class="layui-table table-striped" lay-filter="demoEvent" lay-even
@@ -299,19 +307,30 @@
 								<h1>Evidence information</h1>
 							</div>
 							<div class="alert alert-success" role="alert">
-								A Evidence information for this SNP
+								Key sentences associated with the mutation obtained from corresponding literature.
 							</div>
 							<div>
-								<table id="details3" class="layui-table table-striped" lay-filter="demoEvent" lay-even
-									   lay-skin="line" style="margin:auto">
-									<tr>
-										<th class="PMID">PMID</th>
-										<th class="Year">Year</th>
-										<th class="Ethnicity">Ethnicity</th>
-										<th class="Classification">Classification</th>
-										<th class="StrengthOfEvidence">StrengthOfEvidence</th>
-										<th class="KeySentence">KeySentence</th>
-									</tr>
+								<table id="details3" class="layui-table  table-striped" lay-filter="demoEvent" lay-even
+									   lay-skin="line">
+									<colgroup>
+										<col width="400"/>
+										<col width="20"/>
+										<col width="20"/>
+										<col width="20"/>
+										<col width="20"/>
+										<col width="20"/>
+									</colgroup>
+									<thread>
+										<tr>
+											<th class="PMID"><b>PMID</b></th>
+											<th class="Year"><b>Year</b></th>
+											<th class="Ethnicity"><b>Ethnicity</b></th>
+											<th class="Classification"><b>Classification</b></th>
+											<th class="StrengthOfEvidence"><b>StrengthOfEvidence</b></th>
+											<th class="KeySentence"><b>KeySentence</b></th>
+										</tr>
+									</thread>
+									<tbody>
 									<tr>
 										<td class="PMID"><a style="color:#5FB878; "
 															href="https://pubmed.ncbi.nlm.nih.gov/{{ dbDSMData.PMID }}"
@@ -322,6 +341,7 @@
 										<td class="StrengthOfEvidence">{{ dbDSMData.StrengthOfEvidence }}</td>
 										<td class="KeySentence">{{ dbDSMData.KeySentence }}</td>
 									</tr>
+									</tbody>
 								</table>
 							</div>
 						</div>
@@ -330,7 +350,7 @@
 					<nav class="col-sm-3 col-3" id="myScrollspy" >
 						<ul class="nav nav-pills nav-stacked"  id="myNav">
 							<li><a class="active" href="#section1">Functional Score</a></li>
-							<li><a class="active" href="#section2">Conservative Score</a></li>
+							<li><a class="active" href="#section2">Conservation Score</a></li>
 							<li><a href="#section3">Sequential information</a></li>
 							<li><a href="#section4">Evidence information</a></li>
 						</ul>
@@ -356,6 +376,18 @@
 				</div>
 			</div>
 
+		</div>
+		<div>
+			<div style="position:fixed;bottom:10px;margin-left: 97%;">
+				<a href="javascript:scroll(0,0)" class="asvg">
+					<svg class="bi bi-arrow-up-square-fill" width="3em" height="3em" viewBox="0 0 16 16"
+						 fill="currentColor"
+						 xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd"
+							  d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+					</svg>
+				</a>
+			</div>
 		</div>
 	</body>
 
@@ -444,57 +476,6 @@
 				left: "20%",
 				containLabel: true
 			}]
-		};
-		;
-		if (option && typeof option === "object") {
-			myChart.setOption(option, true);
-		}
-	</script>
-
-	<script>
-		var dom = document.getElementById("container2");
-		var myChart = echarts.init(dom);
-		var app = {};
-		var list = ['priPhCons', 'mamPhCons', 'verPhCons', 'priPhyloP', 'mamPhyloP', 'verPhyloP', 'GerpS']
-		var listMax = [1,1,1,1,3,7,7]
-		var listMin = [0,0,0,-5,-8,-8,-13]
-		option = null;
-		option = {
-			title: {},
-			tooltip: {
-				trigger: 'axis'
-			},
-			legend: {
-				left: 'center',
-				data: ['xx']
-			},
-			radar: [
-				{
-					indicator: (function () {
-						var res = [];
-						for (var i = 0; i < 7; i++) {
-							res.push({text: list[i],min:listMin[i], max: listMax[i]});
-						}
-						return res;
-					})(),
-					radius: 150
-				}
-			],
-			series: [
-				{
-					type: 'radar',
-					tooltip: {
-						trigger: 'item'
-					},
-					areaStyle: {},
-					data: [
-						{
-							value: ['{{ dbDSMData.priPhCons }}', '{{ dbDSMData.mamPhCons }}', '{{ dbDSMData.verPhCons }}', '{{ dbDSMData.priPhyloP }}', '{{ dbDSMData.mamPhyloP }}', '{{ dbDSMData.verPhyloP }}', '{{ dbDSMData.GerpS }}'],
-							name: 'Conservative Score'
-						}
-					]
-				}
-			]
 		};
 		;
 		if (option && typeof option === "object") {

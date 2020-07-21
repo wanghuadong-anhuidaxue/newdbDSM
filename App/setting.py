@@ -1,11 +1,20 @@
 
 class Config:
+    #mysql
     DEBUG = False
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = '123456'
     # SESSION_TYPE = 'redis'
     expire_on_commit = True
+
+    # 邮箱设置
+    MAIL_SERVER = 'smtp.aliyun.com'  # smtp服务器
+    # MAIL_USE_TLS=True
+    MAIL_PORT = 25  # 不加密的为25端口
+    MAIL_USERNAME = 'xialab@aliyun.com'
+    MAIL_PASSWORD = 'hello.c101'
+    MAIL_DEFAULT_SENDER = ('C101', 'xialab@aliyun.com')  # 第一个为发件人名字，可自由设置，第二个为发件邮箱
 
 def get_db_uri(dbinfo):
     engine = dbinfo.get("ENGINE") or "sqlite"

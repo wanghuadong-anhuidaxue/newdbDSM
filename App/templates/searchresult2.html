@@ -48,9 +48,18 @@
 				height: 35px;
 				margin: 0 5px;
 			}
-			a:hover {text-decoration: none;}
-			a:active{text-decoration:none;}
-			a[name="abutton"]:visited{text-decoration: none;}
+			a:hover,a:active,a:focus,a:visited{text-decoration: none;}
+			.abutton:active{
+				text-decoration: none;
+				background-color: #428bca;
+				color: #ffffff !important;
+			}
+			.abutton a:focus{
+				color: #428bca;
+			}
+			.abutton:hover {
+				border-color: #5fb878;
+			}
 		</style>
 
 		
@@ -120,13 +129,31 @@
 					{% else%}
 						{{ pagination.total }}
 					{% endif %}
-					 of {{ pagination.total }} entries</p>
+						of {{ pagination.total }} entries</p>
 				</div>
-				<div class="layui-col-md-offset3 layui-col-xs6 layui-col-sm6 layui-col-md6 layui-col-lg6 btn-group " role="group">
-						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 10%}active{% endif %}"><a href="advancedSearchTable?page=1&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}" style="color: #000000" name="abutton">10item/page</a></button>
-						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 20%}active{% endif %}"><a href="advancedSearchTable?page=1&per_page=20&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}" style="color: #000000" name="abutton">20item/page</a></button>
-						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 50%}active{% endif %}"><a href="advancedSearchTable?page=1&per_page=50&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}" style="color: #000000" name="abutton">50item/page</a></button>
-						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 100%}active{% endif %}"><a href="advancedSearchTable?page=1&per_page=100&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&DBDSMScore={{ DBDSMScore }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}" style="color: #000000;" name="abutton">100item/page</a></button>
+				<div class="layui-col-md-offset3 layui-col-xs6 layui-col-sm6 layui-col-md6 layui-col-lg6 "
+					 role="group" style="height: 40px">
+					<div class="layui-col-md-offset8 layui-col-lg1" style="margin-top: 10px;">
+						Show
+					</div>
+					<div class="form-group  layui-col-lg2" style="width: 75px; margin-left: -5px">
+						<form action="/advancedSearchTable" name="selectLimit">
+							<input type="hidden" name="Disease" value="{{ Disease }}">
+							<input type="hidden" name="Gene" value="{{ Gene }}">
+							<input type="hidden" name="Chromosome" value="{{ Chromosome }}">
+							<input type="hidden" name="Classification" value="{{ Classification }}">
+							<input type="hidden" name="StrengthOfEvidence" value="{{ StrengthOfEvidence }}">
+							<select class="form-control" id="selectL" name="per_page">
+								<option value="10" {% if pagination.per_page==10 %}selected{% endif %}>10</option>
+								<option value="20" {% if pagination.per_page==20 %}selected{% endif %}>20</option>
+								<option value="50" {% if pagination.per_page==50 %}selected{% endif %}>50</option>
+								<option value="100" {% if pagination.per_page==100 %}selected{% endif %}>100</option>
+							</select>
+						</form>
+					</div>
+					<div class="layui-col-lg1" style="margin-top: 10px;">
+						&nbsp;entries
+					</div>
 				</div>
 			</div>
 
@@ -154,7 +181,9 @@
 					</tr>
             	{% endfor %}
 			</table>
-			<div class="">
+			<div class="" style="margin-top: 10px">
+				<button class="btn btn-default abutton"><a style="float: left" href="/downAllTable2?Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}">download full results</a></button>
+
 				<ul class="pagination">
 					{% if pagination.has_prev %}
 						<li class=""><a class="page-link" href="advancedSearchTable?page={{ pagination.prev_num }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}">&laquo;</a></li>
@@ -207,7 +236,14 @@
 	</body>
 
 	<script src="/newdbDSM/layui/layui.all.js"></script>
-
+     <script type="text/javascript">
+        window.onload=function(){
+          var osel=document.getElementById("selectL");
+          osel.onchange=function(){
+            document.selectLimit.submit();
+          }
+    }
+    </script>
 
 
 </html>

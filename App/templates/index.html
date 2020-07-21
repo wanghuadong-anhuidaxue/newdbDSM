@@ -7,14 +7,20 @@
 		<link rel="shortcut icon" href="/newdbDSM/images/dbdsmico.png" type="image/x-icon">
 		<link href="/newdbDSM/layui/css/layui.css" rel="stylesheet" />
 		<link href="/newdbDSM/css/home.css" rel="stylesheet" />
+		<style>
+		.layui-colla-content a:hover {
+			color: #5fb878;
+		}
 
+
+		</style>
 	</head>
 
 	<body>
 		<div class="layui-container" style="min-width:1140px;">
 			<div class="layui-row" id="header">
 				<!--头-->
-				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner" style="background: url(/newdbDSM/images/Picture8.png);background-size:cover;">
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner">
 				</div>
 				<!--这里是banner-->
 				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
@@ -55,19 +61,19 @@
 						    <div class="layui-collapse">
 								<div class="layui-colla-item">
 								    <h2 class="layui-colla-title"><strong>Overview</strong></h2>
-								    <hr class="layui-bg-black">
+
 								    <div class="layui-colla-content layui-show" style="color:black;text-align: justify;">
-								    	<br>
-								        Synonymous mutation is a form of single nucleotide mutation which replaces one base to another in the coding sequence that does not alter amino acids in the translated protein due to the degeneracy genetic code. Because of synonymous mutation does not change the protein primary structure, it has been considered nonfunctional for a long time. So it sometimes called 'silent mutation'. But recent studies suggesting that such synonymous mutations play an important role in human phenotype by affecting transcript splicing, mRNA stability, RNA secondary structure, the biding site of transcription factor binding and microRNA, codon optimality and protein expression and so on.
-			                    	    
-			                    	    <br><br>dbDSM (Database of Deleterious Synonymous Mutation) is an integrated database that collect multiple sources relate to deleterious synonymous mutations (DSMs). Here, we present the updated dbDSMv2.0 database, which provides detail information about DSM with phenotypes, including position information, disease, gene and functional score etc. We also add the source of tmVar to dbDSMv2.0 which is a text mining approach for extracting a wide range of sequence variants in both protein and gene levels (e.g. substitution, deletion, etc) in biomedical literature. We intend to collect accurate information used for bio-research and make it accessible to all users freely.
-			                			<br><br>
-			                			<strong>Citation:</strong>
-			                			<!--  
-			                			<fieldset class="layui-elem-field layui-field-title site-title">
-			                			<legend><strong>How to cite</strong></legend></fieldset> <br>
-			                			<strong>If you have found the dbDSM database useful, please cite:</strong>-->
-			                			<br><br>
+								    	<div class="page-header"><strong>Synonymous Mutation</strong></div>
+																		    <hr class="" style="background-color: rgba(0,0,0,0.2)">
+								        Synonymous mutation is a form of single nucleotide mutation which replaces one base to another in the coding sequence that does not alter amino acids in the translated protein due to the degeneracy genetic code. Because of synonymous mutation does not change the protein primary structure, it has been considered nonfunctional for a long time. So it sometimes called ‘silent mutation’. But recent studies suggesting that such synonymous mutations play an important role in human phenotype by affecting transcript splicing, mRNA stability, RNA secondary structure, the biding site of transcription factor binding and microRNA, codon optimality and protein expression and so on.
+			                    	    <br><br>
+										<div class="page-header"><strong>Database Introduction</strong></div>
+																		    <hr class="" style="background-color: rgba(0,0,0,0.2)">
+			                    	    dbDSM (Database of Deleterious Synonymous Mutation) is an integrated database that collect multiple sources relate to deleterious synonymous mutations (DSMs). Here, we present the updated dbDSMv2 database, which provides detail information about DSM with phenotypes, including position information, disease, gene and functional score etc. We add the source of tmVar to dbDSMv2 which is a text mining approach for extracting a wide range of sequence variants in both protein and gene levels (e.g. substitution, deletion, etc) in biomedical literature. We intend to collect accurate information used for bio-research and make it accessible to all users freely. In the new version of the database, we also added new annotation features, including transcripts, conservation, etc and we used the voting method to integrate the scores of the six class features (sequence, functional regions annotation, splicing, conservation, translation efficiency, functional score features) for the whole genome synonymous mutations which is named dbDSMScore to further assess the deleterious of the variants.
+										<br><br>
+										<div class="page-header"><strong>Citation</strong></div>
+												<hr class="" style="background-color: rgba(0,0,0,0.2)">
+
 			                			Pengbo Wen, Peng Xiao, and Junfeng Xia*, dbDSM: a manually curated database for deleterious synonymous mutations. Bioinformatics, 2016, 32(12): 1914-1916.
 			                		</div>
 								</div>
@@ -101,48 +107,52 @@
 						</div>
 					    <div class="layui-col-md4">
 					      <div class="layui-collapse">
-								<div class="layui-colla-item">
-								    <h2 class="layui-colla-title"><strong>Flowchart</strong></h2>
-								    <hr class="layui-bg-black">
-								    <div class="layui-colla-content layui-show">
-								    	<a href="/newdbDSM/images/flowchart.png" target="_blank">
-								    		<img src="/newdbDSM/images/flowchart.png" />
-								    	</a>
-								    </div>
-								</div>
+							  <div class="layui-colla-item">
+								  <h2 class="layui-colla-title"><strong>Flowchart and Mechanism</strong></h2>
+
+								  <div class="layui-colla-content layui-show">
+
+									  <div class="layui-carousel" id="test1" lay-filter="test1">
+										  <div carousel-item="">
+
+											  <div><a href="/newdbDSM/images/20200626dbDSM_workflow_V3.jpg" target="_blank">
+									  								    		<img src="/newdbDSM/images/20200626dbDSM_workflow_V3.jpg" />
+									  								    	</a></div>
+											  <div><a href="/newdbDSM/images/DSMs.jpg" target="_blank">
+									  								    		<img src="/newdbDSM/images/DSMs.jpg" />
+									  								    	</a></div>
+										  </div>
+									  </div>
+								  </div>
+							  </div>
 							</div>
 							<div class="layui-collapse">
 								<div class="layui-colla-item">
 								    <h2 class="layui-colla-title"><strong>Document</strong></h2>
-								    
-								    <div class="layui-colla-content">
+								    <div class="layui-colla-content layui-show">
 										<a href="{{ url_for('homeblue.about') }}#1.Brief introduction" >1. Brief introduction<br></a>
 										<a href='{{ url_for("homeblue.about") }}#2.The sources of the data' >2. The sources of the data<br></a>
-										<a href='{{ url_for("homeblue.about") }}#3.The sum of the data' >3. The sum of the data <br></a>
-										<a href='{{ url_for("homeblue.about") }}#4.The DSMs classification' >4. The DSMs classification <br></a>
-										<a href='{{ url_for("homeblue.about") }}#5.Strength of evidence for variant assessment' >5. Strength of evidence for variant assessment<br></a>
-										<a href='{{ url_for("homeblue.about") }}#6.The annotation tools used in dbDSMv2.0' >6. The annotation tools used in dbDSMv2.0<br></a>
-										<a href='{{ url_for("homeblue.about") }}#7.The overview of the searching process' >7. The overview of the searching process<br></a>
-										<a href='{{ url_for("homeblue.about") }}#8.Statistics dbDSMScore' >8. Statistics dbDSMScore<br></a>
+										<a href='{{ url_for("homeblue.about") }}#3.The DSMs classification' >3. The DSMs classification <br></a>
+										<a href='{{ url_for("homeblue.about") }}#4.Strength of evidence for variant assessment' >4. Strength of evidence for variant assessment<br></a>
+										<a href='{{ url_for("homeblue.about") }}#5.The annotation tools used in dbDSMv2' >5. The annotation tools used in dbDSMv2<br></a>
+										<a href='{{ url_for("homeblue.about") }}#6.The overview of the searching process' >6. The overview of the searching process<br></a>
 									</div>
 								</div>
 							</div>
-							<!-- 
+
 							<div class="layui-collapse">
 								<div class="layui-colla-item">
 									<h2 class="layui-colla-title"><strong>Update News</strong></h2>
-								    <hr class="layui-bg-black">
+
 								    <div class="layui-colla-content layui-show" style="color:black;">
-								    		07/06/2019: The Database of Deleterious Synonymous Mutation Version 2 (dbDSM v2) is updating.<br>
-											08/31/2018: Data from tmVar added and ClinVar,GWAS Catalog updated.<br>		
-									</div>
-									<div class="layui-card-footer" style="text-align: end;">						
-										<button class="layui-btn layui-btn-primary layui-btn-sm" onclick="window.location.href='about.jsp#Update'" style="color:black;">Update</button>
+<!--								    		07/06/2019: The Database of Deleterious Synonymous Mutation Version 2 (dbDSM v2) is updating.<br>-->
+											09/21/2017: Manually curated data from PubMed and Web of Knowledge updated.<br>
+										01/21/2016: Nearly one hundred entries were updated into dbDSM.<br>
+										01/18/2016: Download page updated.<br>
 									</div>
 								</div>
-							
 							</div>
-							 -->
+
 					    </div>
 					</div>
 
@@ -190,93 +200,19 @@
 			var element = layui.element;
 		});
 	</script>
-<!--	<script>-->
-<!--		layui.use(['carousel', 'form'], function(){-->
-<!--		  var carousel = layui.carousel-->
-<!--		  ,form = layui.form;-->
-<!--		  -->
-<!--		  //常规轮播-->
-<!--		  carousel.render({-->
-<!--		    elem: '#test1'-->
-<!--		    ,arrow: 'always'-->
-<!--		    ,width: '700px'-->
-<!--		    ,height: '440px'-->
-<!--		  });-->
-<!--		  var $ = layui.$, active = {-->
-<!--			    set: function(othis){-->
-<!--			      var THIS = 'layui-bg-normal'-->
-<!--			      ,key = othis.data('key')-->
-<!--			      ,options = {};-->
-<!--			      -->
-<!--			      othis.css('background-color', '#5FB878').siblings().removeAttr('style'); -->
-<!--			      options[key] = othis.data('value');-->
-<!--			      ins3.reload(options);-->
-<!--			    }-->
-<!--			  };-->
-<!--			  -->
-<!--			  //监听开关-->
-<!--			  form.on('switch(autoplay)', function(){-->
-<!--			    ins3.reload({-->
-<!--			      autoplay: this.checked-->
-<!--			    });-->
-<!--			  });-->
-<!--			  -->
-<!--			  $('.demoSet').on('keyup', function(){-->
-<!--			    var value = this.value-->
-<!--			    ,options = {};-->
-<!--			    if(!/^\d+$/.test(value)) return;-->
-<!--			    -->
-<!--			    options[this.name] = value;-->
-<!--			    ins3.reload(options);-->
-<!--			  });-->
-<!--			  -->
-<!--			  //其它示例-->
-<!--			  $('.demoTest .layui-btn').on('click', function(){-->
-<!--			    var othis = $(this), type = othis.data('type');-->
-<!--			    active[type] ? active[type].call(this, othis) : '';-->
-<!--			  });-->
-<!--			});-->
-<!--    </script>-->
-<!--	<script>-->
-<!--		function searchchange() {-->
-<!--			if(document.getElementById("searchChangeFlg").value == "1") {-->
+	<script>
+		layui.use(['carousel', 'form'], function () {
+			var carousel = layui.carousel
+					, form = layui.form;
 
-<!--				document.getElementById("td1").style.display = "block";-->
-<!--				document.getElementById("searchchange").innerHTML = "<";-->
-<!--				document.getElementById("searchChangeFlg").value = "0";-->
-<!--			} else {-->
+			//常规轮播
+			carousel.render({
+				elem: '#test1'
+				,width: '97%'
+				,height: '230px'
+				,interval: 5000
+			});
+		});
+	</script>
 
-<!--				document.getElementById("td1").style.display = "none";-->
-<!--				document.getElementById("searchchange").innerHTML =">";-->
-<!--				document.getElementById("searchChangeFlg").value = "1";-->
-<!--			}-->
-<!--			return false;-->
-<!--		}-->
-<!--	</script>-->
-<!--	<script type="text/javascript">-->
-<!--		(function(){-->
-<!--			 var o = document.getElementById("testmore");-->
-<!--			   Subt(o);     -->
-<!--		})();    -->
-<!--		function Subt(obj){-->
-<!--			 var s = obj.innerHTML;-->
-<!--			 var p = document.createElement("span");-->
-<!--			 var n = document.createElement("a");-->
-<!--			 p.innerHTML = s.substring(0,200);-->
-<!--			 n.innerHTML = s.length > 200 ? "...see more" : "";-->
-<!--			 n.href = "###";-->
-<!--			 n.onclick = function(){-->
-<!--				if (n.innerHTML == "...see more"){-->
-<!--					 n.innerHTML = "  close"; -->
-<!--					 p.innerHTML = s;-->
-<!--				}else{-->
-<!--					 n.innerHTML = "...see more";-->
-<!--					 p.innerHTML = s.substring(0,200);-->
-<!--			    }-->
-<!--		    } -->
-<!--			obj.innerHTML = "";-->
-<!--			obj.appendChild(p);-->
-<!--			obj.appendChild(n);-->
-<!--	   }     -->
-<!-- </script>-->
 </html>

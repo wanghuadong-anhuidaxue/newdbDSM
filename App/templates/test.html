@@ -8,63 +8,96 @@
     <script src="/newdbDSM/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 </head>
 
-<style>
-        .file {
-            position: relative;
-            display: inline-block;
-            background: #D0EEFF;
-            border: 1px solid #99D3F5;
-            border-radius: 4px;
-            padding: 4px 12px;
-            overflow: hidden;
-            color: #1E88C7;
-            text-decoration: none;
-            text-indent: 0;
-            line-height: 20px;
-        }
-        .file input {
-            position: absolute;
-            font-size: 100px;
-            right: 0;
-            top: 0;
-            opacity: 0;
-        }
-        .file:hover {
-            background: #AADFFD;
-            border-color: #78C3F3;
-            color: #004974;
-            text-decoration: none;
-        }
-    </style>
-
-</head>
 <body>
-
-<form>
-    <p id="t1"></p>
-
-
-    <div class="custom-file mb-3">
-      <input type="file" class="custom-file-input" id="customFile" name="filename" onchange="document.getElementById('t1').innerHTML=this.value">
-      <label class="custom-file-label" for="customFile">选择文件</label>
-    </div>
+<form method="post" action="analysisSubmit">
+    {{ form.csrf_token }}
+    {{ form.data }}
+    {{ form.uploaddata }}
+    {{ form.email }}
+    <input type="button" id="submitBtn" class="layui-btn" onclick="check_sequence()" lay-submit lay-filter="*" value="Submit">
+    <input type="button" id="resetBtn" class="layui-btn layui-btn-primary" lay-filter="reset" onclick="resetForm()" value="reset">
+{{ form.errors }}
 </form>
+<script>
+    //检查序列
+    function check_task(sequences) {
+        var sequences_array = sequences.split('>');
+        var sequences_length_dict = new Array();
+        // console.log('111:'+sequences)
+        // 最大允许提交1000条序列
+        if (sequences_array.length - 1 > 1000) {
+            alert("The maximum number of sequence is 1000 in one submission!");
+            return false;
+        }
+
+        var min_sequence_length = 1000000
+        var max_sequence_length = 0
+
+        for (i in sequences_array) {
+            if (sequences_array[i] != "") {
+                var tmp_array = sequences_array[i].split('\n');
+                tmp_array.shift()
+                tmp_sequence = tmp_array.join('');
+                tmp_sequence = tmp_sequence.replace(/\s/g, "");
+                sequences_length_dict[tmp_sequence.length] = 0;
+                //检测非法字符
+                if (tmp_sequence.search('chr') != -1) {
+                    alert("Illegal characters(BJOUXZ) are included in the FASTA sequence.");
+                    return false;
+                }
+                if (tmp_sequence.length < min_sequence_length) {
+                    min_sequence_length = tmp_sequence.length;
+                }
+                if (tmp_sequence.length > max_sequence_length) {
+                    max_sequence_length = tmp_sequence.length;
+                }
+            }
+        }
+
+        //最大序列长和最小序列长度
+        // if (min_sequence_length < 5) {
+        //     alert("Error! The minmum sequence length should be larger than 5");
+        //     return false;
+        // }
+        // if (max_sequence_length > 150) {
+        //     alert("Error! The maxmum sequence length should be shorter than 150");
+        //     return false;
+        // }
+        return true;
+    }
 
 
-<script type="text/javascript">
-function textModify()
-{
-    var obj = document.getElementById("p");
-    alert(obj.innerHTML);
-    obj.innerHTML= "google coding";
-}
-function textModify2()
-{
-    var obj = document.getElementById("p2");
-    alert(obj.innerText);
-    obj.innerText= "knowledge";
-}
+    // 检查是输入还是上传文件
+    function check_sequence() {
+        thisform = document.submitForm;
+        var mutation = document.getElementById("userInput");
+        data = mutation.value;
+        //输入框中的内容优先
+        if (data == "") {
+            var objFile = document.getElementById("uploaddata");
+            if (objFile.value == "") {
+                alert("Please paste the sequences in the TEXT area or upload a file!");
+            } else {
+                //将上传的文件转化成sequences
+                var files = $('#uploaddata').prop('files')[0];
+
+                var reader = new FileReader();
+                reader.readAsText(files, "UTF-8");
+                reader.onload = function (evt) {
+                    //var fileString = evt.target.result;
+                    mutation.value = evt.target.result;
+                    alert(mutation.value)
+                    if (check_task(mutation.value)) {
+                        thisform.submit();
+                    }
+                }
+            }
+        } else {
+            if (check_task(data)) {
+                thisform.submit();
+            }
+        }
+    }
 </script>
-
 </body>
 </html>

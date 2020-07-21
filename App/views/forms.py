@@ -8,16 +8,11 @@ Python：3.7.0
 
 
 from flask_wtf import FlaskForm
-from wtforms import StringField,SubmitField,TextAreaField, SelectMultipleField, SelectField #分别对应单行文本，提交，文件上传，多行文本,选择
+from wtforms import StringField,SubmitField,TextAreaField, SelectMultipleField, SelectField#分别对应单行文本，提交，文件上传，多行文本,选择
 from flask_wtf.file import FileAllowed,FileRequired,FileField
 from wtforms.validators import InputRequired,DataRequired,Length,ValidationError,Email #验证器，分别对应是否输入，是否数据正确，长度限制，邮箱格式是否正确
 from App.models import db, AllData
 
-class SeqsForm(FlaskForm):
-    sequences = TextAreaField(label='sequence',id='IDsequences',render_kw={'rows':'12','cols':'98%','class_':'layui-input-block'})
-    email = StringField(label='mail',id='eMail',render_kw={'placeholder':'Enter your email','class_':'layui-input'})
-    file = FileField(label='Sequence file',id='file',render_kw={"multiple data-min-file-count":'1'})
-    submit = SubmitField('Submit',id='submitBtn',render_kw={'onclick':'check_sequence()','class_':'layui-btn'})
 
 
 class SubmitForm(FlaskForm):
@@ -52,13 +47,10 @@ class SearchForm(FlaskForm):
 class AnalysisForm(FlaskForm):
     data = TextAreaField(label='data',id="userInput", render_kw={'placeholder':'Type synonymous mutations as VCF format','class_':"layui-textarea", 'style':'', 'autocomplete':"off",})
     email = StringField(label='eMail', id='eMail',
-                            render_kw={ 'class_': 'layui-input','lay-verify':"required", 'size':"100", 'style':"",'placeholder':"Email address (Optional)"})
-    uploaddata = FileField(label='customFile',_name='customFile',id="customFile", validators=[FileAllowed(['vcf'], message='文件格式错误')], render_kw={'class_':"custom-file-input", 'onchange':"getFileName(this.value)"})
-
-    submit = SubmitField('Submit', id='submitBtn',
-                         render_kw={'lay-submit': '', 'lay-filter': 'formDemo', 'class_': 'layui-btn',
-                                    'style': "background-color: #5FB878;"})
-    reset = SubmitField('Reset', id='resetBtn', render_kw={'class_': 'layui-btn layui-btn-primary', 'type': "reset", 'onclick':'reset1()'})
+                            render_kw={'autocomplete': 'off','class_': 'layui-input form-control', 'style':"border-radius: 0;",'placeholder':"Email address"})
+    uploaddata = FileField(label='uploaddata', id="uploaddata", render_kw={'class_':'custom-file-input',"multiple data-min-file-count":'1','accept':'.vcf', 'onchange':"getFileName(this.value)"})
+    submit = SubmitField('Submit',id='submitBtn',render_kw={'onclick':'check_sequence()','class_':'layui-btn'})
+    # reset = SubmitField('Reset', id='resetBtn', render_kw={'class_': 'layui-btn layui-btn-primary', 'type': "reset", 'onclick':'reset1()'})
 
 
 

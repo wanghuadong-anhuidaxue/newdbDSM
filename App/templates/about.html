@@ -40,6 +40,14 @@
             font-color: black;
             color: black;
         }
+
+        a:hover, a:active, a:link {
+            text-decoration: none !important;
+        }
+
+        .asvg:hover {
+            color: #5fb878;
+        }
     </style>
 </head>
 
@@ -47,8 +55,7 @@
 <div class="layui-container" style="min-width:1140px;">
     <div class="layui-row" id="header">
         <!--头-->
-        <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner"
-             style="background: url(/newdbDSM/images/Picture8.png);background-size:cover;">
+        <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner">
         </div>
         <!--这里是banner-->
         <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
@@ -105,6 +112,16 @@
                         <h2 style="border-left-color: #5FB878;" onclick="javascript:location.href='#Statistics';">
                             Statistics</h2>
                     </li>
+                    <li>
+                        <h2 style="border-left-color: #5FB878;"
+                            onclick="javascript:location.href='#Literature_classification';">
+                            Literature classification</h2>
+                    </li>
+                    <li>
+                        <h2 style="border-left-color: #5FB878;"
+                            onclick="javascript:location.href='#Prediction_Interpretation';">
+                            Prediction Interpretation</h2>
+                    </li>
                 </ul>
             </div>
             <div class="site-content">
@@ -114,31 +131,28 @@
                 <strong id="1.Brief introduction">
                     <br>1.Brief introduction<br><br>
                 </strong>
-                <div style="word-break:keep-all">
+                <div style="word-break:keep-all;text-align: justify;">
                     Synonymous substitution (which is often called silent mutation before) is a kind of point mutation
-                    occurs in genes' coding region.
-                    Because the codons' degeneracy, it does not alter the Amino acid residue. As a result, for a long
-                    time, it's considered no bio function, treated as "silent".
+                    occurs in genes' coding region. Because the codons' degeneracy, it does not alter the Amino acid
+                    residue. As a result, for a long time, it's considered no bio function, treated as "silent".
                     <br><br>But recent research shows "Silent Mutation Make Some Noise", and makes people focus on the
-                    area.
-                    Efforts have been made, one possible mechanism has been proposed, and synonymous mutations
+                    area. Efforts have been made, one possible mechanism has been proposed, and synonymous mutations
                     specifically change the splicing motifs and cause abnormal splicing.
                     <br><br>However, there is no database focusing on the dangerous of synonymous mutations yet.
                     Therefore, we have collected diseases related mutation to construct a Database of Deleterious
-                    Synonymous mutation (dbDSM) that would help in understanding the
-                    relationship between diseases and the synonymous mutations. Here we present the updated dbDSMv2.0
-                    database, which newly added the tmVar data and updated ClinVar, GWAS Catalog data.
-                    In the new version of the database, we added new annotation features, including transcripts,
-                    conservatism,
-                    etc and we used the voting method to integrate the scores of the five scoring tools (SilVA, DDIG-SN,
-                    FATHMM-MKL, CADD, and TraP) which is named dbDSMScore to further assess
-                    the deleterious of the variants. Notably, variants from the original literature are marked in red.
+                    Synonymous mutation (dbDSM) that would help in understanding the relationship between diseases and
+                    the synonymous mutations. Here we present the updated dbDSMv2 database, which newly added the tmVar
+                    data and updated ClinVar, GWAS Catalog data. In the new version of the database, we added new
+                    annotation features, including transcripts, conservation, etc and we used the voting method to
+                    integrate the scores of the six class features (sequence, functional regions annotation, splicing,
+                    conservation, translation efficiency, functional score features) for the whole genome synonymous
+                    mutations which is named dbDSMScore to further assess the deleterious of the variants.
                 </div>
                 <strong id="2.The sources of the data">
                     <br>2.The sources of the data<br><br>
                 </strong>
                 <div>
-                    <table class="layui-table" style="background-color:#F2F2F2;width:500px;">
+                    <table class="layui-table" style="background-color:#F2F2F2;width:100%;">
                         <colgroup>
                             <col width="200">
                             <col width="150">
@@ -146,99 +160,121 @@
                         </colgroup>
                         <thead>
                         <tr style="background-color:#b5b4b2;">
-                            <th>Data source</th>
-                            <th>dbDSMv1.0</th>
-                            <th>dbDSMv2.0</th>
+                            <th>dbDSM</th>
+                            <th>Version 1</th>
+                            <th>Version 2</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>1.Manually curated</td>
+                            <td colspan="3"><strong>Data source</strong></td>
+                        </tr>
+                        <tr>
+                            <td>GRASP</td>
                             <td>Yes</td>
                             <td>Yes</td>
                         </tr>
                         <tr>
-                            <td>2.GRASP</td>
+                            <td>ClinVar</td>
                             <td>Yes</td>
                             <td>Yes</td>
                         </tr>
                         <tr>
-                            <td>3.ClinVar</td>
+                            <td>PolymiRTS</td>
                             <td>Yes</td>
                             <td>Yes</td>
                         </tr>
                         <tr>
-                            <td>4.PolymiRTS</td>
+                            <td>GWAS catalog</td>
                             <td>Yes</td>
                             <td>Yes</td>
                         </tr>
                         <tr>
-                            <td>5.GWAS catalog</td>
+                            <td>GWASdb</td>
                             <td>Yes</td>
                             <td>Yes</td>
                         </tr>
                         <tr>
-                            <td>6.GWASdb</td>
-                            <td>Yes</td>
+                            <td>tmVar</td>
+                            <td>No</td>
                             <td>Yes</td>
                         </tr>
                         <tr>
-                            <td>7.tmVar</td>
+                            <td>Putatively variants in the human genome</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><strong>Data statistics</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Number of variants based on published literature</td>
+                            <td>1,289</td>
+                            <td>2,747</td>
+                        </tr>
+                        <tr>
+                            <td>Number of putatively variants in the human genome
+                                Disease
+                            </td>
+                            <td>No</td>
+                            <td>27,077,126</td>
+                        </tr>
+                        <tr>
+                            <td>Disease</td>
+                            <td>443</td>
+                            <td>1,499</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><strong>Functional annotation for all possible synonymous mutations in the human
+                                genome</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Sequence</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Function regions annotation</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Splicing</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Conservation</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Translation efficiency</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Functional score</td>
                             <td>No</td>
                             <td>Yes</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <strong id="3.The sum of the data">
-                    <br>3.The sum of the data<br><br>
+
+                <strong id="3.The DSMs classification">
+                    <br>3.The DSMs classification<br><br>
                 </strong>
-                <div>
-                    <table class="layui-table" style="background-color:#F2F2F2;width:750px;">
-                        <colgroup>
-                            <col width="150">
-                            <col width="300">
-                            <col width="300">
-                        </colgroup>
-                        <thead>
-                        <tr style="background-color:#b5b4b2;">
-                            <th>SNPs</th>
-                            <th>Number of records in dbDSMv1.0</th>
-                            <th>Number of records in dbDSMv2.0</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>With ref ID</td>
-                            <td>1219</td>
-                            <td>2116</td>
-                        </tr>
-                        <tr>
-                            <td>Without ref ID</td>
-                            <td>116</td>
-                            <td>631</td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td>1335</td>
-                            <td>2747</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <strong id="4.The DSMs classification">
-                    <br>4.The DSMs classification<br><br>
-                </strong>
-                <img src="/newdbDSM/images/classification2.png" height="500px" width="auto">
-                <div>
-                    To the best of our knowledge, there is no consensus classification of molecular mechanisms by which
-                    synonymous mutations contribute to disease phenotype.
-                    Therefore, after reviewing the literature (Bali and Bebok, 2015; Gotea et al, 2015; Hunt et al,
-                    2014; Sauna and Kimchi-Sarfaty, 2011),
-                    we used a classification system in the database as follows:<br>
+                <img src="/newdbDSM/images/DSMs.jpg" width="100%">
+                <div style="text-align: justify;">
+                    <br>
+                    To the best of our knowledge, there is no consensus classification of molecular mechanisms by
+                    which synonymous mutation contribute to disease phenotype. Therefore, after reviewing the literature
+                    (Bali and Bebok, 2015; Gotea et al, 2015; Hunt et al, 2014; Sauna and
+                    Kimchi-Sarfaty, 2011), we used a classification system in the database as follows:<br>
                 </div>
                 <div>
-                    <table class="layui-table" style="background-color:#F2F2F2;width:750px;">
+                    <table class="layui-table" style="background-color:#F2F2F2;">
                         <colgroup>
                             <col width="150">
                             <col width="400">
@@ -291,7 +327,7 @@
                     </table>
                 </div>
 
-                <div>
+                <div style="text-align: justify;">
                     <br>References：<br><br>
                     Bali, V., & Bebok, Z. (2015). Decoding mechanisms by which silent codon changes influence protein
                     biogenesis and function.
@@ -304,11 +340,11 @@
                     Sauna, Z. E., & Kimchi-Sarfaty, C. (2011). Understanding the contribution of synonymous mutations to
                     human disease. Nature Reviews Genetics, 12(10), 683-691.<br>
                 </div>
-                <strong id="5.Strength of evidence for variant assessment">
-                    <br>5.Strength of evidence for variant assessment<br><br>
+                <strong id="4.Strength of evidence for variant assessment">
+                    <br>4.Strength of evidence for variant assessment<br><br>
                 </strong>
                 <div>
-                    <table class="layui-table" style="background-color:#F2F2F2;width:750px;">
+                    <table class="layui-table" style="background-color:#F2F2F2;">
                         <colgroup>
                             <col width="350">
                             <col width="150">
@@ -363,17 +399,17 @@
                         </tbody>
                     </table>
                 </div>
-                <div>
+                <div style="text-align: justify;">
                     <br>References：<br><br>
                     Duzkale, H., Shen, J., McLaughlin, H., Alfares, A., Kelly, M. A., Pugh, T. J., ... & Lebo, M. S.
                     (2013). A systematic approach to assessing the clinical significance of genetic variants. Clinical
                     genetics, 84(5), 453-463.<br>
                 </div>
-                <strong id="6.The annotation tools used in dbDSMv2.0">
-                    <br>6. The annotation tools used in dbDSMv2.0<br><br>
+                <strong id="5.The annotation tools used in dbDSMv2">
+                    <br>5. The annotation tools used in dbDSMv2<br><br>
                 </strong>
                 <div>
-                    <table class="layui-table" style="background-color:#F2F2F2;width:900px;">
+                    <table class="layui-table" style="background-color:#F2F2F2;">
                         <colgroup>
                             <col width="150">
                             <col width="200">
@@ -392,29 +428,13 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>SilVA</td>
+                            <td>PrDSM</td>
                             <td>GRCh37/hg19</td>
-                            <td><a href="http://compbio.cs.toronto.edu/silva" target='_blank' style="color:#5FB878;">http://compbio.cs.toronto.edu/silva</a>
+                            <td><a href="http://bioinfo.ahu.edu.cn:8080/PrDSM/" target='_blank' style="color:#5FB878;">http://bioinfo.ahu.edu.cn:8080/PrDSM/</a>
                             </td>
-                            <td>>0.278</td>
+                            <td>>0.308</td>
                             <td>[1]</td>
 
-                        </tr>
-                        <tr>
-                            <td>DDIG-SN</td>
-                            <td>GRCh37/hg19</td>
-                            <td><a href="http://sparks-lab.org/ddig" target='_blank' style="color:#5FB878;">http://sparks-lab.org/ddig</a>
-                            </td>
-                            <td>>0.5</td>
-                            <td>[2]</td>
-                        </tr>
-                        <tr>
-                            <td>FATHMM-MKL</td>
-                            <td>GRCh37/hg19</td>
-                            <td><a href="http://fathmm.biocompute.org.uk" target='_blank' style="color:#5FB878;">http://fathmm.biocompute.org.uk</a>
-                            </td>
-                            <td>>0.5</td>
-                            <td>[3]</td>
                         </tr>
                         <tr>
                             <td>TraP</td>
@@ -422,85 +442,104 @@
                             <td><a href="http://trap-score.org/Search?version=v2" target='_blank'
                                    style="color:#5FB878;">http://trap-score.org/Search?version=v2</a></td>
                             <td>≧0.459</td>
+                            <td>[2]</td>
+                        </tr>
+                        <tr>
+                            <td>PhD-SNPg</td>
+                            <td>GRCh38/37</td>
+                            <td><a href="https://snps.biofold.org/phd-snpg/index.html" target='_blank'
+                                   style="color:#5FB878;">https://snps.biofold.org/phd-snpg/index.html</a>
+                            </td>
+                            <td>>0.5</td>
+                            <td>[3]</td>
+
+                        </tr>
+                        <tr>
+                            <td>FATHMM-MKL</td>
+                            <td>GRCh37/hg19</td>
+                            <td><a href="http://fathmm.biocompute.org.uk" target='_blank' style="color:#5FB878;">http://fathmm.biocompute.org.uk</a>
+                            </td>
+                            <td>>0.5</td>
                             <td>[4]</td>
                         </tr>
                         <tr>
-                            <td>CADD</td>
-                            <td>GRCh37/hg19</td>
-                            <td><a href="https://myvariant.info" target='_blank' style="color:#5FB878;">https://myvariant.info</a>
+                            <td>CADD (v1.4)</td>
+                            <td>GRCh38/37</td>
+                            <td><a href="https://cadd.gs.washington.edu/" target='_blank' style="color:#5FB878;">https://cadd.gs.washington.edu/</a>
                             </td>
                             <td>10-20</td>
                             <td>[5]</td>
                         </tr>
                         <tr>
-                            <td>GERP++</td>
+                            <td>DANN</td>
                             <td>GRCh37/hg19</td>
-                            <td><a href="https://myvariant.info" target='_blank' style="color:#5FB878;">https://myvariant.info</a>
+                            <td><a href="https://cbcl.ics.uci.edu/public_data/DANN" target='_blank'
+                                   style="color:#5FB878;">https://cbcl.ics.uci.edu/public_data/DANN</a>
                             </td>
-                            <td>>0</td>
-                            <td>[5]</td>
-                        </tr>
-                        <tr>
-                            <td>Phylop100way</td>
-                            <td>GRCh38/37</td>
-                            <td><a href="http://genome.ucsc.edu/cgi-bin/hgTables" target='_blank'
-                                   style="color:#5FB878;">http://genome.ucsc.edu/cgi-bin/hgTables</a></td>
-                            <td>>0</td>
+                            <td>≥0.99</td>
                             <td>[6]</td>
                         </tr>
                         <tr>
-                            <td>PhastCons100way</td>
-                            <td>GRCh38/37</td>
-                            <td><a href="http://genome.ucsc.edu/cgi-bin/hgTables" target='_blank'
-                                   style="color:#5FB878;">http://genome.ucsc.edu/cgi-bin/hgTables</a></td>
+                            <td>FATHMM-XF</td>
+                            <td>GRCh37/hg19</td>
+                            <td><a href="http://fathmm.biocompute.org.uk/fathmm-xf/" target='_blank'
+                                   style="color:#5FB878;">http://fathmm.biocompute.org.uk/fathmm-xf/</a></td>
                             <td>>0.5</td>
-                            <td>[6]</td>
+                            <td>[7]</td>
                         </tr>
                         <tr>
                             <td>TransVar</td>
                             <td>GRCh38/37</td>
                             <td><a href="http://bioinformatics.mdanderson.org/transvarweb/" target='_blank'
-                                   style="color:#5FB878;">http://bioinformatics.mdanderson.org/transvarweb/</a></td>
+                                   style="color:#5FB878;">http://genome.ucsc.edu/cgi-bin/hgTables</a></td>
                             <td>-</td>
-                            <td>[7]</td>
+                            <td>[8]</td>
                         </tr>
                         <tr>
                             <td>VEP</td>
                             <td>GRCh38/37</td>
-                            <td><a href="http://www.ensembl.org/Tools/VEP" target='_blank' style="color:#5FB878;">http://www.ensembl.org/Tools/VEP</a>
+                            <td><a href="http://www.ensembl.org/Tools/VEP" target='_blank'
+                                   style="color:#5FB878;">http://www.ensembl.org/Tools/VEP</a></td>
+                            <td>-</td>
+                            <td>[9]</td>
+                        </tr>
+                        <tr>
+                            <td>Disease Ontology</td>
+                            <td>-</td>
+                            <td><a href="https://disease-ontology.org/" target='_blank' style="color:#5FB878;">https://disease-ontology.org/</a>
                             </td>
                             <td>-</td>
-                            <td>[8]</td>
+                            <td>[10]</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <div>
+                <div style="text-align: justify;">
                     <br>References：<br><br>
-                    [1] Buske, O. J., Manickaraj, A., Mital, S., Ray, P. N., & Brudno, M. (2013). Identification of
-                    deleterious synonymous variants in human genomes. Bioinformatics, 29(15), 1843-1850.<br><br>
-                    [2] Livingstone, M., Folkman, L., Yang, Y., Zhang, P., Mort, M., Cooper, D. N., ... & Zhou, Y.
-                    (2017). Investigating DNA‐, RNA‐, and protein‐based features as a means to discriminate pathogenic
-                    synonymous variants. Human mutation, 38(10), 1336-1347.<br><br>
-                    [3] Shihab, H. A., Rogers, M. F., Gough, J., Mort, M., Cooper, D. N., Day, I. N., ... & Campbell, C.
-                    (2015). An integrative approach to predicting the functional effects of non-coding and coding
-                    sequence variation. Bioinformatics, 31(10), 1536-1543.<br><br>
-                    [4] Gelfman, S., Wang, Q., McSweeney, K. M., Ren, Z., La Carpia, F., Halvorsen, M., ... & Petrovski,
-                    S. (2017). Annotating pathogenic non-coding variants in genic regions. Nature communications, 8(1),
-                    236.<br><br>
-                    [5] Xin, J., Mark, A., Afrasiabi, C., Tsueng, G., Juchler, M., Gopal, N., ... & Torkamani, A.
-                    (2016). High-performance web services for querying gene and variant annotation. Genome biology,
-                    17(1), 91.<br><br>
-                    [6] http://genome.ucsc.edu/cgi-bin/hgTables<br><br>
-                    [7] Zhou, W., Chen, T., Chong, Z., Rohrdanz, M. A., Melott, J. M., Wakefield, C., ... & Chen, K.
-                    (2015). TransVar: a multilevel variant annotator for precision genomics. Nature methods, 12(11),
-                    1002.<br><br>
-                    [8] McLaren, W., Gil, L., Hunt, S. E., Riat, H. S., Ritchie, G. R., Thormann, A., ... & Cunningham,
-                    F. (2016). The ensembl variant effect predictor. Genome biology, 17(1), 122.
-                    <br>
+                    [1] Cheng N, Li M, Zhao L, et al. Comparison and integration of computational methods for
+                    deleterious synonymous mutation prediction. Brief Bioinform. 2020;21(3):970-981.<br><br>
+                    [2] Gelfman S, Wang Q, McSweeney KM, et al. Annotating pathogenic non-coding variants in genic
+                    regions. Nat Commun 2017;8:236.<br><br>
+                    [3] Capriotti E, Fariselli P. PhD-SNPg: a webserver and lightweight tool for scoring single
+                    nucleotide variants. Nucleic Acids Res 2017;45:W247–52.<br><br>
+                    [4] Shihab HA, Rogers MF, Gough J, et al. An integrative approach to predicting the functional
+                    effects of non-coding and coding sequence variation. Bioinformatics 2015;31:1536–43.<br><br>
+                    [5] Rentzsch P, Witten D, Cooper GM, et al. CADD: predicting the deleteriousness of variants
+                    throughout the human genome. Nucleic Acids Res 2019;47:D886–94.<br><br>
+                    [6] Quang D, Chen Y, Xie X. DANN: a deep learning approach for annotating the pathogenicity of
+                    genetic variants. Bioinformatics 2015;31:761–3.<br><br>
+                    [7] Rogers MF, Shihab HA, Mort M, et al. FATHMM-XF: accurate prediction of pathogenic point
+                    mutations via extended features. Bioinformatics 2018;34:511–3.<br><br>
+                    [8] Zhou W, Chen T, Chong Z, et al. TransVar: a multilevel variant annotator for precision genomics.
+                    Nat Methods. 2015;12(11):1002-1003. <br><br>
+                    [9] McLaren W, Gil L, Hunt SE, et al. The Ensembl Variant Effect Predictor. Genome Biol.
+                    2016;17(1):122.<br><br>
+                    [10] Kibbe WA, Arze C, Felix V, et al. Disease Ontology 2015 update: an expanded and updated
+                    database of human diseases for linking biomedical knowledge through disease data. Nucleic Acids Res
+                    2015;43:D1071-8.<br><br>
                 </div>
-                <strong id="7.The overview of the searching process">
-                    <br>7.The overview of the searching process<br><br>
+                <strong id="6.The overview of the searching process">
+                    <br>6.The overview of the searching process<br><br>
                 </strong>
                 <div>
                     The browse process including “Search” and “Advanced search”. <br><br>
@@ -515,11 +554,8 @@
                     You can select one or more of the four options listed in the browse area (Gene, Disease, dbDSMScore,
                     Chromosome).<br><br>
                 </div>
-                <img src="/newdbDSM/images/advancedsearch.png" height="250px" width="auto">
-                <strong id="8.Statistics dbDSMScore">
-                    <br><br>8.Statistics dbDSMScore<br><br>
-                </strong>
-                <img src="/newdbDSM/images/dbDSMScore2.png" height="300px" width="auto">
+                <img src="/newdbDSM/images/advsearch.jpg" height="250px" width="auto">
+
                 <hr class="layui-bg-black">
                 <blockquote class="layui-elem-quote" id="Data Release"
                             style="font-size: 20px;border-left-color: #5FB878;">
@@ -527,10 +563,10 @@
                 </blockquote>
                 <div class="layui-text" style="margin-bottom: 7px;">
                     <div>
-                        Data release of dbDSM v2
+                        <b>Data release of dbDSMv2</b>
                     </div>
                     <div>
-                        <table class="layui-table" style="background-color:#F2F2F2;width:900px;">
+                        <table class="layui-table" style="background-color:#F2F2F2;">
                             <colgroup>
                                 <col width="150">
                                 <col width="150">
@@ -654,9 +690,8 @@
                     <div class="layui-text" style="margin-bottom: 7px;">
                         <strong>Brief release history<br><br></strong>
                         <div>
-                            &emsp;07/06/2019: The Database of Deleterious Synonymous Mutation Version 2 (dbDSM v2) is
-                            updating.<br><br>
-                            &emsp;08/31/2018: Data from tmVar added and ClinVar,GWAS Catalog updated.<br><br>
+                            <!--                            &emsp;07/06/2019: The Database of Deleterious Synonymous Mutation Version 2 (dbDSM v2) is-->
+                            <!--                            updating.<br><br>-->
                             &emsp;09/21/2017: Manually curated data from PubMed and Web of Knowledge updated.<br><br>
                             &emsp;01/21/2016: Nearly one hundred entries were updated into dbDSM.<br><br>
                             &emsp;01/18/2016: Download page updated.<br><br>
@@ -675,10 +710,10 @@
                     </blockquote>
                     <div class="layui-text" style="margin-bottom: 7px;">
                         <div>
-                            <strong>&emsp;Fields statistics<br></strong>
+                            <strong>Fields statistics<br></strong>
                         </div>
                         <div>
-                            <table class="layui-table" style="background-color:#F2F2F2;width:800px;">
+                            <table class="layui-table" style="background-color:#F2F2F2;">
                                 <colgroup>
                                     <col width="200">
                                     <col width="500">
@@ -768,27 +803,64 @@
                                     <td>P-value in GWAS</td>
                                 </tr>
                                 <tr>
-                                    <td>PhyloP100way</td>
-                                    <td>100 Vertebrate Phylop conservation score at mutation position</td>
-                                </tr>
-                                <tr>
-                                    <td>PhastCons100way</td>
-                                    <td>100 Vertebrate PhastCons conservation score at mutation position</td>
-                                </tr>
-                                <tr>
-                                    <td>GerpS</td>
-                                    <td>Rejected Substitution' score defined by GERP++</td>
-                                </tr>
-                                <tr>
                                     <td>Source</td>
                                     <td>The source of a variant</td>
                                 </tr>
                                 <tr>
-                                    <td>dbDSMScore</td>
-                                    <td>dbDSM score of a variant Which are including SilVA,DDIG-SN,FATHMM-MKL, TraP,
-                                        CADD score.We use voting methods to evaluate the variant, dbDSM score plus one
-                                        if the score above the threshold value for each tool.
-                                    </td>
+                                    <td>PrDSM</td>
+                                    <td>The functional impact score of PrDSM</td>
+                                </tr>
+                                <tr>
+                                    <td>TraP</td>
+                                    <td>The functional impact score of TraP</td>
+                                </tr>
+                                <tr>
+                                    <td>PhD-SNPg</td>
+                                    <td>The functional impact score of PhD-SNPg</td>
+                                </tr>
+                                <tr>
+                                    <td>FATHMM-MKL</td>
+                                    <td>The functional impact score of FATHMM-MKL</td>
+                                </tr>
+                                <tr>
+                                    <td>CADD</td>
+                                    <td>The functional impact score of CADD</td>
+                                </tr>
+                                <tr>
+                                    <td>DANN</td>
+                                    <td>The functional impact score of DANN</td>
+                                </tr>
+                                <tr>
+                                    <td>FATHMM-XF</td>
+                                    <td>The functional impact score of FATHMM-XF</td>
+                                </tr>
+                                <tr>
+                                    <td>priPhyloP</td>
+                                    <td>PhyloP scores of 100 primates obtained from CADD</td>
+                                </tr>
+                                <tr>
+                                    <td>mamPhyloP</td>
+                                    <td>PhyloP scores of 100 mammals obtained from CADD</td>
+                                </tr>
+                                <tr>
+                                    <td>verPhyloP</td>
+                                    <td>PhyloP scores of 100 vertebrates obtained from CADD</td>
+                                </tr>
+                                <tr>
+                                    <td>priPhCons</td>
+                                    <td>PhastCons scores of 100 primates obtained from CADD</td>
+                                </tr>
+                                <tr>
+                                    <td>mamPhCons</td>
+                                    <td>PhastCons scores of 100 mammals obtained from CADD</td>
+                                </tr>
+                                <tr>
+                                    <td>verPhCons</td>
+                                    <td>PhastCons scores of 100 vertebrates obtained from CADD</td>
+                                </tr>
+                                <tr>
+                                    <td>GerpS</td>
+                                    <td>Rejected Substitution' score defined by GERP++</td>
                                 </tr>
                                 <tr>
                                     <td>PMID</td>
@@ -797,6 +869,10 @@
                                 <tr>
                                     <td>Year</td>
                                     <td>Published time of an article</td>
+                                </tr>
+                                <tr>
+                                    <td>Ethnicity</td>
+                                    <td>The origin of samples in articles for the variant that we focused</td>
                                 </tr>
                                 <tr>
                                     <td>KeySentence</td>
@@ -817,7 +893,7 @@
                             <strong>Data statistics</strong>
                         </div>
                         <div>
-                            <table class="layui-table" style="background-color:#F2F2F2;width:800px;">
+                            <table class="layui-table" style="background-color:#F2F2F2;">
                                 <colgroup>
                                     <col width="200">
                                     <col width="400">
@@ -973,8 +1049,285 @@
 
                     </div>
                 </div>
+                <hr class="layui-bg-black">
+                <blockquote class="layui-elem-quote" id="Literature_classification"
+                            style="font-size: 20px;border-left-color: #5FB878;">
+                    Literature classification
+                </blockquote>
+                <div class="layui-text" style="margin-bottom: 7px;">
+                    <div>
+                        <p>Summary of articles regarding to deleterious synonymous mutations based on
+                            “Classification”.<br></p>
+                    </div>
+                    <br>
+                    <div style="height: 30px">
+                        <strong>mRNA structure</strong>
+                        <button class="layui-btn layui-btn-sm" style="float:right;"><a href="/newdbDSM/download/mRNA structure.xlsx" style="color:#ffffff;cursor:pointer;float:right">download</a></button>
+                    </div>
+                    <div style="overflow:scroll; max-height: 400px">
+                        <table class="layui-table" style="background-color:#F2F2F2; height: 200px">
+                            <thead>
+                            <tr style="background-color:#b5b4b2;">
+                                <th><strong>PMID</strong></th>
+                                <th><strong>Title</strong></th>
+                                <th><strong>Author</strong></th>
+                                <th><strong>Source</strong></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for literature in literatureALLList[0]:%}
+                            <tr>
+                                <td><a style="color:#5FB878; "
+                                       href="https://pubmed.ncbi.nlm.nih.gov/{{ literature[0] }}"
+                                       target="view_window">{{ literature[0] }}</a></td>
+                                <td>{{ literature[1] }}</td>
+                                <td>{{ literature[2] }}</td>
+                                <td>{{ literature[3] }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+                    <div style="height: 30px">
+                        <strong>microRNA binding</strong>
+                        <button class="layui-btn layui-btn-sm" style="float:right;"><a href="/newdbDSM/download/microRNA binding.xlsx" style="color:#ffffff;cursor:pointer;float:right">download</a></button>
+                    </div>
+                    <div style=" max-height: 200px">
+                        <table class="layui-table" style="background-color:#F2F2F2; height: 100px">
+                            <thead>
+                            <tr style="background-color:#b5b4b2;">
+                                <th><strong>PMID</strong></th>
+                                <th><strong>Title</strong></th>
+                                <th><strong>Author</strong></th>
+                                <th><strong>Source</strong></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for literature in literatureALLList[1]:%}
+                            <tr>
+                                <td><a style="color:#5FB878; "
+                                       href="https://pubmed.ncbi.nlm.nih.gov/{{ literature[0] }}"
+                                       target="view_window">{{ literature[0] }}</a></td>
+                                <td>{{ literature[1] }}</td>
+                                <td>{{ literature[2] }}</td>
+                                <td>{{ literature[3] }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+                    <div style="height: 30px">
+                        <strong>Protein synthesis</strong>
+                        <button class="layui-btn layui-btn-sm" style="float:right;"><a href="/newdbDSM/download/Protein synthesis.xlsx" style="color:#ffffff;cursor:pointer;float:right">download</a></button>
+                    </div>
+                    <div style="overflow:scroll; max-height: 400px">
+                        <table class="layui-table" style="background-color:#F2F2F2; height: 200px">
+                            <thead>
+                            <tr style="background-color:#b5b4b2;">
+                                <th><strong>PMID</strong></th>
+                                <th><strong>Title</strong></th>
+                                <th><strong>Author</strong></th>
+                                <th><strong>Source</strong></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for literature in literatureALLList[2]:%}
+                            <tr>
+                                <td><a style="color:#5FB878; "
+                                       href="https://pubmed.ncbi.nlm.nih.gov/{{ literature[0] }}"
+                                       target="view_window">{{ literature[0] }}</a></td>
+                                <td>{{ literature[1] }}</td>
+                                <td>{{ literature[2] }}</td>
+                                <td>{{ literature[3] }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+                    <div style="height: 30px">
+                        <strong>Splicing regulation</strong>
+                        <button class="layui-btn layui-btn-sm" style="float:right;"><a href="/newdbDSM/download/Splicing regulation.xlsx" style="color:#ffffff;cursor:pointer;float:right">download</a></button>
+                    </div>
+                    <div style="overflow:scroll; max-height: 400px">
+                        <table class="layui-table" style="background-color:#F2F2F2; height: 200px">
+                            <thead>
+                            <tr style="background-color:#b5b4b2;">
+                                <th><strong>PMID</strong></th>
+                                <th><strong>Title</strong></th>
+                                <th><strong>Author</strong></th>
+                                <th><strong>Source</strong></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for literature in literatureALLList[3]:%}
+                            <tr>
+                                <td><a style="color:#5FB878; "
+                                       href="https://pubmed.ncbi.nlm.nih.gov/{{ literature[0] }}"
+                                       target="view_window">{{ literature[0] }}</a></td>
+                                <td>{{ literature[1] }}</td>
+                                <td>{{ literature[2] }}</td>
+                                <td>{{ literature[3] }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+                    <div style="height: 30px">
+                        <strong>Transcription factor regulation</strong>
+                        <button class="layui-btn layui-btn-sm" style="float:right;"><a href="/newdbDSM/download/Transcription factor regulation.xlsx" style="color:#ffffff;cursor:pointer;float:right">download</a></button>
+                    </div>
+                    <div style="max-height: 200px">
+                        <table class="layui-table" style="background-color:#F2F2F2; height: 100px">
+                            <thead>
+                            <tr style="background-color:#b5b4b2;">
+                                <th><strong>PMID</strong></th>
+                                <th><strong>Title</strong></th>
+                                <th><strong>Author</strong></th>
+                                <th><strong>Source</strong></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for literature in literatureALLList[4]:%}
+                            <tr>
+                                <td><a style="color:#5FB878; "
+                                       href="https://pubmed.ncbi.nlm.nih.gov/{{ literature[0] }}"
+                                       target="view_window">{{ literature[0] }}</a></td>
+                                <td>{{ literature[1] }}</td>
+                                <td>{{ literature[2] }}</td>
+                                <td>{{ literature[3] }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+                    <div style="height: 30px">
+                        <strong>Tools articles</strong>
+                        <button class="layui-btn layui-btn-sm" style="float:right;"><a href="/newdbDSM/download/Tools articles.xlsx" style="color:#ffffff;cursor:pointer;float:right">download</a></button>
+                    </div>
+                    <div style="overflow:scroll; max-height: 400px">
+                        <table class="layui-table" style="background-color:#F2F2F2; height: 200px">
+                            <thead>
+                            <tr style="background-color:#b5b4b2;">
+                                <th><strong>PMID</strong></th>
+                                <th><strong>Title</strong></th>
+                                <th><strong>Author</strong></th>
+                                <th><strong>Source</strong></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td colspan="4">Specific methods</td>
+                            </tr>
+                            {% for literature in literatureALLList[5]:%}
+                            <tr>
+                                <td><a style="color:#5FB878; "
+                                       href="https://pubmed.ncbi.nlm.nih.gov/{{ literature[0] }}"
+                                       target="view_window">{{ literature[0] }}</a></td>
+                                <td>{{ literature[1] }}</td>
+                                <td>{{ literature[2] }}</td>
+                                <td>{{ literature[3] }}</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="4">General methods</td>
+                            </tr>
+                            {% for literature in literatureALLList[6]:%}
+                            <tr>
+                                <td><a style="color:#5FB878; "
+                                       href="https://pubmed.ncbi.nlm.nih.gov/{{ literature[0] }}"
+                                       target="view_window">{{ literature[0] }}</a></td>
+                                <td>{{ literature[1] }}</td>
+                                <td>{{ literature[2] }}</td>
+                                <td>{{ literature[3] }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+                    <div style="height: 30px">
+                        <strong style="">Analysis articles</strong>
+                        <button class="layui-btn layui-btn-sm" style="float:right;"><a href="/newdbDSM/download/Analysis articles.xlsx" style="color:#ffffff;cursor:pointer;">download</a></button>
+                    </div>
+                    <div style="overflow:scroll; max-height: 400px">
+                        <table class="layui-table" style="background-color:#F2F2F2; height: 200px">
+                            <thead>
+                            <tr style="background-color:#b5b4b2;">
+                                <th><strong>PMID</strong></th>
+                                <th><strong>Title</strong></th>
+                                <th><strong>Author</strong></th>
+                                <th><strong>Source</strong></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for literature in literatureALLList[7]:%}
+                            <tr>
+                                <td><a style="color:#5FB878; "
+                                       href="https://pubmed.ncbi.nlm.nih.gov/{{ literature[0] }}"
+                                       target="view_window">{{ literature[0] }}</a></td>
+                                <td>{{ literature[1] }}</td>
+                                <td>{{ literature[2] }}</td>
+                                <td>{{ literature[3] }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+                    <div style="height: 30px">
+                        <strong>Review articels</strong>
+                        <button class="layui-btn layui-btn-sm" style="float:right;"><a href="/newdbDSM/download/Review articels.xlsx" style="color:#ffffff;cursor:pointer;float:right">download</a></button>
+                    </div>
+                    <div style="overflow:scroll; max-height: 400px">
+                        <table class="layui-table" style="background-color:#F2F2F2; height: 200px">
+                            <thead>
+                            <tr style="background-color:#b5b4b2;">
+                                <th><strong>PMID</strong></th>
+                                <th><strong>Title</strong></th>
+                                <th><strong>Author</strong></th>
+                                <th><strong>Source</strong></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for literature in literatureALLList[8]:%}
+                            <tr>
+                                <td><a style="color:#5FB878; "
+                                       href="https://pubmed.ncbi.nlm.nih.gov/{{ literature[0] }}"
+                                       target="view_window">{{ literature[0] }}</a></td>
+                                <td>{{ literature[1] }}</td>
+                                <td>{{ literature[2] }}</td>
+                                <td>{{ literature[3] }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr class="layui-bg-black">
+                    <blockquote class="layui-elem-quote" id="Prediction_Interpretation"
+                                style="font-size: 20px;border-left-color: #5FB878;">
+                        Prediction Interpretation
+                    </blockquote>
+                    <div>
+                        <p>The dbDSMscore between 0 and 6, with the highest score indicating more deleterious synonymous
+                            mutation and the lowest score the synonymous mutation more benign. If a dbDSMscore is ≧4,
+                            the corresponding synonymous mutation is considered as deleterious. If the dbDSMscore ≦3 the
+                            variant is considered as benign.</p>
+                        <br><br>
+                        <p>Note: Seven pre-computed annotations for all possible synonymous mutations based on human
+                            reference genome GRCh37/hg19 (ANNOVAR by RefSeq, Ensembl GENCODE, UCSC KnownGene models;
+                            SnpEff by RefSeq, Ensembl GENCODE gene model; VEP by RefSeq, Ensembl GENCODE gene model).
+                            All of the above annotations extracted from WGSA (version 0.8, April 19, 2019).</p>
+                        <img src="/newdbDSM/images/Prediction_Interpretation.jpg"></img>
+                    </div>
+                </div>
             </div>
         </div>
+
         <div class="layui-row" id="footer" align='center'>
             <hr class="layui-bg-black">
             <div class="link">
@@ -982,12 +1335,11 @@
                 <a class="ow" href="http://bioinfo.ahu.edu.cn:8080/PrDSM/" target="_blank">PrDSM</a>
                 <div style="display:inline;">|</div>
                 <a class="ow" href="http://bioinfo.ahu.edu.cn:8080/IDSV/" target="_blank">IDSV</a>
-                <!-- <div style="display:inline;">|</div>
-                <a class="ow" href="http://bioinfo.ahu.edu.cn:8080/Melanoma/index.jsp" target="_blank">Melanoma</a> -->
             </div>
             <div class="copyright">
                 Copyright©
-                <a class="ow" href="http://en.ahu.edu.cn/" target="_blank">AnHui University</a> ©All Rights Reserved.
+                <a class="ow" href="http://en.ahu.edu.cn/" target="_blank">AnHui University</a> ©All Rights
+                Reserved.
             </div>
             <div class="use">
                 <!-- Website content is for educational and research purposes only and is not intended to be used for medical advice, diagnosis or treatment. -->
@@ -995,6 +1347,18 @@
         </div>
     </div>
 </div>
+<div>
+    <div style="position:fixed;bottom:10px;margin-left: 97%;">
+        <a href="javascript:scroll(0,0)" class="asvg">
+            <svg class="bi bi-arrow-up-square-fill" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+            </svg>
+        </a>
+    </div>
+</div>
+
 </body>
 
 <script src="/newdbDSM/layui/layui.all.js"></script>

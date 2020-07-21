@@ -13,7 +13,7 @@
     <script src="/newdbDSM/layui/layui.js"></script>
     <style>
         body {
-            background-color: #EEEEEE;
+            background-color: #eeeeee;
         }
         .page-header {
             border-color: rgba(147, 147, 147, 0.5);
@@ -65,62 +65,44 @@
         <!--导航栏到这-->
     </div>
     <!--头到这-->
-    <div class="layui-row">
+    <div class="layui-row" style="margin-top: 20px">
         <div class="layui-col-lg-offset1 layui-col-xs10 layui-col-sm10 layui-col-md10 layui-col-lg10 "
-             id="bodyer" style="">
-<!--            <fieldset class="layui-elem-field layui-field-title"-->
-<!--                      style="align:left;margin-top:30px;margin-bottom:10px; border-color: rgba(147,147,147,0.5)">-->
-<!--                <legend><b><i>Overview</i></b></legend>-->
-<!--            </fieldset>-->
+             id="bodyer" style="text-align: justify;">
             <div class="page-header"><strong><i>Overview</i></strong></div>
-            <p>Synonymous mutation is a form of single nucleotide mutation
-                which replaces one base to another in the coding
-                sequence that does not alter amino acids in the translated protein due to the degeneracy genetic
-                code. Because of synonymous mutation does not change the protein primary structure, it has been
-                considered
-                nonfunctional for a long time.
-                So it sometimes called 'silent mutation'. But recent studies suggesting that such synonymous
-                mutations play an important role
-                in human phenotype by affecting transcript splicing, mRNA stability, RNA secondary structure, the
-                biding site of transcription factor binding and microRNA,
-                codon optimality and protein expression and so on.
+            <p style="font-size: 17px">This panel allows users to upload synonymous mutations across the human genome (GRCh37/hg19 assembly). We used the voting method to integrate the scores of the six class features (sequence, functional regions annotation, splicing, conservation, translation efficiency, functional score features) which is named dbDSMScore to further prioritize the deleterious of the variants, and the integrated database can easily and conveniently obtain the first hand information about numerous features annotation for particular synonymous mutations.
             </p>
-<!--            <fieldset class="layui-elem-field layui-field-title"-->
-<!--                      style="align:left;margin-top:30px;margin-bottom:10px; border-color: rgba(147,147,147,0.5)">-->
-<!--                <legend><b><i>Job Start</i></b></legend>-->
-<!--            </fieldset>-->
             <div class="page-header"><strong><i>Job Start</i></strong></div>
-            <p>dasdasdsa<a style="color: #5fb878" onclick="runExample()">Example</a></p>
-
-            <form class="layui-form" method="post" onsubmit="return checkForm1()">
+            <div>
+                <p style="font-size: 17px">Insert the list of synonymous mutations using the tab separated values format chr, pos, id, ref, alt (maximum 100,000 mutations for 5 column) <a style="color: #5fb878" onclick="runExample()">Example</a></p>
+            </div>
+            <form class="layui-form" method="post"  action="analysisSubmit"  id="submitForm" name="submitForm">
+                {{ form.csrf_token }}
                 <div class="layui-form-item">
                     {{ form.data }}
                 </div>
 
-                <div class="custom-file mb-3" style="width: 50%">
+                <div class="custom-file mb-3" style="width: 30%">
                     {{ form.uploaddata }}
-                    <label id="t1" class="custom-file-label" for="customFile">Please upload the VCF file.</label>
-
+                    <label id="t1" class="custom-file-label" for="uploaddata" style="border-radius: 0">Please upload the VCF file</label>
                 </div>
                 <div class="layui-text" style="float: right" align="justify">
-                    Learn more about dbDSM's <a style="color: #5fb878" href="{{ url_for('homeblue.about') }}#1.Brief introduction">Output</a>.
+                     Learn more about <a style="color: #5fb878" href="{{ url_for('homeblue.about') }}#Prediction_Interpretation">output</a>
                 </div>
 
-                <div class="layui-form-item">
+                <div class="form-group" style="margin-bottom: 50px">
                     <div class="layui-text">
-                        Input your email address
+                        Input your email address(Optional)
                     </div>
-                    <div class="layui-inline">
-                        <div class="layui-input-inline">
-                            {{ form.email }}
-                        </div>
+
+                    <div class="layui-col-lg4" style="width: 22%; ">
+                        {{ form.email }}
                     </div>
+
                 </div>
 
                 <div class="layui-form-item">
-                    {{ form.csrf_token }}
-                    {{ form.submit }}
-                    {{ form.reset }}
+                    <input type="button" id="submitBtn" class="layui-btn" onclick="check_sequence()" lay-submit lay-filter="*" value="Submit" style="background-color: #5FB878;">
+                    <input type="reset" id="resetBtn" class="layui-btn layui-btn-primary" lay-filter="reset" value="reset" onclick="reset1()">
                 </div>
 
             </form>
@@ -160,34 +142,8 @@
     </div>
 </div>
 
-
+<script src="/newdbDSM/layui/layui.all.js"></script>
 <script>
-    var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
-
-    function checkForm1() {
-        if ($('#userInput').val() == '' && $('#t1').text() == '') {
-            layer.msg('Please paste mutation list or upload VCF file');
-            return false;
-        } else if ($('#eMail').val() != '') {
-            if (!reg.test($('#eMail').val())) {
-                layer.msg('Please check you e-mail address');
-                return false;
-            }
-        }
-        return true;
-    }
-
-    function runExample() {
-        $("#userInput").val("1	69096	.	G	A");
-    };
-
-    function reset1() {
-        $('#t1').text("");
-        return true;
-    };
-</script>
-<script>
-
     function getFileName(path) {
         var obj = document.getElementById("t1");
         var pos1 = path.lastIndexOf('/');
@@ -201,10 +157,100 @@
     }
 </script>
 <script>
+    //检查序列
+    function check_task(mutation) {
+        var mutation_array = mutation.split('\n');
+        var mutation_length_dict = new Array();
+        console.log(mutation_array.length)
+        // console.log('111:'+sequences)
+        // 最大允许提交1000条序列
+        if (mutation_array.length > 100000) {
+            layer.msg("The maximum number of mutation is 100000 in one submission!");
+            return false;
+        }
+        for (i in mutation_array) {
+            if (mutation_array[i].split('\t').length != 5) {
+                layer.msg('The line '+i+" VCF format error!");
+                return false
+            }
+        }
+
+        return true;
+    }
+
+    var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+    // 检查是输入还是上传文件
+    function check_sequence() {
+        thisform = document.submitForm;
+        var mutation = document.getElementById("userInput");
+        data = mutation.value;
+
+        //输入框中的内容优先
+        if (data == "") {
+            var objFile = document.getElementById("uploaddata");
+            if (objFile.value == "") {
+                layer.msg("Please paste the mutation in the TEXT area or upload a file!");
+            } else {
+                //将上传的文件转化成mutation
+                var files = $('#uploaddata').prop('files')[0];
+
+                var reader = new FileReader();
+                reader.readAsText(files, "UTF-8");
+                reader.onload = function (evt) {
+                    //var fileString = evt.target.result;
+                    mutation.value = evt.target.result;
+                    if (check_task(mutation.value)) {
+                        if ($('#eMail').val() != '') {
+                            if (reg.test($('#eMail').val())) {
+                                thisform.submit();
+                            } else {
+                                layer.msg('Please check you e-mail address');
+                                return false;
+                            }
+                        } else {
+                            layer.msg('Please input you e-mail address');
+                            return false;
+                        }
+                    }
+                }
+            }
+        } else {
+            if (check_task(data)) {
+                if ($('#eMail').val() != '') {
+                    if (reg.test($('#eMail').val())) {
+                        thisform.submit();
+                    }else{
+                        layer.msg('Please check you e-mail address');
+                        return false;
+                    }
+                } else {
+                    layer.msg('Please input you e-mail address');
+                    return false;
+                }
+            }
+        }
+    }
+</script>
+
+
+
+<script>
+    function runExample() {
+        $("#userInput").val("1	69096	.	G	A");
+    };
+
+    function reset1() {
+        $('#t1').text("Please upload the VCF file");
+        return true;
+    };
+</script>
+
+<script>
     layui.use('element', function () {
         var element = layui.element;
 
     });
 </script>
+
 </body>
 </html>

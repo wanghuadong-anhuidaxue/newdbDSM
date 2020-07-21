@@ -1,9 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 from .forms import SearchForm  # ,AdvancedSearchForm #导入本地写的forms.py
 from App.models import db, AllData
-from App.tools import objectStarToNo, changeHTML  # 导入自制工具包
+from App.tools import changeHTML, result_to_dict, showAdvancedTable, showTable # 导入自制工具包
 from sqlalchemy import or_, and_
-from jinja2 import escape
 import json
 
 searchblue = Blueprint("searchblue", __name__)
@@ -20,31 +19,6 @@ def search():
     form.searchBy.data = 'Disease'  # 默认选择，不然就是中文的请选择了
     return render_template("search.html", form=form)
 
-
-def showTable(indata, page, limit):
-    '''
-    为普通搜索进行sql查询，分页
-    :param indata: searchBy，和userinput
-    :param page: 当前页
-    :param limit: 每页个数
-    :return: 返回查询分页结果
-    '''
-    searchBy = indata[0]
-    userinput = indata[1]
-    if searchBy == 'Disease':
-        paginate = AllData.query.filter(AllData.Disease.like('%' + userinput + '%')).paginate(page, limit, False)
-    elif searchBy == 'Gene':
-        paginate = AllData.query.filter(AllData.Gene.like('%' + userinput + '%')).paginate(page, limit, False)
-    elif searchBy == 'GRCh38_Position':
-        paginate = AllData.query.filter(AllData.GRCh38_Position.like('%' + userinput + '%')).paginate(page, limit,
-                                                                                                      False)
-    elif searchBy == 'Mutation':
-        paginate = AllData.query.filter(or_(AllData.Protein.like('%' + userinput + '%'),
-                                            AllData.cDNA.like('%' + userinput + '%'),
-                                            AllData.SNPID.like('%' + userinput + '%'))).paginate(page, limit, False)
-    else:
-        paginate = []
-    return paginate
 
 
 @searchblue.route('/searchSubmit', methods=['GET', 'POST'])
@@ -65,7 +39,7 @@ def searchSubmit():
 
 
 @searchblue.route('/searchTable', methods=['GET', 'POST'])
-def searchTable():
+def searchTable():#page, per_page, searchBy, userinput
     '''
     表单更新
     :return:使用的是request.args调用
@@ -74,9 +48,10 @@ def searchTable():
     per_page = request.args.get("per_page", 10, type=int)
     searchBy = request.args.get("searchBy")
     userinput = request.args.get("userinput")
+    # print(page,per_page,searchBy,userinput)
     paginate = showTable((searchBy, userinput), page, per_page)
     return render_template('searchresult.html', page=page, per_page=per_page, searchBy=searchBy, userinput=userinput,
-                           pagination=paginate, search_result=searchBy + ' like:' + userinput)
+                           pagination=paginate)
 
 
 @searchblue.route('/detailScore', methods=['GET', 'POST'])
@@ -153,55 +128,8 @@ def advancedSearchTable():
                            Gene=Gene, Chromosome=Chromosome , Classification=Classification, StrengthOfEvidence=StrengthOfEvidence)
 
 
-def showAdvancedTable(dict, page, limit):
-    '''
-    高级搜索，sql查询
-    :param dict:
-    :param page:
-    :param limit:
-    :return:
-    '''
-    Disease = dict['Disease']
-    Gene = dict['Gene']
-    Chromosome = dict['Chromosome']
-    Classification = dict['Classification']
-    StrengthOfEvidence = dict['StrengthOfEvidence']
-    return AllData.query.filter(AllData.Gene.like('%' + "" if (Gene == "" or Gene == None) else Gene + '%'),
-                                     AllData.Disease.like('%' + "" if (Disease == "" or Disease == None) else Disease + '%'),
-                                     AllData.Chromosome.like('%' + "" if (Chromosome == "" or Chromosome == None) else Chromosome + '%'),
-                                     AllData.Classification.like('%' + "" if (Classification == "" or Classification == None) else Classification + '%'),
-                                     AllData.StrengthOfEvidence.like('%' + "" if (StrengthOfEvidence == "" or StrengthOfEvidence == None) else StrengthOfEvidence + '%')).paginate(page, limit, False)
 
 
-def result_to_dict(result, flags):
-    '''
-    把sql结果转换为对应的字典，方便json传输
-    {unique去重，并且拦截nan}
-    :param result:
-    :param flags:
-    :return:
-    '''
-    import numpy as np
-    # print(flags)
-    dict = {
-        'Disease': []
-        , 'Gene': []
-        , 'Chromosome': []
-        , 'Classification': []
-        , 'StrengthOfEvidence': []
-    }
-    result = np.array(list(result))
-    i = 0
-    for flagkey in flags.keys():
-        if flags[flagkey] == 1:
-            continue
-        dict[flagkey] = list(np.unique(result[:, i + 2]))#[incom for incom in np.unique(result[:, i + 2]) if str(incom) != 'nan' and str(incom) != 'Other']#unique去重，并且拦截nan
-        i += 1
-
-    for key in list(dict.keys()):
-        if len(dict[key]) == 0:
-            dict.pop(key)
-    return dict
 
 
 @searchblue.route('/researchDisease', methods=['GET', 'POST'])
@@ -237,6 +165,15 @@ def researchGene():
     # print(paginate)
     return render_template('searchresult2.html', page=page, per_page=per_page, pagination=paginate, Disease='',
                            Gene=reGene, Chromosome='',Classification='',StrengthOfEvidence='')  # 不能写none，会导致查询and_查询无果
+
+
+@searchblue.route('/resetPageLimit1', methods=['GET', 'POST'])
+def resetPageLimit1():
+    newlimit = int(request.args.get('newlimit'))
+    searchBy = request.args.get('searchBy')
+    userinput = request.args.get("userinput")
+    return redirect(url_for('searchblue.searchTable', page=1, per_page=newlimit, userinput=userinput, searchBy=searchBy))
+
 
 
 # 下面这是数据库载入的代码

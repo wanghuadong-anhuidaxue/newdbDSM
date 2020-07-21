@@ -19,29 +19,29 @@
 		<script src="/newdbDSM/js/jszip.min.js"></script>
 		<script src="/newdbDSM/js/buttons.html5.min.js"></script>
 		<script type="text/javascript" language="javascript" src="/newdbDSM/js/dataTables.bootstrap.js"></script>
-		
+
 		<style>
 			.bbtn {
 				float: left;
 				margin-left: 5px;
 			}
-			
+
 			.pagination {
 				float: right;
 				margin: 0 5px;
 			}
-			
+
 			#example {
 				margin-bottom: 2px;
 			}
-			
+
 			.dataTables_info {
 				float: right;
 				height: 35px;
 				text-align: center;
 				margin: 0 5px;
 			}
-			
+
 			.dataTables_length {
 				float: left;
 				height: 35px;
@@ -50,19 +50,28 @@
 			select:hover {
 				border-color: #5FB878 !important;
 			}
-			a:hover {text-decoration: none;}
-			a:active{text-decoration:none;}
-			a[name="abutton"]:visited{text-decoration: none;}
-		</style>
+			a:hover,a:active,a:focus,a:visited{text-decoration: none;}
+			.abutton:active{
+				text-decoration: none;
+				background-color: #428bca;
+				color: #ffffff !important;
+			}
+			.abutton a:focus{
+				color: #428bca;
+			}
+			.abutton:hover {
+				border-color: #5fb878;
+			}
 
-		
+		</style>
 	</head>
+
 
 	<body>
 		<div class="layui-container" style="min-width:1140px;">
 			<div class="layui-row" id="header">
 				<!--头-->
-				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner" style="background: url(/newdbDSM/images/Picture8.png);background-size:cover;">
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner">
 				</div>
 				<!--这里是banner-->
 				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
@@ -94,29 +103,43 @@
 				<!--导航栏到这-->
 			</div>
 			<!--头到这-->
-			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px; margin-bottom: 0px">
+			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 40px; margin-bottom: 0px">
 				<legend><i><b>Search Result:</b></i>&nbsp;
 					<strong>{{ searchBy }} like:</strong> {{ userinput }}
 				</legend>
 			</fieldset>
 
-			<div class="layui-row" style="margin-bottom: 5px">
-				<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
+			<div class="layui-row">
+				<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3" style="margin-top: 10px;">
 					<p class=>Showing {{ pagination.page*pagination.per_page-pagination.per_page+1 }} to
 					{% if pagination.page*pagination.per_page < pagination.total%}
 						{{ pagination.page*pagination.per_page }}
 					{% else%}
 						{{ pagination.total }}
 					{% endif %}
-					 of {{ pagination.total }} entries</p>
+						of {{ pagination.total }} entries</p>
 				</div>
-				<div class="layui-col-md-offset3 layui-col-xs6 layui-col-sm6 layui-col-md6 layui-col-lg6 btn-group " role="group">
-
-						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 10%}active{% endif %}"><a href="searchTable?page=1&per_page=10&searchBy={{ searchBy }}&userinput={{ userinput }}" style="color: #000000" name="abutton">10item/page</a></button>
-						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 20%}active{% endif %}"><a href="searchTable?page=1&per_page=20&searchBy={{ searchBy }}&userinput={{ userinput }}" style="color: #000000" name="abutton">20item/page</a></button>
-						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 50%}active{% endif %}"><a href="searchTable?page=1&per_page=50&searchBy={{ searchBy }}&userinput={{ userinput }}" style="color: #000000" name="abutton">50item/page</a></button>
-						<button type="button" class="btn btn-light pull-right {% if pagination.per_page == 100%}active{% endif %}"><a href="searchTable?page=1&per_page=100&searchBy={{ searchBy }}&userinput={{ userinput }}" style="color: #000000;" name="abutton">100item/page</a></button>
-
+				<div class="layui-col-md-offset3 layui-col-xs6 layui-col-sm6 layui-col-md6 layui-col-lg6 "
+					 role="group" style="height: 40px">
+					<div class="layui-col-md-offset8 layui-col-lg1" style="margin-top: 10px;">
+						Show
+					</div>
+					<div class="form-group  layui-col-lg2" style="width: 75px; margin-left: -5px">
+						<form action="/searchTable" name="selectLimit">
+							<input type="hidden" name="userinput" value="{{ userinput }}">
+							<input type="hidden" name="searchBy" value="{{ searchBy }}">
+<!--							<input type="hidden" name="page" value="{{ page }}">-->
+							<select class="form-control" id="selectL" name="per_page">
+								<option value="10" {% if pagination.per_page==10 %}selected{% endif %}>10</option>
+								<option value="20" {% if pagination.per_page==20 %}selected{% endif %}>20</option>
+								<option value="50" {% if pagination.per_page==50 %}selected{% endif %}>50</option>
+								<option value="100" {% if pagination.per_page==100 %}selected{% endif %}>100</option>
+							</select>
+						</form>
+					</div>
+					<div class="layui-col-lg1" style="margin-top: 10px;">
+						&nbsp;entries
+					</div>
 				</div>
 			</div>
 
@@ -145,10 +168,12 @@
 					</tr>
             	{% endfor %}
 			</table>
-			<div class="">
+			<div class="" style="margin-top: 10px">
+<!--				<button class="btn btn-default"><a style="float: left" href="downTable?userinput={{ userinput }}&searchBy={{ searchBy }}">download table data</a></button>-->
+				<button class="btn btn-default abutton"><a style="float: left" href="/downAllTable?userinput={{ userinput }}&searchBy={{ searchBy }}">download full results</a></button>
 				<ul class="pagination">
 					{% if pagination.has_prev %}
-						<li class=""><a class="page-link" href="searchTable?page={{ pagination.prev_num }}&per_page={{ pagination.per_page }}&searchBy={{ searchBy }}&userinput={{ userinput }}">&laquo;</a></li>
+						<li class=""><a class="page-link" href="{{ url_for('searchblue.searchTable', page=pagination.prev_num, per_page=pagination.per_page, userinput=userinput, searchBy=searchBy) }}">&laquo;</a></li>
 						{% else %}
 						<li class="disabled"><a class="page-link" href="#">&laquo;</a></li>
 					{% endif %}
@@ -157,7 +182,7 @@
 						{% if page %}
 							{% if page != pagination.page %}
 								<li class="">
-									<a href="searchTable?page={{ page }}&per_page={{ pagination.per_page }}&searchBy={{ searchBy }}&userinput={{ userinput }}">{{ page }}</a>
+									<a href="{{ url_for('searchblue.searchTable', page=page, per_page=pagination.per_page, userinput=userinput, searchBy=searchBy) }}">{{ page }}</a>
 								</li>
 							{% else %}
 								<li class="active">
@@ -170,7 +195,7 @@
 					{% endfor %}
 
 					{% if pagination.has_next %}
-						<li class=""><a class="page-link" href="searchTable?page={{ pagination.next_num }}&per_page={{ pagination.per_page }}&searchBy={{ searchBy }}&userinput={{ userinput }}">&raquo;</a></li>
+						<li class=""><a class="page-link" href="{{ url_for('searchblue.searchTable', page=pagination.next_num, per_page=pagination.per_page, userinput=userinput, searchBy=searchBy) }}">&raquo;</a></li>
 						{% else %}
 						<li class="disabled"><a class="page-link" href="#">&raquo;</a></li>
 					{% endif %}
@@ -197,5 +222,12 @@
 		</div>
 	</body>
 	<script src="/newdbDSM/layui/layui.all.js"></script>
-
+     <script type="text/javascript">
+        window.onload=function(){
+          var osel=document.getElementById("selectL");
+          osel.onchange=function(){
+            document.selectLimit.submit();
+          }
+    }
+    </script>
 </html>
