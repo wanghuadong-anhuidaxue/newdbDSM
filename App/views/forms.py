@@ -11,7 +11,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField,TextAreaField, SelectMultipleField, SelectField#分别对应单行文本，提交，文件上传，多行文本,选择
 from flask_wtf.file import FileAllowed,FileRequired,FileField
 from wtforms.validators import InputRequired,DataRequired,Length,ValidationError,Email #验证器，分别对应是否输入，是否数据正确，长度限制，邮箱格式是否正确
-from App.models import db, AllData
+
 
 
 
@@ -31,7 +31,7 @@ class SubmitForm(FlaskForm):
 
 class SearchForm(FlaskForm):
     searchBy = SelectMultipleField(label='searchBy', id='searchBy',render_kw={'lay-verify':"required", 'style':'width:17%;margin-left:10%;'},
-                                   choices =[('Disease','Disease'),('Gene','Gene'),('GRCh38_Position','GRCh38_Position'),('Mutation','Mutation'),('DBDSMScore','DBDSMScore')],
+                                   choices =[('Disease','Disease'),('Gene','Gene'),('GRCh38_Position','GRCh38_Position'),('Mutation','Mutation')],
                                    default = 'Disease')
     userinput = StringField(label='userinput', id='userinput',
                             render_kw={'autocomplete': 'off', 'class_': 'layui-input','lay-verify':"required", 'size':"100", 'style':"height: 35px;"})
@@ -50,8 +50,6 @@ class AnalysisForm(FlaskForm):
                             render_kw={'autocomplete': 'off','class_': 'layui-input form-control', 'style':"border-radius: 0;",'placeholder':"Email address"})
     uploaddata = FileField(label='uploaddata', id="uploaddata", render_kw={'class_':'custom-file-input',"multiple data-min-file-count":'1','accept':'.vcf', 'onchange':"getFileName(this.value)"})
     submit = SubmitField('Submit',id='submitBtn',render_kw={'onclick':'check_sequence()','class_':'layui-btn'})
-    # reset = SubmitField('Reset', id='resetBtn', render_kw={'class_': 'layui-btn layui-btn-primary', 'type': "reset", 'onclick':'reset1()'})
-
 
 
 

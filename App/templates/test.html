@@ -15,7 +15,7 @@
     {{ form.uploaddata }}
     {{ form.email }}
     <input type="button" id="submitBtn" class="layui-btn" onclick="check_sequence()" lay-submit lay-filter="*" value="Submit">
-    <input type="button" id="resetBtn" class="layui-btn layui-btn-primary" lay-filter="reset" onclick="resetForm()" value="reset">
+    <input type="button" id="resetBtn" class="layui-btn layui-btn-primary" onclick="reset1()" lay-submit lay-filter="*" value="reset">
 {{ form.errors }}
 </form>
 <script>
@@ -72,6 +72,7 @@
         thisform = document.submitForm;
         var mutation = document.getElementById("userInput");
         data = mutation.value;
+        alert(data);
         //输入框中的内容优先
         if (data == "") {
             var objFile = document.getElementById("uploaddata");
@@ -85,10 +86,10 @@
                 reader.readAsText(files, "UTF-8");
                 reader.onload = function (evt) {
                     //var fileString = evt.target.result;
-                    mutation.value = evt.target.result;
-                    alert(mutation.value)
+                    seqs.value = evt.target.result;
                     if (check_task(mutation.value)) {
                         thisform.submit();
+                        // alert('hahahah')
                     }
                 }
             }

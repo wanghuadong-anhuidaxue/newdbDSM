@@ -38,4 +38,4 @@ def downAllTable2():
 @downblue.route('/downResult')
 def downResult():
     filename = request.args.get('filename')
-    return send_from_directory(str(current_app.config['UPLOAD_PATH']),filename=filename,as_attachment=True)#redirect(url_for('/newdbDSM/'+filename))
+    return send_from_directory(str(current_app.config['RESULT_PATH']),filename=filename,as_attachment=True)#redirect(url_for('/newdbDSM/'+filename))
