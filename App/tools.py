@@ -170,7 +170,7 @@ def result_to_dict(result, flags):
     for flagkey in flags.keys():
         if flags[flagkey] == 1:
             continue
-        dict[flagkey] = list(np.unique(result[:, i + 2]))#[incom for incom in np.unique(result[:, i + 2]) if str(incom) != 'nan' and str(incom) != 'Other']#unique去重，并且拦截nan
+        dict[flagkey] = [incom for incom in np.unique(result[:, i + 2]) if str(incom) != 'n/a' and str(incom) != 'Other']#unique去重，并且拦截nan   list(np.unique(result[:, i + 2]))#
         i += 1
 
     for key in list(dict.keys()):

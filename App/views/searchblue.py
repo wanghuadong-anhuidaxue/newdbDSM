@@ -113,19 +113,19 @@ def advancedSearchTable():
     Classification = request.args.get('Classification')
     StrengthOfEvidence = request.args.get('StrengthOfEvidence')
     dict = {
-        'Disease': Disease
-        , 'Gene': Gene
-        , 'Chromosome': Chromosome
-        , 'Classification': Classification
-        , 'StrengthOfEvidence': StrengthOfEvidence
+        'Disease': Disease if Disease!='None' else None
+        , 'Gene': Gene if Gene!='None' else None
+        , 'Chromosome': Chromosome if Chromosome!='None' else None
+        , 'Classification': Classification if Classification!='None' else None
+        , 'StrengthOfEvidence': StrengthOfEvidence if StrengthOfEvidence!='None' else None
     }
     page = request.args.get("page", 1, type=int)
     per_page = request.args.get("per_page", 10, type=int)
     # print('dict',dict)
     paginate = showAdvancedTable(dict, page, per_page)
-    # print(paginate.items)
-    return render_template('searchresult2.html', page=page, per_page=per_page, pagination=paginate, Disease=Disease,
-                           Gene=Gene, Chromosome=Chromosome , Classification=Classification, StrengthOfEvidence=StrengthOfEvidence)
+    print(page,per_page,dict)
+    return render_template('searchresult2.html', page=page, per_page=per_page, pagination=paginate, Disease=dict['Disease'],
+                           Gene=dict['Gene'], Chromosome=dict['Chromosome'] , Classification=dict['Classification'], StrengthOfEvidence=dict['StrengthOfEvidence'])
 
 
 

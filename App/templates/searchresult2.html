@@ -101,7 +101,7 @@
 				<!--导航栏到这-->
 			</div>
 			<!--头到这-->
-			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 40px;">
 				<legend><i><b>Search Result:</b></i>&nbsp;
 					{% if Disease != '' and Disease != none %}
 						<strong>Disease:</strong>{{ Disease }}
@@ -181,12 +181,13 @@
 					</tr>
             	{% endfor %}
 			</table>
+
 			<div class="" style="margin-top: 10px">
 				<button class="btn btn-default abutton"><a style="float: left" href="/downAllTable2?Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}">download full results</a></button>
 
 				<ul class="pagination">
 					{% if pagination.has_prev %}
-						<li class=""><a class="page-link" href="advancedSearchTable?page={{ pagination.prev_num }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}">&laquo;</a></li>
+						<li class=""><a class="page-link" href="advancedSearchTable?page={{ pagination.prev_num }}&per_page={{ pagination.per_page }}&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}">&laquo;</a></li>
 						{% else %}
 						<li class="disabled"><a class="page-link" href="#">&laquo;</a></li>
 					{% endif %}
@@ -195,7 +196,7 @@
 						{% if page %}
 							{% if page != pagination.page %}
 								<li class="">
-									<a href="advancedSearchTable?page={{ page }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}">{{ page }}</a>
+									<a href="advancedSearchTable?page={{ page }}&per_page={{ pagination.per_page }}&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}">{{ page }}</a>
 								</li>
 							{% else %}
 								<li class="active">
@@ -208,7 +209,7 @@
 					{% endfor %}
 
 					{% if pagination.has_next %}
-						<li class=""><a class="page-link" href="advancedSearchTable?page={{ pagination.next_num }}&per_page=10&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}">&raquo;</a></li>
+						<li class=""><a class="page-link" href="advancedSearchTable?page={{ pagination.next_num }}&per_page={{ pagination.per_page }}&Disease={{ Disease }}&Gene={{ Gene }}&Chromosome={{ Chromosome }}&Classification={{ Classification }}&StrengthOfEvidence={{ StrengthOfEvidence }}">&raquo;</a></li>
 						{% else %}
 						<li class="disabled"><a class="page-link" href="#">&raquo;</a></li>
 					{% endif %}

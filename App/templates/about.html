@@ -1317,12 +1317,32 @@
                             mutation and the lowest score the synonymous mutation more benign. If a dbDSMscore is ≧4,
                             the corresponding synonymous mutation is considered as deleterious. If the dbDSMscore ≦3 the
                             variant is considered as benign.</p>
-                        <br><br>
+                        <br>
                         <p>Note: Seven pre-computed annotations for all possible synonymous mutations based on human
                             reference genome GRCh37/hg19 (ANNOVAR by RefSeq, Ensembl GENCODE, UCSC KnownGene models;
                             SnpEff by RefSeq, Ensembl GENCODE gene model; VEP by RefSeq, Ensembl GENCODE gene model).
                             All of the above annotations extracted from WGSA (version 0.8, April 19, 2019).</p>
-                        <img src="/newdbDSM/images/Prediction_Interpretation.jpg"></img>
+                        <br>
+                        <div style="overflow:scroll; max-height: 400px">
+                            <table class="layui-table" style="background-color:#F2F2F2; height: 200px">
+                                <thead>
+                                <tr style="background-color:#b5b4b2;">
+                                    {% for header in headerList %}
+                                    <th><strong>{{ header }}</strong></th>
+                                    {% endfor %}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for list in listPredictionInterpretation:%}
+                                    <tr>
+                                        {% for i in list%}
+                                        <td>{{ i }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

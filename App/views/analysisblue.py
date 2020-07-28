@@ -48,7 +48,8 @@ def analysisSubmit():
             f.write('{}\t{}\n'.format(mail_addr,nowtime))
         Subject = 'dbDSM analysis' #发信主题
         Recipients = mail_addr #收件人
-        Body = 'Dear'+str(Recipients)+',\n\nYour dbDSM analysis has been completed. Please refer to the attachment.\n\nThank for using dbDSM.\n\n'+ str(time.strftime("%Y-%m-%d", time.localtime()))#邮件内容
+        web = '/downResult?filename='
+        Body = 'Dear '+str(Recipients)+',\n\nYour dbDSM analysis has been completed.'+web+' Please refer to the attachment.\n\nThank for using dbDSM.\n\n'+ str(time.strftime("%Y-%m-%d", time.localtime()))#邮件内容
         send_email(subject=Subject,to=Recipients,body=Body,resultfile=resultfilePath)
     return render_template('analysisresult.html', filename=filename)
 
@@ -61,7 +62,7 @@ def findMutation(filename, mutationPath, resultfilePath):
         for muta in f1:
             muta = muta.strip('\n').split('\t')
             # print(muta)
-            cmdStr = 'tabix /data4/chengna/dbDSMv2/anno_feature_transcript/feature_WGSA.vcf.gz ' + str(
+            cmdStr = 'tabix /data4/chengna/dbDSMv2/anno_feature_transcript/whole_genome_GRCh37_sSNV_featanno.vcf.gz ' + str(
                 muta[0]) + ':' + str(muta[1]) + '-' + str(muta[1])
             result = excuteCommand(cmdStr).decode('ISO-8859-1')
             for line in result.split('\n'):

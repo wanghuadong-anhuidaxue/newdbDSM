@@ -25,10 +25,10 @@
     </script>
     <style>
         .layui-colla-title {
-            text-align: left;
+            text-align: right;
         }
         .layui-colla-title strong{
-            font-size: 15px;
+            font-size: 18px;
         }
     </style>
 </head>
@@ -73,106 +73,112 @@
     <div class="layui-row" id="bodyer" align="center">
         <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="simplesearch"
              style="margin-top:50px;margin-bottom:30px;">
-            <fieldset class="layui-elem-field">
-                <legend style="align:left;margin-bottom:30px;"><i><strong>Search</strong></i></legend>
-                <form class="layui-form layui-field-box" id="search" action="/searchSubmit" method="post">
-                    <table>
-                        <tbody>
-                        <!-- <td><label class="layui-form-label" id="AND" style="border:none;background-color:inherit;width:1px;"></label></td> -->
-                        <td>
-                            {{ form.searchBy }}
-                        </td>
-                        <td>
-                            {{ form.userinput }}
-                        </td>
-                        </tbody>
-                    </table>
-                    {{ form.csrf_token }}
-                    <input type="text" name="search" class="layui-input layui-hide" value="1">
-                    <div class="layui-text">
-                        <p style="margin: 5px 0 5px -120px;">
-                            eg. :
-                            <a onclick="exampleFun(this,'Disease')" style="cursor: pointer;color: #5fb878;">Early-Onset Epilepsy</a>;
-                            <a onclick="exampleFun(this,'Gene')" style="cursor: pointer;color: #5fb878;">PCDH19</a>;
-                            <a onclick="exampleFun(this,'GRCh38_Position')" style="cursor: pointer;color: #5fb878;">X:100342042</a>;
-                            <a onclick="exampleFun(this,'Mutation')" style="cursor: pointer;color: #5fb878;">c.954G>C</a>;
-                            <a onclick="exampleFun(this,'Mutation')" style="cursor: pointer;color: #5fb878;">p.Thr318=</a>
-                        </p>
-                    </div>
-                    <div class="layui-input-block" style="margin-bottom:30px;">
-                        {{ form.submit1 }}
-                        {{ form.reset }}
-                    </div>
-                </form>
-            </fieldset>
-        </div>
-        <div style="height:50px;"></div>
-        <fieldset class="layui-elem-field">
-            <legend style="align:left;margin-bottom:30px;"><i><strong>Advanced search</strong></i></legend>
-            <div class="layui-collapse layui-col-lg-offset1 layui-col-xs10 layui-col-sm10 layui-col-md10 layui-col-lg10" lay-accordion>
+            <div class="layui-collapse" lay-accordion>
                 <div class="layui-colla-item">
-                    <h2 class="layui-colla-title"><strong>Search by Chromosome, Disease, Gene</strong></h2>
+                    <h2 class="layui-colla-title"><strong>Search</strong></h2>
                     <div class="layui-colla-content layui-show">
-                            <form id="select" class="layui-form layui-form-pane" action="/advancedSearchTable" method="get">
-                                <input type="text" name="select" class="layui-input layui-hide" value="1">
-                                <div class="layui-form-item layui-hide">
-                                    <div class="layui-input-block">
-                                        <input id="hideU" type="text" required lay-verify="required" autocomplete="off" class="layui-input">
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item" style="text-align:left;">
-                                    <!-- <label class="layui-form-label" id="AND" style="border:none;background-color:inherit;width:1px"></label> -->
-                                    <label class="layui-form-label"
-                                           style="text-align:left;width:17%;margin-left:11%;">Gene</label>
-                                    <div class="layui-input-block" style="width:61%;margin-left:28%;">
-                                        <select name="Gene" id="Gene" lay-filter="Gene">
-                                            <option value="" direction="rtl">Select Gene</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item" style="text-align:left;margin-top:20px;">
-                                    <!-- <label class="layui-form-label" id="AND" style="border:none;background-color:inherit;width:1px"></label> -->
-                                    <label class="layui-form-label"
-                                           style="text-align:left;width:17%;margin-left:11%;">Disease</label>
-                                    <div class="layui-input-block" style="width:61%;margin-left:28%;">
-                                        <select name="Disease" id="Disease" lay-filter="Disease">
-                                            <option value="">Select Disease</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item" style="text-align:left;">
-                                    <label class="layui-form-label"
-                                           style="text-align:left;width:17%;margin-left:11%;">Chromosome</label>
-                                    <div class="layui-input-block" style="width:61%;margin-left:28%;">
-                                        <select name="Chromosome" id="Chromosome" lay-filter="Chromosome">
-                                            <option value="">Select Chromosome</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item" align="center" style="margin-bottom:50px;">
-                                    <div class="layui-input-block" style="margin-left: 0px;margin-right: 0px;">
-                                        <button class="layui-btn" lay-submit lay-filter="*"
-                                                style="background-color: #5FB878;">
-                                            Submit
-                                        </button>
-                                        <button type="reset" class="layui-btn layui-btn-primary" lay-filter="reset"
-                                                id="reset"
-                                                onclick="formClick(this,selectId,'reset')">Reset
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                        <form class="layui-form layui-field-box" id="search" action="/searchSubmit" method="post">
+                            <table>
+                                <tbody>
+                                <!-- <td><label class="layui-form-label" id="AND" style="border:none;background-color:inherit;width:1px;"></label></td> -->
+                                <td>
+                                    {{ form.searchBy }}
+                                </td>
+                                <td>
+                                    {{ form.userinput }}
+                                </td>
+                                </tbody>
+                            </table>
+                            {{ form.csrf_token }}
+                            <input type="text" name="search" class="layui-input layui-hide" value="1">
+                            <div class="layui-text">
+                                <p style="margin: 5px 0 5px -120px;">
+                                    eg. :
+                                    <a onclick="exampleFun(this,'Disease')" style="cursor: pointer;color: #5fb878;">Early-Onset Epilepsy</a>;
+                                    <a onclick="exampleFun(this,'Gene')" style="cursor: pointer;color: #5fb878;">PCDH19</a>;
+                                    <a onclick="exampleFun(this,'GRCh38_Position')" style="cursor: pointer;color: #5fb878;">X:100342042</a>;
+                                    <a onclick="exampleFun(this,'Mutation')" style="cursor: pointer;color: #5fb878;">c.954G>C</a>;
+                                    <a onclick="exampleFun(this,'Mutation')" style="cursor: pointer;color: #5fb878;">p.Thr318=</a>
+                                </p>
+                            </div>
+                            <div class="layui-input-block" style="margin-bottom:30px;">
+                                {{ form.submit1 }}
+                                {{ form.reset }}
+                            </div>
+                        </form>
                     </div>
                 </div>
-
                 <div class="layui-colla-item">
                     <h2 class="layui-colla-title"><strong>Search by Classification</strong></h2>
                     <div class="layui-colla-content ">
-                        <form id="select3" class="layui-form layui-form-pane" action="/advancedSearchTable"
-                              method="get">
+                        <form id="selectClassification" class="layui-form layui-form-pane" action="/advancedSearchTable" method="get">
+                            <input type="text" name="select" class="layui-input layui-hide" value="1">
+
+                            <div class="layui-form-item layui-hide">
+                                <div class="layui-input-block">
+                                    <input id="hideU" type="text" required lay-verify="required" autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="text-align:left;">
+                                <!-- <label class="layui-form-label" id="AND" style="border:none;background-color:inherit;width:1px"></label> -->
+                                <label class="layui-form-label"
+                                       style="text-align:left;width:17%;margin-left:11%;">Gene</label>
+                                <div class="layui-input-block" style="width:61%;margin-left:28%;">
+                                    <select name="Gene" id="Gene" lay-filter="Gene">
+                                        <option value="" direction="rtl">Select Gene</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item" style="text-align:left;margin-top:20px;">
+                                <!-- <label class="layui-form-label" id="AND" style="border:none;background-color:inherit;width:1px"></label> -->
+                                <label class="layui-form-label"
+                                       style="text-align:left;width:17%;margin-left:11%;">Disease</label>
+                                <div class="layui-input-block" style="width:61%;margin-left:28%;">
+                                    <select name="Disease" id="Disease" lay-filter="Disease">
+                                        <option value="">Select Disease</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="text-align:left;">
+                                <label class="layui-form-label"
+                                       style="text-align:left;width:17%;margin-left:11%;">Chromosome</label>
+                                <div class="layui-input-block" style="width:61%;margin-left:28%;">
+                                    <select name="Chromosome" id="Chromosome" lay-filter="Chromosome">
+                                        <option value="">Select Chromosome</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" align="center" style="margin-bottom:50px;">
+                                <div class="layui-input-block" style="margin-left: 0px;margin-right: 0px;">
+                                    <button class="layui-btn" lay-submit lay-filter="*"
+                                            style="background-color: #5FB878;">
+                                        Submit
+                                    </button>
+                                    <button type="reset" class="layui-btn layui-btn-primary" lay-filter="reset"
+                                            id="reset"
+                                            onclick="formClick(this,selectId,'reset')">Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title"><strong>Search by StrengthofEvidence</strong></h2>
+                    <div class="layui-colla-content ">
+                        <form id="selectStrengthofEvidence" class="layui-form layui-form-pane" action="/advancedSearchTable" method="get">
+                            <input type="text" name="select" class="layui-input layui-hide" value="1">
+                            <div class="layui-form-item layui-hide">
+                                <div class="layui-input-block">
+                                    <input id="hideU2" type="text" required lay-verify="required" autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                            </div>
                             <div class="layui-form-item" style="text-align:left;">
                                 <label class="layui-form-label"
                                        style="text-align:left;width:17%;margin-left:11%;">Classification</label>
@@ -182,33 +188,13 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="layui-form-item" align="center" style="margin-bottom:50px;">
-                                <div class="layui-input-block" style="margin-left: 0px;margin-right: 0px;">
-                                    <button class="layui-btn" lay-submit lay-filter="*"
-                                            style="background-color: #5FB878;">
-                                        Submit
-                                    </button>
-                                    <button type="reset" class="layui-btn layui-btn-primary" lay-filter="reset"
-                                            id="reset3"
-                                            >Reset
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title"><strong>Search by Strength of Evidence</strong></h2>
-                    <div class="layui-colla-content ">
-                        <form id="select2" class="layui-form layui-form-pane" action="/advancedSearchTable"
-                              method="get">
                             <div class="layui-form-item" style="text-align:left;">
                                 <label class="layui-form-label"
-                                       style="text-align:left;width:17%;margin-left:11%;">Strength of Evidence</label>
+                                       style="text-align:left;width:17%;margin-left:11%;">StrengthOfEvidence</label>
                                 <div class="layui-input-block" style="width:61%;margin-left:28%;">
                                     <select name="StrengthOfEvidence" id="StrengthOfEvidence"
                                             lay-filter="StrengthOfEvidence">
-                                        <option value="">Select Strength of Evidence</option>
+                                        <option value="">Select StrengthOfEvidence</option>
                                     </select>
                                 </div>
                             </div>
@@ -220,7 +206,7 @@
                                     </button>
                                     <button type="reset" class="layui-btn layui-btn-primary" lay-filter="reset"
                                             id="reset2"
-                                            >Reset
+                                            onclick="formClick(this,selectId,'reset')">Reset
                                     </button>
                                 </div>
                             </div>
@@ -228,8 +214,7 @@
                     </div>
                 </div>
             </div>
-        </fieldset>
-    </div>
+        </div>
         <div class="layui-row" id="footer" align='center'>
             <hr class="layui-bg-black">
             <div class="link">
@@ -280,8 +265,8 @@
         }
         $.ajax({
             type: "get",
-            url: "/advancedSearch",
-            data: $('#select').serialize(),
+            url: "/advancedSearchClassification",
+            data: $('#selectClassification').serialize(),
             success: function (msg) {
                 json_ = msg//jQuery.parseJSON(msg);
                 console.log(json_);
@@ -326,8 +311,80 @@
         });
         form.render('select');
     };
+</script>
+<script>
+    function formClickStrengthofEvidence(select, selectId, value) {
+        if ($.inArray(select, selectId) == -1) {
+            if (select.getAttribute("id") == "reset") {
+                document.getElementById("hideU2").value = "";
+                document.getElementById("Classification").options.length = 1;
+                document.getElementById("StrengthOfEvidence").options.length = 1;
+                selectId.splice(0, selectId.length);
+            } else {
+                selectId.push(select);
+            }
+        }
+        for (var i = $.inArray(select, selectId) + 1; i < selectId.length; i++) {
+            selectId[i].options.length = 1;
+        }
+        for (var i = selectId.length - 1; i >= $.inArray(select, selectId); i--) {
+            if ($(selectId[i]).val() == "") {
+                selectId.splice(i, 1);
+            }
+        }
+        $.ajax({
+            type: "get",
+            url: "/advancedSearchStrengthofEvidence",
+            data: $('#selectStrengthofEvidence').serialize(),
+            success: function (msg) {
+                json_ = msg//jQuery.parseJSON(msg);
+                console.log(json_);
+                for (selectName in json_) {
+                    var tempSelect = document.getElementById(selectName);
+                    tempSelect.options.length = 1;
+                    // console.log(json_[selectName]);
+                    var aa1 = new Array();
+                    var aa2 = new Array();
+                    for (ii in json_[selectName]) {
+                        if (json_[selectName][ii].match('^[0-9]*$')) {
+                            aa1.push(json_[selectName][ii]);
+                        } else {
+                            aa2.push(json_[selectName][ii]);
+                        }
+                    }
+                    aa1.sort(function (a, b) {
+                        return a - b;
+                    });
+                    aa2.sort();
+                    if (aa1.length == 0) {
+                        for (optionId in aa2) {
+                            var tempOption = new Option(aa2[optionId], aa2[optionId]);
+                            tempSelect.appendChild(tempOption);
+                            tempOption.innerHTML = aa2[optionId];
+                            tempOption.value = aa2[optionId];
+                        }
+                    } else {
+                        for (mm in aa2) {
+                            aa1.push(aa2[mm]);
+                        }
+                        for (optionId in aa1) {
+                            var tempOption = new Option(aa1[optionId], aa1[optionId]);
+                            tempSelect.appendChild(tempOption);
+                            tempOption.innerHTML = aa1[optionId];
+                            tempOption.value = aa1[optionId];
+                        }
+                    }
+                }
+                form.render('select');
+            }
+        });
+        form.render('select');
+    };
+</script>
+<script>
     window.onload = function () {
         formClick(document.getElementById("reset"), selectId, "reset");
+        formClickStrengthofEvidence(document.getElementById("reset"), selectId, "reset");
         form.on('select(Disease)', function (data) {
             document.getElementById("hideU").value = "1";
             formClick(document.getElementById("Disease"), selectId, data.value);
@@ -340,9 +397,19 @@
             document.getElementById("hideU").value = "1";
             formClick(document.getElementById("Chromosome"), selectId, data.value);
         });
+        form.on('select(Classification)', function (data) {
+            document.getElementById("hideU2").value = "1";
+            formClickStrengthofEvidence(document.getElementById("Classification"), selectId, data.value);
+        });
+        form.on('select(StrengthOfEvidence)', function (data) {
+            document.getElementById("hideU2").value = "1";
+            formClickStrengthofEvidence(document.getElementById("StrengthOfEvidence"), selectId, data.value);
+        });
     };
+</script>
 
-     function exampleFun(uinput,seaBy) {
+<script>
+    function exampleFun(uinput,seaBy) {
         $("#userinput").val("");
         $("#userinput").val($(uinput).text());
         $("#searchBy").val(seaBy);
@@ -356,6 +423,7 @@
             $div.find('div input').val("");
         }
     };
+
     layui.use('element', function () {
         var element = layui.element;
     });
@@ -363,5 +431,4 @@
         var table = layui.table;
     });
 </script>
-
 </html>
